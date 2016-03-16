@@ -1,0 +1,2 @@
+testing +test @work
+directory ups ... +dotfiles @work

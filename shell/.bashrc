@@ -3,13 +3,9 @@
 # sej 2016 03 14
 
 
-#!/bin/bash
-# settings/generalsettings
-# sej 2016 03 14
-
 # path setup
 source ~/.shell/scripts/path-edit.sh
-path_front ~/bin /usr/local/sbin /usr/local/bin
+path_front ~/bin /usr/local/sbin /usr/local/bin ~/.shell/scripts
 path_back /sbin /bin /usr/sbin /usr/bin
 
 # run setup

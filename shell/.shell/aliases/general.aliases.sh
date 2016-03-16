@@ -10,6 +10,14 @@ alias ll='ls -al'
 alias l='ls -a'
 alias l1='ls -1'
 
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
 alias _="sudo"
 alias sudo='sudo ' # enable alias expansion for sudo
 alias root='sudo su'

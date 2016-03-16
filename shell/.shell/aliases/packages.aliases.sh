@@ -1,3 +1,7 @@
+#!/bin/bash
+# packages.aliases.sh
+# sej 2016 03 15
+
 ## p: a common package manager interface
 ## https://github.com/andschwa/shell/blob/master/.shell/packages.sh
 

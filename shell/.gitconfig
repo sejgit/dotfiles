@@ -36,3 +36,5 @@
        changed = green
        untracked = red
 
+[push]
+	default = matching

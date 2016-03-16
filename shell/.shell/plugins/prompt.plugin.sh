@@ -1,5 +1,5 @@
 #!/bin/bash
-# prompt.sh
+# prompt.plugin.sh
 # sej 2016 03 14
 
 

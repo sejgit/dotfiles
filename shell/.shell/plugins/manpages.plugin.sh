@@ -1,5 +1,5 @@
 #!/bin/bash
-# plugins/manpages.sh
+# manpages.plugin.sh
 # sej 2016 03 14
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # .bashrc
-# sej 2016 03 14
+# sej 2016 03 16
 
 
 # path setup
@@ -32,6 +32,17 @@ HISTSIZE=
 HISTFILESIZE=
 # Use separate history file to avoid truncation
 HISTFILE=~/.bash_history_file
+
+# proxy settings
+
+MYAUTH=$(<~/.ssh/myauth)
+MYPROXY=$(<~/.ssh/myproxy)
+export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
+export BASH_IT_HTTPS_PROXY=$(printf "https://%s@%s:443" "$MYAUTH" "$MYPROXY")
+export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
+
+# Liquid prompt only load in interactive shells
+[[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
 
 
 # Load custom aliases, completion, plugins

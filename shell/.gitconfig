@@ -1,7 +1,6 @@
 [http]
 [http]
 [http]
-	proxy = http://nz891r:H4eadrom@naproxy.gm.com:80
 [user]
 	name = sejgit
 	email = sejgit@github.com
@@ -38,3 +37,23 @@
 
 [push]
 	default = matching
+[http]
+[https]
+[http]
+[https]
+[http]
+[https]
+[http]
+[https]
+[http]
+[https]
+[http]
+[https]
+[http]
+[https]
+[http]
+[https]
+[http]
+	proxy = $http_proxy
+[https]
+	proxy = $https_proxy

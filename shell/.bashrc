@@ -26,12 +26,10 @@ shopt -s checkhash checkwinsize
 # history options
 shopt -s cmdhist histappend histverify
 
-HISTCONTROL=ignoreboth
-# Unset for unlimited history
-HISTSIZE=
-HISTFILESIZE=
-# Use separate history file to avoid truncation
-HISTFILE=~/.bash_history_file
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=2000
+HISTFILESIZE=10000
+
 
 # proxy settings
 MYAUTH=$(<~/.ssh/myauth)

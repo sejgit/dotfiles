@@ -4,6 +4,7 @@
 
 
 # Aliases
+alias $GIT_MYAUTH=~/.ssh/myauth.git
 alias gcl='git clone'
 alias ga='git add'
 alias gall='git add -A'
@@ -82,3 +83,4 @@ if [ -z "$EDITOR" ]; then
 else
     alias gd="git diff | $EDITOR"
 fi
+

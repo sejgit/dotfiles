@@ -129,11 +129,13 @@ git-global-disable-proxy ()
 #	about 'Disables global Git proxy settings'
 #	group 'proxy'
 
-	if $(command -v git &> /dev/null) ; then
-		git config --global --unset-all http.proxy
-		git config --global --unset-all https.proxy
-		echo "Disabled global Git proxy settings"
-	fi
+    if $(command -v git &> /dev/null) ; then
+	#git config --global --unset-all http.proxy
+	#git config --global --unset-all https.proxy
+	echo "[http]" > $GIT_MYAUTH
+	echo "[https]" >> $GIT_MYAUTH
+	echo "Disabled global Git proxy settings"
+    fi
 }
 
 git-global-enable-proxy ()
@@ -141,12 +143,15 @@ git-global-enable-proxy ()
 #	about 'Enables global Git proxy settings'
 #	group 'proxy'
 
-	if $(command -v git &> /dev/null) ; then
-		git-global-disable-proxy
-
-		git config --global --add http.proxy $BASH_IT_HTTP_PROXY
-		git config --global --add https.proxy $BASH_IT_HTTPS_PROXY
-		echo "Enabled global Git proxy settings"
+    if $(command -v git &> /dev/null) ; then
+	git-global-disable-proxy
+	echo "[http]" > $GIT_MYAUTH
+	echo "proxy = $http_proxy" >> $GIT_MYAUTH
+	echo "[https]" >> $GIT_MYAUTH
+	echo "proxy = $https_proxy" >> $GIT_MYAUTH
+	#git config --global --add http.proxy $BASH_IT_HTTP_PROXY
+	#git config --global --add https.proxy $BASH_IT_HTTPS_PROXY
+	echo "Enabled global Git proxy settings"
 	fi
 }
 

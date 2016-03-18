@@ -3,6 +3,7 @@
 	email = sejgit@github.com
 [core]
 	editor = emacs
+	excludesfile = /home/sej/.gitignore_global
 
 [url "https://github.com/"]
      insteadOf = gh:
@@ -53,3 +54,5 @@
     path = .ssh/myauth.git
 
 
+[credential]
+	helper = store --file ~/.ssh/.gitcred

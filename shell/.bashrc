@@ -23,7 +23,7 @@ shopt -s checkjobs huponexit
 # shell options
 shopt -s checkhash checkwinsize
 
-# history
+# history options
 shopt -s cmdhist histappend histverify
 
 HISTCONTROL=ignoreboth
@@ -34,7 +34,6 @@ HISTFILESIZE=
 HISTFILE=~/.bash_history_file
 
 # proxy settings
-
 MYAUTH=$(<~/.ssh/myauth)
 MYPROXY=$(<~/.ssh/myproxy)
 export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
@@ -42,6 +41,8 @@ export BASH_IT_HTTPS_PROXY=$(printf "https://%s@%s:443" "$MYAUTH" "$MYPROXY")
 export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
 export GIT_MYAUTH='~/.ssh/myauth.git'
 
+#grep options
+export GREP_OPTIONS='--color=auto' GREP_COLORS='100;8'
 
 # Liquid prompt only load in interactive shells
 [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt

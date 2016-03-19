@@ -6,7 +6,7 @@
 	excludesfile = /home/sej/.gitignore_global
 
 [url "https://github.com/"]
-     insteadOf = gh:
+     insteadOf = git:
 
 [url "https://gist.github.com/"]
      insteadOf = gist:

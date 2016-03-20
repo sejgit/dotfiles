@@ -3,7 +3,6 @@
 # sej 2016 03 16
 
 
-
 # path setup
 source ~/.shell/scripts/path-edit.sh
 path_front ~/bin /usr/local/sbin /usr/local/bin ~/.shell/scripts

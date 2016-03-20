@@ -1,0 +1,6 @@
+[submodule "liquidprompt"]
+	path = liquidprompt
+	url = git:sejgit/liquidprompt
+[submodule "todo.txt-cli"]
+	path = todo.txt-cli
+	url = git:sejgit/todo.txt-cli

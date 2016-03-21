@@ -5,7 +5,7 @@
 
 # path setup
 source ~/.shell/scripts/path-edit.sh
-path_front ~/bin /usr/local/sbin /usr/local/bin ~/.shell/scripts
+path_front ~/bin ~/.local/bin ~/.shell/scripts /usr/local/sbin /usr/local/bin
 path_back /sbin /bin /usr/sbin /usr/bin
 
 # run setup

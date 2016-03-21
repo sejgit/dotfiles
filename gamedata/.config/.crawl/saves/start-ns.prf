@@ -1,0 +1,5 @@
+type = normal
+name = Wup
+species = Human
+background = Conjurer
+fully_random = no

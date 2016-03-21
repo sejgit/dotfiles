@@ -6,7 +6,7 @@
 # path setup
 source ~/.shell/scripts/path-edit.sh
 path_front ~/bin ~/.local/bin ~/.shell/scripts /usr/local/sbin /usr/local/bin
-path_back /sbin /bin /usr/sbin /usr/bin
+path_back /sbin /bin /usr/sbin /usr/bin ~/.local/bin/adom
 
 # run setup
 source ~/.shell/scripts/run.sh

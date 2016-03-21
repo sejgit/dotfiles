@@ -1,0 +1,1811 @@
+
+# The Official ADOM FAQ
+
+## Version 6.1
+
+### Last change: January 3rd, 2015
+
+
+
+This document answers some of the most frequently asked questions about ADOM.
+If you feel that something important is missing, spot errors, typos or
+inaccurate information, or have other feedback regarding the latest FAQ
+version, send an e-mail to
+[Ignacio](mailto:el_robo_violento@yahoo.com?Subject=Adom FAQ), the official
+maintainer of the ADOM FAQ, or [send a private
+message](http://www.adom.de/forums/private.php?do=newpm&u=142) to him through
+the official forums (username "aerol"; this last option is **preferred**).
+
+This FAQ is available in [HTML](http://www.adomgb.info/adomfaq.html) and as a
+[text file](http://www.adomgb.info/adomfaq.txt). The HTML and text versions do
+not differ in content, but the HTML version has nicer formatting. You can also
+download zip archives of either FAQ version at
+[http://www.adomgb.info/](http://www.adomgb.info/).
+
+Many thanks to Erwin Mascardo, Richard Fowler, Malte Helmert and Léon Planken,
+ADOM FAQ maintainers, retired.
+
+Also thanks to Tapani Harkila, Joshua Kelley, Eva Myers, Jochen Terstiege,
+Rachel Walmsley, Stephen White, Andy Williams and Darren Grey for valuable
+input.
+
+**Note on the spoiler policy:** I have tried as hard as I can to make this FAQ
+spoiler-free. However, it is inevitable that some questions may be slightly
+spoily. Those questions and answers are marked [SPOILY]. Read spoily answers
+at your own risk! Also, there is a lot of content in this FAQ that isn't
+spoily, but may _help_ you in the problem-solving process. See question 1.9:
+Where do you draw the line in this document between spoiler-type and
+non-spoiler-type answers? for more details.
+
+* * *
+
+# Table of Contents
+
+Items changed since version 5.1 of this FAQ are marked with a [changed in 6.x]
+tag.
+
+Items added since version 5.1 of this FAQ are marked with an [added in 6.x]
+tag.
+
+## Section 1: General
+
+1.1: What does ADOM stand for?
+
+1.2: What is the current version of ADOM? [changed in 6.1]
+
+1.3: What hardware and software platforms can run ADOM? [changed in 6.0]
+
+1.4a: Where can I find support and information about ADOM online? [added in
+6.0]
+
+1.4b: What about on usenet? Isn't there an official newsgroup? [added in 6.0]
+
+1.5: Where can I get the source code for ADOM?
+
+1.6: What happened to the spoilers that were once in this file? [changed in
+6.0]
+
+1.7: I discovered a bug in ADOM. How do I report it? [changed in 6.0]
+
+1.8: I have a suggestion/comment regarding the game. Where do I send it?
+[changed in 6.0]
+
+1.9: Where do you draw the line in this document between spoiler-type and non-
+spoiler-type answers?
+
+1.10: Is ADOM Freeware? [changed in 6.0]
+
+1.11: What's this about closed/private prereleases of version 1.2.0? [changed
+in 6.1]
+
+1.12: What is ADOM II? [added in 6.0]
+
+## Section 2: Burdens of Command
+
+2.1a: What are some of the basic keyboard commands I need to know? [added in
+6.0]
+
+2.1b: I can't seem to move diagonally, but the monsters around me have no
+problem doing it. What's going on? [changed in 6.1]
+
+2.2: How do I light a torch?
+
+2.3: How do I extinguish a torch?
+
+2.4: How do I use lock picks?
+
+2.5: What is Ventriloquism good for?
+
+2.6: Is there a command that allows you to rest safely in order to regain hit
+points and power points?
+
+2.7: What does "Continuous Search" (keystroke 'ws') mean?
+
+2.8: What is the 'T'actics command for?
+
+2.9: Is there any way to identify monsters at a distance?
+
+2.10: How do I use my Bridge Building skill?
+
+2.11: I can't put points into Bridge Building! Why not?
+
+2.12: How can I open a locked door if I don't have the right key or lock
+picks?
+
+2.13: How do I buy or sell something in a shop? [changed in 6.0]
+
+2.14: How do I use my Smithing skill?
+
+2.15: I just upgraded to a new version, and the manual/the changelog says that
+new commands/configuration variables have been added. However, I can't seem to
+use them. What gives? [changed in 6.0]
+
+2.16: How do I tweak the ADOM configuration? [added in 6.1]
+
+2.17: How do I change the way ADOM looks? [added in 6.1]
+
+2.18: I'm playing the version with NotEye and I want a little peace and quiet.
+How do I turn the sound off? [added in 6.1]
+
+2.19: How do I make the NotEye settings persistent between games? [added in
+6.1]
+
+## Section 3: Playing the Game
+
+### Section 3.1: More Basic than Basic
+
+3.1.1: What's the best race/class combination to play? [changed in 6.0]
+
+3.1.2: What's a good strategy for starting the game? [changed in 6.0]
+
+### Section 3.2: The Basics
+
+3.2.1: What is the Drakalor Chain? [changed in 6.0]
+
+3.2.2: Where is the Village Dungeon? It's nowhere on my map!
+
+3.2.3: I've entered some dungeons, but I rarely encounter monsters and find
+very little food. What am I doing wrong?
+
+3.2.4: I can't keep myself fed. How do I avoid dying from starvation? [changed
+in 6.0]
+
+3.2.5: I'm doing several of the above things already, and I'm _still_
+starving. Now what? [changed in 6.0]
+
+3.2.6: How come I don't benefit from eating raw meat?
+
+3.2.7: I've been poisoned! How do I cure it? [changed in 6.0]
+
+3.2.8: How come my Neutralize Poison spell didn't work?
+
+3.2.9: What can I do with colored pools?
+
+3.2.10: What can I do with a waterproof/fireproof blanket?
+
+3.2.11: How do I stop the killer bees from coming out of their hive, or the
+giant ants from their hole?
+
+3.2.12: What do I do to become Lawful? It's impossible!
+
+3.2.13: I've gotten the Poison Hands chaos power, and every food item I touch
+gets poisoned! Is there a way around this?
+
+3.2.14: I picked up a "strange item". A few dozen turns later, I notice that I
+have ten of them! What's going on?
+
+3.2.15: How do I kill a karmic creature without becoming cursed or doomed?
+
+3.2.16: Why is it that I don't always become cursed or doomed when I
+accidentally attack a karmic creature?
+
+3.2.17: I ran into a named stone giant lord on the second level of the Village
+Dungeon! I thought this place wasn't supposed to be this tough! [changed in
+6.1]
+
+3.2.18: Speaking of impossibly hard monsters, I'm in the cave just north-west
+of Terinyo with a level 15 barbarian, and I've got rats punching through my
+dragon scale mail!
+
+3.2.19: How do I get logs for Bridge Building or Fletchery?
+
+3.2.20: I can never finish cutting a tree down because I keep getting hungry!
+How can I avoid this?
+
+3.2.21: I'm trapped on a level with a thousand brown worms, and they keep
+multiplying faster than I can kill them! Is this fair? What can I do?
+
+3.2.22: Can I shoot things in the "red" range of my missiles?
+
+3.2.23: Is the "seemingly infinite" dungeon really infinite?
+
+3.2.24: What's with the levels in the Caverns of Chaos that only take up half
+of the screen?
+
+3.2.25: How are the growth patterns for herb bushes determined? [SPOILY]
+
+3.2.26: There's a big stone block in the way in the Caverns, how do I get rid
+of it?
+
+3.2.27: What's the deal with the impassable wall of flames in the Caverns?
+Come to think of it, there's another spot like that in another dungeon, but
+with an old dwarf or a fire spirit, too. What's going on?
+
+3.2.28: I wanna become a billionaire! Where can I find more dough?
+
+3.2.29: The sheriff wants me to kill Kranach, the raider lord. But where is
+he? [changed in 6.0]
+
+3.2.30: How do I sacrifice monsters?
+
+### Section 3.3: Player Abilities
+
+3.3.1: How come my Defensive Value keeps shifting up and down by a point or
+two for no apparent reason?
+
+3.3.2: How do I make myself resistant to special attacks? [changed in 6.0]
+
+3.3.3: How come I'm still getting hurt by fire attacks when I'm wearing a ring
+of fire resistance?
+
+3.3.4: How do I learn to read, if I started out totally illiterate?
+
+3.3.5: What about the other skills that I don't know?
+
+3.3.6: How come my combat abilities suffer so much when I wield two weapons?
+
+3.3.7: I've gotten myself the "doomed" intrinsic. What does that mean?
+
+3.3.8: How come my attributes didn't go up when I paid the Dwarven trainer?
+[changed in 6.1] [SPOILY]
+
+3.3.9: Is it better to concentrate on mastering a single weapon or to become
+pretty good at handling several?
+
+3.3.10: My character has turned permanently invisible. How can I become
+visible again?
+
+3.3.11: My character has turned permanently blind! What can I do?
+
+### Section 3.4: Matters Arcane
+
+3.4.1: What do the different altar colors mean?
+
+3.4.2: How can I tell if an item is cursed?
+
+3.4.3: How do I get rid of a cursed item?
+
+3.4.4: How do I get rid of trapped armor?
+
+3.4.5: What do all the numbers on the spellcasting menu mean?
+
+3.4.6: What's all this I hear about corruption?
+
+3.4.7: Okay, so corruption is a Bad Thing. How do I get rid of it, then?
+
+3.4.8: What use is a holy symbol?
+
+3.4.9: How come standard Fireball spells don't hurt me, while a so-called
+Improved Fireball _will_ hurt me if I'm in the blast radius?
+
+3.4.10: What's the difference between a ring of fire and a ring of fire
+resistance?
+
+3.4.11: What exactly does a wand of ball lightning do? It sure doesn't shoot
+lightning balls!
+
+3.4.12: When I cast a spell that lets me choose a target, how do I pick me?
+I'm tired of blessing everyone else! [changed in 6.0]
+
+### Section 3.5: Way Beyond Basic
+
+3.5.1a: What's all this fuss about pre/postcrowning? [added in 6.0] [SPOILY]
+
+3.5.1b: What about crowning? Is that the same? [added in 6.0] [SPOILY]
+
+3.5.2: I'm trying to do the Kitty quest, and I killed something I shouldn't
+have, but I didn't get any bad warnings. Does that mean it doesn't count
+against me?
+
+3.5.3: I think I've won, but I can't escape and finish! What's going on?
+
+3.5.4: I'm bored with this simple little game; how can I make it more
+interesting? [changed in 6.0]
+
+3.5.5: What are Ironman and Eternium man games? [changed in 6.0]
+
+3.5.6: I keep hearing about a Chaos God ending or Ultra endings; what are
+people talking about?
+
+3.5.7: Has the Red Rooster thingy or the Scroll of Omnipotence been
+implemented yet?
+
+3.5.8: How do I get past the eternal guardian? [SPOILY]
+
+* * *
+
+# The List
+
+## Section 1: General
+
+1.1: What does ADOM stand for?
+
+ADOM is an acronym for "Ancient Domains Of Mystery".
+
+* * *
+
+1.2: What is the current version of ADOM?
+
+The current public version is 1.2.0 prerelease 23. If you want to know about
+closed/private prereleases, see question 1.11.
+
+ADOM has been around for a while: development started in 1994. If you want to
+know more about ADOM development history you can read sections "The Past",
+"Version History" and "Archive" at [the old ADOM
+site](http://www.adom.de/adom/index.php3). Please note that this site is out
+of date and no longer being updated. For the current ADOM site see question
+1.4a below.
+
+If you are a longtime player of versions 1.1.1 or 1.0.0 I encourage you to try
+the latest version. Many old bugs have been fixed and game mechanics adjusted.
+You can check the [official changelog](http://www.ancardia.com/changelog.html)
+for more information on the changes, at the cost of spoiling yourself. If you
+are new to the game, by all means play the latest version - in the opinion of
+many of us, it's also the greatest.
+
+If the word "prerelease" has you concerned about stability, know that as far
+as I'm concerned, the latest version is stable. There are some bugs, but they
+do not prevent the game from being played and won.
+
+* * *
+
+1.3: What hardware and software platforms can run ADOM?
+
+A 386 or better PC, a Mac of equivalent processing power or an Amiga with a
+minimum of 4 MB of RAM and a hard disk drive can run ADOM.
+
+Thanks to Jochen Terstiege (the portmaster) the list of software platforms
+that can run the game is an evolving one. You can check the [official download
+site](http://www.ancardia.com/download.html) for an up to date list. If you
+want ADOM to be ported to an operating system it doesn't yet support, make
+your case for it in the official forums in the "General ADOM discussion"
+subforum, which Jochen and Thomas Biskup read from time to time. See question
+1.4a below for the link to the forums.
+
+In the meantime, if you cannot get the game to run on your operating system,
+you can run it from within an emulator. I recommend downloading the DOS
+version and running it on [DOSBox](http://www.dosbox.com/), a DOS emulator.
+
+* * *
+
+1.4a: Where can I find support and information about ADOM online?
+
+Visit the [official ADOM blog](http://www.ancientdomainsofmystery.com/) to
+find the latest news and information about ADOM. The [official download
+site](http://www.ancardia.com/) is where you can download the latest public
+version and find an installation/configuration FAQ. You can discuss ADOM at
+the [official forums](http://www.adom.de/forums/) (but beware of possible
+spoilers). The [official ADOM site](http://www.adom.de/) serves as a hub for
+the three sites above. Additionally, within the forums you can find the [ADOM
+issue tracker](http://www.adom.de/forums/project.php?projectid=2), where you
+can submit bug reports and feature requests (more about this on questions 1.7
+and 1.8 below).
+
+If you are a beginner to the game and you're looking for information or just a
+place to talk about the game I absolutely recommend visiting the [official
+forums](http://www.adom.de/forums/) and especially the subforum "General ADOM
+discussion". You can ask any question you like (we don't bite). Be aware of
+possibly spoily information when checking the forums, and if you are not
+looking to get spoiled, please mention specifically in your question that you
+are only looking for hints and not spoilers. Also make sure to check the
+"Beginner information" thread.
+
+If your character has managed to win the game, or died horribly in the
+process, you might want to share your story with the ADOM community. You might
+also want to read other players' stories. There are subforums dedicated to
+these at the official forums. There is also Jan Erik Mydland's wonderful [ADOM
+Hall of Fame](http://adom.brinkster.net/hof/). These tales of great victory
+and shattering defeat are, of course, spoily.
+
+[Andy Williams' ADOM pages](http://www.adomgb.info/) are the official hosting
+place of this FAQ and have challenge game information, ADOM stories and poems
+and other sections. They are also the home of the [ADOM
+Guidebook](http://www.adomgb.info/adomgb-toc.html). The guidebook was designed
+to be an ADOM spoiler compendium and contains spoilers throughout. Please note
+that the guidebook is no longer being actively maintained and was last updated
+in April 2010. There is an effort underway to wikify the contents of the
+guidebook and update them when necessary at [this
+wiki](http://adom.unforgiven.pl/wiki/Main_Page).
+
+For an up to date list of online ADOM resources check the [Beginner
+information thread](http://www.adom.de/forums/showthread.php/12314-Beginner-
+information) on the official forums.
+
+* * *
+
+1.4b: What about on usenet? Isn't there an official newsgroup?
+
+If you like newsgroups, there is indeed an official one:
+[rec.games.roguelike.adom](news:rec.games.roguelike.adom). A few years ago
+this was one of the best places to get help and information about ADOM, both
+spoily and non-spoily, and the regulars have always been friendly. However,
+because of the proliferation of spam, the advent of the official forums and a
+natural process of attrition during the nearly ten years that went by without
+a new ADOM version, many people have migrated away from the newsgroup and many
+of them can now be found on the official forums. As a consequence, this
+newsgroup has become remarkably low volume. If you want a lot of interaction,
+the official forums are my official recommendation.
+
+However quiet the newsgroup is now, it is not completely dead; but regardless
+of its current state its archives at [Google
+Groups](http://groups.google.com/group/rec.games.roguelike.adom/topics) can
+still be a source of interesting information. If you intend to post and you
+are not familiar with newsgroup ettiquette in general or with the policies of
+the newsgroup in particular I recommend reading the [newsgroup
+FAQ](http://www.adomgb.info/rgrafaq.html) to avoid common mistakes.
+
+Another newsgroup where you might find the occasional post by Thomas Biskup
+regarding only new releases and essential news is
+[rec.games.roguelike.announce](news:rec.games.roguelike.announce), but the
+best source for news is the official blog these days.
+
+* * *
+
+1.5: Where can I get the source code for ADOM?
+
+If you can obtain the source, Thomas would be extremely interested in finding
+out how you cracked his system's security. Thomas has stated that the source
+code won't be made publicly available. His reasons for this decision are
+explained in the [readme.1st file](http://ancardia.us.to/bi/readme.1st) that
+is shipped with ADOM and need not be repeated here. You can also consult the
+readme in-game by pressing '?' and then 'f' (the "Mini-FAQ" option).
+
+* * *
+
+1.6: What happened to the spoilers that were once in this file?
+
+You can follow the links on [this
+post](http://www.adom.de/forums/showthread.php/12314-Beginner-
+information#post75895) on the Beginner information thread for your spoily
+needs.
+
+We are also on the lookout for a new maintainer for the old [ADOM Spoiler
+FAQ](http://ancardia.us.to/bi/spoilerfaq.txt), formerly maintained by Raymond
+Martineau. Please refer to [this forum
+thread](http://www.adom.de/forums/showthread.php/12339-Resurrecting-the-Adom-
+FAQ-and-Adom-Spoiler-FAQ) for more information.
+
+* * *
+
+1.7: I discovered a bug in ADOM. How do I report it?
+
+First, make sure that the "bug" isn't actually a feature of the game.
+Sometimes this is hard to tell in a game with so many little details, but you
+can always ask in the official forums in "General ADOM discussion" if you are
+unsure. Second, if the game crashed with a fatal error, take note of the
+_exact_ wording of the error message (or take screenshots). If the game
+successfully saved itself during the fatal error crash, check to see if it
+restores properly. Then, submit a bug report at the [ADOM issue
+tracker](http://www.adom.de/forums/project.php?projectid=2), part of the
+official ADOM forums. To do this, click on "Post new issue", then on "Bug"
+(_not_ on "Feature"). If that doesn't seem to work you can follow [this link](
+http://www.adom.de/forums/projectpost.php?do=addissue&projectid=2&issuetypeid=
+bug).
+
+Before you submit your report please use the search function (click on "Search
+this project") to make sure the bug hasn't already been reported. Time spent
+cleaning up duplicate bug reports is time the developers could be spending
+actually fixing bugs. For more information about bugs and bug reporting check
+the [readme](http://ancardia.us.to/bi/readme.1st), and especially section VII,
+which deals specifically with bugs.
+
+You'll need to include the version number of the game (this is very
+important), the operating system you were playing on, the fatal error message
+(if applicable), and as detailed an explanation as possible of the state of
+the game at the time of the bug and the action that triggered it. Please note
+that some crashes produce error logs (a file called adom.err). You should
+upload this file as well as any screenshots you took as attachments to your
+bug report. If you have a feeling you know what caused the bug, by all means
+include your hypothesis.
+
+Even small details like typos are worthy of bug reporting; in fact, this is
+encouraged. Go to [this
+link](http://www.adom.de/forums/project.php?issueid=716) and post it as a
+comment to that bug report.
+
+* * *
+
+1.8: I have a suggestion/comment regarding the game. Where do I send it?
+
+You can suggest new features on the [issue
+tracker](http://www.adom.de/forums/project.php?projectid=2) at the official
+forums. To do so, click on "Post new issue", then on "Feature" (_not_ on
+"Bug"). If that doesn't seem to work correctly just follow [this link](http://
+www.adom.de/forums/projectpost.php?do=addissue&projectid=2&issuetypeid=feature
+). Feature requests are also sometimes called RFEs (Requests For Enhancement).
+
+Before you post your feature request please make sure that it hasn't already
+been requested before. To do this, use the search feature by clicking on
+"Search this project". After checking that, please consult section III of the
+[readme](http://ancardia.us.to/bi/readme.1st), and especially section III.A,
+which lists some features that have been suggested many times before but will
+not be implemented. Another list of common suggestions previously submitted
+and rejected can be found at [this link](http://adomgb.info/rgrafaq.html#4.7).
+
+Think about whether your feature "fits" with what we already know about the
+fantasy world of Ancardia (here's a hint: lightsabers and space aliens are
+probably not going to gel with Thomas' vision for the game). If you still have
+a question after this or want to get some feedback on your feature before
+submitting it, you can post about it on the "General ADOM discussion" section
+of the forums. Our users will be happy to discuss it with you and then you can
+decide to move ahead and submit it on the issue tracker.
+
+If you want to send an ADOM-related comment to Thomas that is neither a
+feature request nor a bug report (use the issue tracker for those), the e-mail
+address is [creator@ancientdomainsofmystery.com](mailto:creator@ancientdomains
+ofmystery.com). Please note that Thomas is a busy man with a job, a family and
+other responsibilities, and likes to spend most of his ADOM-alloted time
+actually working on the game, so not all emails will receive a response. There
+is more information about emailing Thomas in the
+[readme](http://ancardia.us.to/bi/readme.1st); do consult it before writing.
+Thomas also has a facebook page if you are so inclined. Just search for him by
+name.
+
+* * *
+
+1.9: Where do you draw the line in this document between spoiler-type and non-
+spoiler-type answers?
+
+The astute reader will note that I haven't included a number of questions that
+pop up fairly frequently. In my opinion, a spoiler is information which
+bypasses the problem-solving process; while a non-spoiler is information which
+doesn't necessarily solve a game puzzle, but does help you get around a
+problem of interface, basic survival (as opposed to direct advancement toward
+victory), or something that is necessary but woefully unobvious. Only non-
+spoilers, for the most part, are included here.
+
+* * *
+
+1.10: Is ADOM Freeware?
+
+At the moment, ADOM is postcardware, and will likely remain so. Thomas' snail-
+mail address:
+
+Thomas Biskup
+
+Zu den Tannen 5
+
+58456 Witten
+
+Germany
+
+However, if you enjoy the game and want to support its future development, you
+might consider going to the [official ADOM
+blog](http://www.ancientdomainsofmystery.com/) to make a small donation using
+the PayPal system. The money will be used for ADOM-related investments
+(hosting costs, software, hardware).
+
+* * *
+
+1.11: What's this about closed/private prereleases of version 1.2.0?
+
+A bit of recent ADOM history: ADOM development was frozen for nearly ten years
+from 2002 to 2012. During those years, many of us kept playing. In 2012 a
+crowdfunding campaign was carried out to resurrect ADOM development, with
+[surprisingly resounding success](http://www.indiegogo.com/projects/resurrect-
+adom-development). A portion of the donors, depending on their donating level,
+got access to a prerelease tester program where they get access to all the
+prereleases on the way to the final release of 1.2.0.
+
+Prereleases p1 to p3 and later p5, p18 to p20 and p23 were released to the
+general public; all other prereleases are released to this select group of
+donors. If you missed donating during the campaign and would like to gain
+closed prerelease access, [there is a
+way](http://www.ancientdomainsofmystery.com/2013/01/getting-access-to-adom-
+prereleases.html) for latecomers to donate and join the private prerelease
+party.
+
+* * *
+
+1.12: What is ADOM II?
+
+ADOM II: Legends of Ancardia (formerly known as JADE) is another game by
+Thomas Biskup. It is the spiritual successor to ADOM, both a reimagining and a
+sequel, and it is also set in the world of Ancardia, but it is not limited to
+the one valley in the Drakalor Chain. It is designed to be a more "larger than
+life" game and it is playable and winnable at this point, but it is still
+earlier on the development stages than ADOM, which is more of a "finished"
+game (although there is still a lot to come for ADOM in 1.2.0 and later
+versions).
+
+The latest version of ADOM II can be downloaded at the [official ADOM
+blog](http://www.ancientdomainsofmystery.com/) (also the official ADOM II
+blog), where all the latest news about the game can also be found. This
+document otherwise deals with ADOM exclusively, so if you want more
+information and community interaction about ADOM II, or you want to report
+bugs or suggest features, I suggest checking the relevant section of the
+[official forums](http://www.adom.de/forums/).
+
+* * *
+
+## Section 2: Burdens of Command
+
+2.1a: What are some of the basic keyboard commands I need to know?
+
+- Press ' > ' to enter a location on the wilderness map (hamlet, village, cave,
+tunnel, wilderness square, etc.)
+- Press ' C ' to chat with creatures.
+- Move into creatures to attack them with fists or wielded weapons/items.
+- Press ' t ' to use a missile weapon/throw something.
+- Press ' i ' to bring up your inventory.
+- Press ' , ' to pick something up.
+- Press ' d ' to drop something.
+- Press ' e ' to eat something.
+- Press ' D ' to drink something.
+- Press ' l ' for the look/examine command. This lets you move the cursor around
+ the screen to examine your surroundings.
+- Press ' @ ' to bring up information about your character. Depending on your
+operating system the command can be 'alt-q' instead.
+- Press ' S ' to save your game.
+- Press ' ? ' at any time within the game to bring up the look/examine command,
+a complete list of the keybindings (commands), the manual and the readme (mini-
+faq). The list of keybindings is there to help - don't neglect consulting it.
+(Reading the manual doesn't hurt either.)
+
+Don't be intimidated by the total number of commands. You do not need to use
+each and every one of them to play the game, and within a few games the ones
+you use will stick, and then become second nature.
+
+* * *
+
+2.1b: I can't seem to move diagonally, but the monsters around me have no
+problem doing it. What's going on?
+
+Your character can move in all eight directions (up, down, left, right, and
+all diagonals) as well as wait in place. In the game the cardinal points are
+also used to refer to these eight directions (north, south, east, west,
+etcetera). You can use the numbers 12346789 to move in all directions and 5
+(or '.') to wait in place; the arrow keys can also be used for north-south-
+east-west. You will notice that this has been designed with a
+[numpad](http://www.joserojas.org/wp-content/uploads/2012/02/numpad.png) in
+mind. If your keyboard has a numpad, ideally you will use it to move.
+
+If you do not have a numpad, see [this forum
+thread](http://www.adom.de/forums/showthread.php/11904-Anyone-play-on-a
+-laptop-without-a-numpad-Share-your-keybindings) or [this other
+one](http://www.adom.de/forums/showthread.php/12357-Number-pad-alternative)
+for alternatives. If after reading that you want to change your default
+keybindings by editing the adom.kbd file, see [this
+post](http://www.adom.de/forums/showthread.php/12314-Beginner-
+information#post75928) if you need help with finding that file.
+
+If you are playing the version with NotEye, there is another alternative,
+enabled by default: you can press Shift and the left-right arrow keys to move
+northwest and northeast and Ctrl and the left-right arrow keys to move
+southwest and southeast.
+
+* * *
+
+2.2: How do I light a torch?
+
+Put the torch into the tool slot and 'u'se it, or put it into either hand and
+'U'se it. In order to make this work you also will need to have a tinderbox
+and flint and steel in your backpack.
+
+* * *
+
+2.3: How do I extinguish a torch?
+
+You can extinguish a torch the same way you can light them, by 'u'sing or
+'U'sing them, or you can simply remove the torch from its slot and answer
+'yes' to the confirmation question.
+
+* * *
+
+2.4: How do I use lock picks?
+
+Instead of trying to _use_ the lock picks, 'a'pply your Pick Locks skill. You
+will automatically use lock picks that are in your inventory.
+
+* * *
+
+2.5: What is Ventriloquism good for?
+
+If you manage to use it successfully on a monster, the monster might be
+confused for a few turns.
+
+* * *
+
+2.6: Is there a command that allows you to rest safely in order to regain hit
+points and power points?
+
+Yes, actually you can use the walk-mode to do this. Simply press 'w' to
+activate the walk-mode followed by '5' (your own location). This makes your
+character "walk on the spot" and is great for safely recovering. You'll
+automatically stop waiting if something comes near, if you get shot at, etc.
+
+* * *
+
+2.7: What does "Continuous Search" (keystroke 'ws') mean?
+
+Similar to "walk on the spot", this is equivalent to searching until you find
+something interesting, you are interrupted, or a given number of turns (the
+default is 20) have passed.
+
+* * *
+
+2.8: What is the 'T'actics command for?
+
+Changing your combat tactics allows you to trade offensive ability for
+defensive ability, or vice versa. It costs you no game time to change tactics,
+so feel free to experiment.
+
+Warning: if you fight too defensively, your melee weapon skills won't improve,
+although the shield skill will; on the other side if you fight too
+aggressively, your shield skill won't improve. There is more information about
+this in the manual in the "Weapon Skills" section.
+
+* * *
+
+2.9: Is there any way to identify monsters at a distance?
+
+The 'l'ook command lets you move the cursor onto anything on the screen to
+identify it. Additionally, just aiming a missile weapon will tell you what
+you're aiming at and whether it's already hostile.
+
+* * *
+
+2.10: How do I use my Bridge Building skill?
+
+You need to have a log and a hatchet in your inventory. Either put the hatchet
+into your tool slot and 'u'se it, or 'U'se it from your backpack.
+
+* * *
+
+2.11: I can't put points into Bridge Building! Why not?
+
+You need to have a manual of bridge building in your inventory, and be
+literate. There are several skills which require some piece of equipment in
+order to improve (cooking/cooking set, fletchery/fletchery set).
+
+* * *
+
+2.12: How can I open a locked door if I don't have the right key or lock
+picks?
+
+You can 'k'ick the door down. Note that this may prove hazardous to your
+health, more so depending on where you are standing at the time. There are
+magical alternatives to this, as well as ways to go around the door instead of
+opening it.
+
+* * *
+
+2.13: How do I buy or sell something in a shop?
+
+To buy something, first pick up the items you're interested in, then move next
+to the shopkeeper and 'p'ay.
+
+To sell something, don't give the item to the shopkeeper; just 'd'rop it while
+inside the shop. He will make an offer if interested.
+
+* * *
+
+2.14: How do I use my Smithing skill?
+
+Smithing is a complicated task. You need the following ingredients:
+
+  1. Any kind of hammer.
+  2. An anvil. There are two guaranteed in the game, but they also rarely appear
+     in dungeons.
+  3. Something to smith! You need to know what kind of metal it's made of.
+  4. An ingot of the appropriate metal. A lump of ore won't cut it, but can be
+     converted into ingots by applying the Smithing skill to it first.
+  5. A forge. You can't carry these around with you, but you can hope to find
+     one in your travels. There are two locations in the game where forges are
+     guaranteed, and there can be additional forges at random locations.
+
+Stand on the forge, wield the hammer, and 'a'pply your Smithing skill to your
+metal item. (This will also serve to make metal ingots out of ore lumps.) I've
+also heard whispers that wearing a leather apron helps in some mysterious way.
+
+* * *
+
+2.15: I just upgraded to a new version, and the manual/the changelog says that
+new commands/configuration variables have been added. However, I can't seem to
+use them. What gives?
+
+The answer to this question involves two files created and used by ADOM:
+adom.kbd and adom.cfg. The first file contains the keybindings (and can be
+edited with a text editor to change them from the default ones); the second
+one contains the configuration variables (and can likewise be edited to change
+them from the default variables). In other words, you can edit these files to
+change the keybindings and the configuration for ADOM.
+
+It is recommended to delete your old adom.kbd and adom.cfg files whenever you
+upgrade to a new version. Otherwise, the game will happily use the old set of
+keybindings and configuration variables, unaware that a new functionality has
+been added.
+
+If this doesn't help and the command that isn't working is bound to a key
+combination involving 'Alt' (displayed as '\M' by ADOM), then you can try
+rebinding the command to a different key. On some operating systems, the 'Alt'
+key does not work as intended in ADOM.
+
+If you need more information, or are having trouble locating these files on
+your computer, read [this forum
+post](http://www.adom.de/forums/showthread.php/12314-Beginner-
+information#post75928). (Both files are stored in the same folder by ADOM, but
+the location of the folder depends on which operating system you are playing
+ADOM on.)
+
+* * *
+
+2.16: How do I tweak the ADOM configuration?
+
+As mentioned in question 2.15 above, to tweak the configuration, you will need
+to edit the adom.cfg file with a text editor. To locate this file, you can run
+a search for it, or you can follow the instructions in [this forum
+post](http://www.adom.de/forums/showthread.php/12314-Beginner-
+information#post75928).
+
+If you are wondering what configuration variables usually get changed from
+their default, here are two of the ones that come up the most:
+
+- Questioned_Attributes: this controls whether ADOM asks you if you want to
+dete rmine your character's stats randomly or through answering questions when
+genera ting a new character. The default value is True. If you find you never
+use the question system, you can set this to False to skip that phase entirely.
+
+- Fast_More: This controls whether any key can be used instead of just Space and
+Enter to get past a (more) prompt. The default is False. If you set it to True,
+you might find that certain common in-game annoyances, like wading through a
+crowd of spiders, become easier, because you can focus more on trying to get rid
+of them and less on pressing Space or Enter every few seconds. If you want to be
+able to turn this on and off within the game instead of making off the new
+default behavior, you can try pressing Ctrl-k within the game instead.
+
+If you want more information about configuration variables, refer to Appendix
+B near the end of the manual.
+
+* * *
+
+2.17: How do I change the way ADOM looks?
+
+If you are running the version with NotEye and want to tweak the look of the
+game, just press 'Ctrl+m' to open the NotEye menu. Many of the submenus
+(accessible by pressing 'm', 'r', 'o' and 'x') deal with game display options.
+
+On the Windows and Mac versions without NotEye, the font type and size can be
+changed by editing the values 'Font_Name' and 'Font_Size' respectively on
+adom.cfg. Changing the font size will change the size of the Adom window
+accordingly, and you can play around with this value to make the window
+bigger. On the Windows version, you can also make the game window cover most
+of the screen by creating a shortcut to the Adom executable. For more
+information, refer to [this forum
+post](http://www.adom.de/forums/showthread.php/12314-Beginner-
+information#post75928) and to [this
+thread](http://www.adom.de/forums/showthread.php/12365-screen-size) and [this
+other thread](http://www.adom.de/forums/showthread.php/12361-Maximizing-ADOM).
+
+Another option for those who want both the option of running Adom maximized
+and having the look and feel of the DOS version is to run the game from within
+[DOSBox](http://www.dosbox.com/), a DOS emulator.
+
+* * *
+
+2.18: I'm playing the version with NotEye and I want a little peace and quiet.
+How do I turn the sound off?
+
+Press 'Ctrl+m' to open the NotEye menu and 'v' for the sound menu, then enter
+'0' for the sound and music levels.
+
+* * *
+
+2.19: How do I make the NotEye settings persistent between games?
+
+Press 'Ctrl+m' to open the NotEye menu, apply the changes you want, then
+return to the main NotEye menu and press 's'.
+
+* * *
+
+## Section 3: Playing the Game
+
+### Section 3.1: More Basic than Basic
+
+3.1.1: What's the best race/class combination to play?
+
+While this is indeed a frequently asked question, it's one without a single
+correct answer. It depends heavily on your style of play, your accumulated
+experience in playing, and how seriously you want to be challenged. The
+following recommendations should help the beginner pick a combination with
+above average chances of survival.
+
+Warrior types (fighters, paladins, rangers, monks, weaponsmiths, barbarians,
+beastfighters) tend to survive better at the start, but they'll start having
+problems near the middle of the game unless they can find a way of getting rid
+of their more dangerous opponents from a distance. Training missile skills is
+one way of doing this, keeping yourself well stocked in magical items or
+picking up a few spells along the way is another. Don't expect to win if you
+engage in melee with every single opponent you encounter. Monsters don't fight
+fair, so make sure you don't either; use ranged combat and trickery to your
+advantage.
+
+Among these classes, I think that fighters, paladins, barbarians,
+beastfighters and monks have the edge. Fighters and paladins start with
+excellent equipment to give them a running start. Barbarians are extremely
+tough and strong and have lots of hit points. The unarmed combat abilities of
+beastfighters and monks keep getting better and better the more experienced
+they get. Beastfighters have excellent physical attributes, although they are
+not as tough as barbarians. A nice thing about monks is that they are always
+literate, even if you pick a dumb race like trolls. Combine these classes with
+a physically strong race like dwarves, orcs, drakelings or especially trolls,
+and you are ready to roll.
+
+Spellcasters (wizards, priests, druids, necromancers, elementalists) need a
+bit of care because they are physically weak, but with their offensive magic,
+many find them easier to keep alive, on average, than any other class. Of
+these classes, some consider necromancers hardest in the early game, one
+reason being that they don't start with the Healing skill. Elementalists are
+among the easiest classes to play because they don't have to hunt for books
+and start with two offensive spells that complement each other well. Elves are
+weak and frail but have great mana and learning; if you are having trouble
+keeping a spellcaster alive in the early game you can try a gnome instead.
+They have better toughness than elves and advance quickly in levels. For
+Elementalists, gaining levels quickly is important (to avoid running out of
+spells), so a gnome is an even better fit for this class.
+
+Archers are deadly with their missiles. They are another class with excellent
+chances of survival. In my opinion, only bows, crossbows, slings and thrown
+rocks are worth practicing, because only for these ammunition is plenty. I
+recommend picking a race that specializes in thrown rocks or in bows,
+especially hurthlings or high elves. Don't forget to practice with your melee
+weapons in case you run out of missiles in the middle of a dicey situation.
+
+Priests and rangers are kind of hybrid classes - priests being a
+warrior/spellcaster hybrid and rangers a warrior/archer hybrid. It will work
+to your advantage to play them that way, keeping both of their fighting
+abilities well trained throughout the game. With rangers, it pays to use
+missiles to soften foes up before they get in melee range; this strategy works
+well with every class, but is especially effective with rangers and other
+classes adept at archery.
+
+Healers can absorb damage pretty well, though they have a hard time dishing it
+out. Top priority is getting a decent weapon - even a hand axe or mace will do
+better than that scalpel. Since they're not really spellcasters, pick a race
+with some backbone like the ones mentioned before for warrior types. However,
+note that one of the easiest combinations to play is the trollish healer! They
+are virtually invincible after you have gained around 12 levels. They are
+extremely strong and tough, start with a heavy club and have incredible
+healing abilities.
+
+The remaining classes are somewhat more challenging. It is true that
+Mindcrafters are among the most powerful classes once they get going, but it
+is hard to get them to survive the early stages of the game. Using the
+Confusion Blast power a lot, training missiles and bashing monsters while they
+are confused helps.
+
+Thieves and assassins are a little frail to be exclusively hack-and-slash
+fighters, but they start out with some nice skills, including the always
+useful Detect Traps. Making good use of missiles is a good strategy, but don't
+worry if you cannot keep them alive - it isn't easy. Farmers are similar in
+this regard.
+
+Merchants and bards can be quite easy to very hard, depending on the luck of
+the dice. The random element of merchant item specialties and bard skills
+makes every game with one of these classes unique. All in all, they are very
+challenging classes to play. With bards, there's the additional consideration
+of the starting pet, as different races get different pets. Almost any race
+works here; these classes are a test of the player's ability to adapt.
+
+* * *
+
+3.1.2: What's a good strategy for starting the game?
+
+Head for the little village right at the end of the first road. Stop there for
+a moment and evaluate your character. Put on useful rings, 'D'rink useful
+potions, 'r'ead useful scrolls and, if you've got them, read spellbooks a time
+or two. If you're concerned about food, buy some from the shop. Advice for
+buying food: you get what you pay for. At this point you should 'C'hat with
+some NPCs. As a general rule, it's a good idea to talk to nonhostile NPCs,
+especially if they have a name. They usually are a source of important or
+interesting information and quests.
+
+You should talk to either the village elder or the druid to get a quest; the
+choice between elder or druid is important, as their quests are mutually
+exclusive. What to do at this point wholly depends on how experienced you are
+at the game. If you are a beginner, take the village elder's quest: it's
+easier. Go southeast and into the dungeon (you'll know it's the right dungeon
+if, when entering it, "VD:1" is displayed to the right of the bottom display,
+directly left of your speed). Survive and succesfully complete the quest. Then
+talk to the elder again for an idea of what to do next. Try the druid's quest
+with your next character: after you have completed it, and have compared the
+rewards and difficulties of each quest, you are in a good position to choose
+whichever is more beneficial to each different character you play next time
+around. Now that you're a bit more experienced, you can try the sheriff's
+quest sometime, too. Just talk to him when you first come to the village. At
+some point you might want to visit the other village to the southwest and
+explore who and what can be found there.
+
+After this, you can follow the village elder or the druid's words for what to
+do next. If you really want to be a goody-goody, talk to the tiny girl; but
+keep in mind her quest is difficult and frequently a quick death for
+inexperienced players. If you are not feeling ready to head west and look for
+the place the elder or druid told you about yet, you can head south, then east
+and into a tiny, strangely distorted cave. But be careful not to wander too
+deep. After you've gained a couple more experience levels, head west.
+
+If you are a slightly more experienced player, you can take the following
+alternative route: after coming to the village and getting the quests you are
+interested in carrying out, leave town and head northwest. The small cave
+there has several useful items, one of which is difficult to find elsewhere.
+Moreover, it's a good place to gain a couple of experience levels and practice
+weapon skills, but be warned! Many, many premature deaths come from staying in
+this dungeon too long; inexperienced players may wish to avoid it, or just run
+as soon as things look dangerous. The monsters are tougher than normal, and
+they only get much worse as you gain levels. Find the down staircase and/or
+the items you came for, then leave quickly. I usually head out of there after
+experience level 4 or so.
+
+If you wish, you can take the down staircase in the small cave instead, into
+the other dungeon beneath, and go down until you find the bottom and come out
+the other side, but this can be risky - it can be better to save this until
+later. Then, complete any remaining quests.
+
+When you are ready to head east and look for the place the elder or the druid
+told you about, heed their words carefully, especially regarding their
+description of the cave you need to find. Set out south, around the river,
+then east, toward the center of the map, past the pyramid into a cave (its
+description is _not_ "a non-descript tunnel"). Try to stay alive.
+
+* * *
+
+### Section 3.2: The Basics
+
+3.2.1: What is the Drakalor Chain?
+
+The Drakalor Chain is the mountain range represented by the "world" or
+"wilderness" map. The whole game takes place in the Drakalor Chain. Trying to
+leave the chain will end the game.
+
+* * *
+
+3.2.2: Where is the Village Dungeon? It's nowhere on my map!
+
+The Village Dungeon doesn't appear until you speak to Rynt the village elder
+for the first time about Yrrigs, and it won't appear at all if you speak to
+Guth'Alak, the druid, before talking to Rynt; the entrance for the Druid's
+quest will appear instead. There are other locations throughout the game which
+will not be available until certain quests are undertaken.
+
+* * *
+
+3.2.3: I've entered some dungeons, but I rarely encounter monsters and find
+very little food. What am I doing wrong?
+
+You are probably running the game in a screen resolution higher than the 80x25
+for which the game was designed. Some players consider this an advantage, but
+if you're a novice it might be a better idea to try at the normal resolution,
+first.
+
+* * *
+
+3.2.4: I can't keep myself fed. How do I avoid dying from starvation?
+
+The first thing to do is to avoid getting hungry so often in the first place.
+Moving in the wilderness map takes more game time and will make you get hungry
+much quicker - especially if you are traversing forests or hills. Also make
+sure you are not too burdened. Excessive burden is displayed by the status
+messages "Burdened", "Strained", "Strained!" and "Overburdened!". Being too
+burdened increases your food consumption rate; drop some stuff until you're
+less burdened.
+
+There are several ways to keep yourself fed. First of all, there is a food
+shop in Terinyo; make good use of it. Second, you can eat monster corpses. A
+high Food Preservation skill will both increase the likelihood of a monster
+leaving a corpse when it dies and allow you to keep a monster corpse in your
+inventory longer. Cooking corpses will keep them preserved even longer, in
+addition to making them more filling.
+
+A high Herbalism skill will help you identify a particular herb that can feed
+you very well (experimentation with unidentified herbs isn't a very good idea,
+since the bad ones can be very dangerous). A few hundred gold pieces and some
+patience can buy you a good amount of food on the arena level from the ratling
+traders - not all of the wares they have on offer are worth buying, though. If
+you are spending a lot of time in the wilderness (which you should avoid if
+you are short on food), 'a'pplying the Survival skill can keep you from
+starving. I suggest not relying on it though, because it takes up a lot of
+game time, which is bad for you. In an emergency, you can pray to your god if
+you're in reasonably good standing. If you are really desperate, drinking
+potions also makes you character slightly more satiated.
+
+* * *
+
+3.2.5: I'm doing several of the above things already, and I'm _still_
+starving. Now what?
+
+Take off any items that make you invisible. Items that grant invisibility
+increase your food consumption rate. The same is true of artifacts. If that
+doesn't work, stop playing trolls until you get the hang of keeping yourself
+fed, as trolls have a high inherent rate of food consumption (however, this is
+counterbalanced somewhat by the fact that trolls can eat almost anything).
+
+* * *
+
+3.2.6: How come I don't benefit from eating raw meat?
+
+Different races and classes have different ideas of which foods are
+appetizing, and which foods go down okay but don't sit too well in the
+stomach, and which foods do nothing except induce vomiting, and which foods
+are too revolting even to think about eating. You can try cooking it, if you
+know how to cook.
+
+* * *
+
+3.2.7: I've been poisoned! How do I cure it?
+
+Certain potions, herbs, and spells are effective in this regard. Poison also
+wears off with time, so a means of replenishing hit points might be all you
+need. Try 'a'pplying First Aid after each time the effects of poison kick in.
+A real crisis is a good time to become religious. A more permanent solution is
+to become resistant to poison: see question 3.3.2 below.
+
+* * *
+
+3.2.8: How come my Neutralize Poison spell didn't work?
+
+The effects of poisons are cumulative, and the Neutralize Poison spell only
+eliminates a certain amount of poison from your system with each casting.
+
+* * *
+
+3.2.9: What can I do with colored pools?
+
+You can 'D'rink from a pool. The effects aren't always beneficial.
+
+* * *
+
+3.2.10: What can I do with a waterproof/fireproof blanket?
+
+If you have one of these in your backpack, it'll protect anything in the pack
+from water/fire. It doesn't help with the items that you have equipped,
+however. Note that fireproof blankets will eventually burn away.
+
+* * *
+
+3.2.11: How do I stop the killer bees from coming out of their hive, or the
+giant ants from their hole?
+
+Insect colonies have finite populations. With bees, you can speed up the
+process by disturbing the hive. If you really just want to stop them from
+coming out for a little while, stand on the hive/hole or get someone else to
+do it (a nice use for a well-trained pet). Certain items can be useful here.
+
+* * *
+
+3.2.12: What do I do to become Lawful? It's impossible!
+
+As in real life, it takes a lot of time and trouble to prove that you're a
+good person, while it takes only a few quick actions to show that you're a Bad
+Guy. Be generous, fair-minded, noble, and above all else, patient; tolerance
+and generosity go a long way here. Oh, and there's a certain man of the law
+that might give you a useful present if he likes you. You'll get that L+
+eventually.
+
+You'll notice that there are a number of things that help your character a
+great deal, but are considered chaotic acts. This is intentional. These acts
+are often the easy route to power, and (to misquote Yoda) "take not the easy
+path, to the Dark Side it leads!" Nobody said that being a paragon of Law
+would be easy...
+
+* * *
+
+3.2.13: I've gotten the Poison Hands chaos power, and every food item I touch
+gets poisoned! Is there a way around this?
+
+You need to wear thick gauntlets (that is, the pair of gauntlets with the
+description "thick gauntlets").
+
+* * *
+
+3.2.14: I picked up a "strange item". A few dozen turns later, I notice that I
+have ten of them! What's going on?
+
+You've discovered one of the more interesting artifacts in the game: the si.
+Its value lies not in its use, but in the manner in which you dispose of it.
+(There are at least four productive uses for this item.)
+
+* * *
+
+3.2.15: How do I kill a karmic creature without becoming cursed or doomed?
+
+Ranged attacks and spells don't affect your karma, as it were.
+
+* * *
+
+3.2.16: Why is it that I don't always become cursed or doomed when I
+accidentally attack a karmic creature?
+
+The cursing/dooming is a special defensive attack, like the acid splash of a
+gray ooze or the paralysis of a floating eye, and like all attacks, it doesn't
+always hit... unless of course you were already cursed and doomed, and so
+didn't notice.
+
+* * *
+
+3.2.17: I ran into a named stone giant lord on the second level of the Village
+Dungeon! I thought this place wasn't supposed to be this tough!
+
+When you run into a tough monster that has a name, there is an artifact
+somewhere on the level (the exception here are great wyrms of any color, who
+always have a name, and some "guaranteed" characters, like the village elder).
+Artifact guardians are scaled up in difficulty to be more appropriate to the
+object they guard.
+
+If the monster happens to be purple (on the ASCII display) and there is no
+artifact to be found after vanquishing it, then you might have encountered one
+of the new boss monsters added to the game after the ADOM Resurrection
+campaign instead. Your character's memorial file will let you know for sure if
+this was the case.
+
+* * *
+
+3.2.18: Speaking of impossibly hard monsters, I'm in the cave just northwest
+of Terinyo with a level 15 barbarian, and I've got rats punching through my
+dragon scale mail!
+
+The fact that you're level 15 is the reason. The small cave to the northwest
+of Terinyo is meant to be a launching pad (or a challenge) for very low level
+characters. Its difficulty level deliberately increases tremendously as your
+experience level goes up.
+
+* * *
+
+3.2.19: How do I get logs for Bridge Building or Fletchery?
+
+Cut down a tree. Note that the wilderness is the only place where you can find
+normal trees to cut down, but is not the only source for logs, and as far as
+Fletchery is concerned, sticks are merely small logs.
+
+* * *
+
+3.2.20: I can never finish cutting a tree down because I keep getting hungry!
+How can I avoid this?
+
+If you want to play at being a lumberjack, you'd better eat a lumberjack-sized
+breakfast before you go out! Note that potions increase your level of
+satiation and can be consumed even when "Bloated".
+
+* * *
+
+3.2.21: I'm trapped on a level with a thousand brown worms, and they keep
+multiplying faster than I can kill them! Is this fair? What can I do?
+
+While I won't address the discussion of "fairness" in the code which handles
+breeding monsters, I can supply a few pointers on how to get through this
+situation. Wielding a larger, higher damage weapon might help you deal more
+damage and so kill them faster. If you don't have a deadlier weapon, you can
+wield two. The extra attack might help your killing speed. (For more
+information on fighting with two weapons see question 3.3.6.) If you are not
+hitting the monsters often enough or for high enough damage, try switching
+your 'T'actics. Speed enhancers can be helpful, as well. Offensive spells
+(particularly area effect ones) work nicely. Closing (and locking) room doors
+can help hem them in. If you're dealing with gremlins and a water trap, hack
+your way to the trap and sit on it till all the gremlins are dead. There are
+also means both magical and religious that _might_ be useful in these
+situations.
+
+Note that there is one level where this is _meant_ to happen, and it was
+placed as a tactical exercise.
+
+* * *
+
+3.2.22: Can I shoot things in the "red" range of my missiles?
+
+Yes, but only if you've got the Archery skill, and it doesn't work for thrown
+weapons. From experience, an archer can hit anything within vision range, and
+a non-archer can make it out to 1 or 2 squares of red on a good roll.
+
+In some game situations, there is also a "gray" range, which comes between
+yellow and red. This indicates a square which is within your weapon's base
+range, but is outside of your field of vision.
+
+* * *
+
+3.2.23: Is the "seemingly infinite" dungeon really infinite?
+
+Seek out the madman who speaks in verse, for he can answer better than I...
+
+* * *
+
+3.2.24: What's with the levels in the Caverns of Chaos that only take up half
+of the screen?
+
+Every dungeon (except for the pyramid) level fills the entire screen, more or
+less. The trick is finding a way over to the "dark" section.
+
+* * *
+
+3.2.25: How are the growth patterns for herb bushes determined? [SPOILY]
+
+This is a bit of a spoiler, but the majority of the work is left as an
+exercise to the reader, so here goes...
+
+Consider a given herb bush. Count up the number of bushes in the surrounding 8
+squares.
+
+  1. If the bush has 0 or 1 neighbors, it will die.
+  2. If the bush has 2 or 3 neighbors, it will live.
+  3. If the bush has 4 or more neighbors, it will die.
+  4. If a given empty square has exactly 3 neighboring bushes, a new bush will
+     grow there.
+  5. All births and deaths are simultaneous.
+
+If you haven't figured it out already, these are the rules to the classic
+mathematical game called Life, invented by John Conway. Growth and death occur
+at random intervals, and the explanation above will only work on empty spaces.
+
+Based on these rules, you should be able to figure out bush patterns that will
+allow you to harvest infinite herbs without ever running out of bushes (with
+suitable delays for successive generations, of course).
+
+* * *
+
+3.2.26: There's a big stone block in the way in the Caverns, how do I get rid
+of it?
+
+Well it's a big stone portal of dwarven origin; go talk to the dwarves about
+it.
+
+* * *
+
+3.2.27: What's the deal with the impassable wall of flames in the Caverns?
+Come to think of it, there's another spot like that in another dungeon, but
+with an old dwarf or a fire spirit, too. What's going on?
+
+Well, let's just say that you must have a particular item in your possession
+to pass the wall of flames; if you can't pass, you don't have it. The other
+two guards are only there to make sure the door isn't opened from their side
+first - which is to say that once you find that door from the other side, they
+won't bother you anymore.
+
+* * *
+
+3.2.28: I wanna become a billionaire! Where can I find more dough?
+
+Collect valuable items and sell them. Go dragon hunting. Play in the Casino.
+
+* * *
+
+3.2.29: The sheriff wants me to kill Kranach, the raider lord. But where is
+he?
+
+Just walk around the wilderness area near Terinyo; he can be found in a random
+encounter. If you've picked up a few experience levels since you were assigned
+the quest and he seems nowhere to be found, talk to the sheriff again, as he
+might have some news.
+
+* * *
+
+3.2.30: How do I sacrifice monsters?
+
+When the monster is standing on an altar, press 'O' (shift-o).
+
+* * *
+
+### Section 3.3: Player Abilities
+
+3.3.1: How come my Defensive Value keeps shifting up and down by a point or
+two for no apparent reason?
+
+There's a reason for everything in ADOM, even if the reason isn't obvious to
+the eye. The most common reasons for having your DV shift is having your
+hunger status shift from "Satiated" to normal, or vice versa, and having your
+encumbrance status go to "Burdened" or worse, or vice versa.
+
+* * *
+
+3.3.2: How do I make myself resistant to special attacks?
+
+Besides the use of suitable items, the gods have been known to grant certain
+invulnerabilities to their most loyal servants. It is also said that "you are
+what you eat". "They" also say that "if you eat the heart of a dragon, you
+will share in its strength".
+
+* * *
+
+3.3.3: How come I'm still getting hurt by fire attacks when I'm wearing a ring
+of fire resistance?
+
+In ADOM, resistance isn't the same as immunity. Resistance only protects
+against a given amount of damage. For fire attacks, you _can_ combine sources
+of resistance to improve your level of protection. It is possible to acquire
+total immunity to certain special attacks, but this is much more difficult
+than gaining resistance.
+
+* * *
+
+3.3.4: How do I learn to read, if I started out totally illiterate?
+
+Again, "you are what you eat". You need to find the corpse of an extremely
+well-read monster. Solving a certain quest can also help.
+
+* * *
+
+3.3.5: What about the other skills that I don't know?
+
+A potion or scroll of education always has a chance of giving you a skill you
+don't have. There are a few people scattered around who can teach you skills,
+although they all have different ideas of payment. You can also always wish
+for specific skills.
+
+* * *
+
+3.3.6: How come my combat abilities suffer so much when I wield two weapons?
+
+Many factors are considered when calculating the to-hit penalties for using
+two weapons. The exact formula is in the manual. Using lighter weapons, having
+good weapon skills, being good in the Two Weapon Combat skill and being a
+ranger help.
+
+* * *
+
+3.3.7: I've gotten myself the "doomed" intrinsic. What does that mean?
+
+Just as being "lucky" or having "Fate smile upon you" causes the game to fudge
+some internal calculations in your favor, "cursed" and "doomed" cause the game
+to add a fudge factor in the opposite direction. Being doomed is worse than
+being cursed, and the two can combine, just as "lucky" and "Fate smiles upon
+you" are cumulative. Note well that the negative effect of being doomed is
+worse than the positive effect of having Fate smile, so they don't simply
+cancel each other out.
+
+* * *
+
+3.3.8: How come my attributes didn't go up when I paid the Dwarven trainer?
+[SPOILY]
+
+Assuming you paid enough gold, the effects of training are not immediately
+visible. The game makes periodic checks to see if your attributes have
+increased or decreased due to your actions, and the effects of training are
+applied at the next check point. If your attribute scores are low, paying 100
+gold pieces times your current attribute score is usually enough, but be
+prepared to pay far more than that if your attribute score is high. Also keep
+in mind that his training cannot raise an attribute past its natural
+potential.
+
+* * *
+
+3.3.9: Is it better to concentrate on mastering a single weapon or to become
+pretty good at handling several?
+
+There's no single good answer for this one. Before you get an artifact weapon,
+it certainly helps to have some proficiency in multiple weapon classes in case
+you lose your favorite weapon to an exploding door or rust monster. If you go
+this route, practice when you're in relatively little danger - you certainly
+shouldn't wait till you find a vault full of gelatinous cubes and green slimes
+to figure out which end of a spear is the business one.
+
+Once you've gotten your artifact weapon, it still might help to work on other
+weapon classes a bit, because there's usually a better artifact out there to
+be found (unless you're lucky enough to get crowned with Vanquisher in the
+Village Dungeon, or some such). Of course, very high weapon skills do grant
+some nice benefits, and if you're spending your time practicing many weapons,
+you won't get extremely good with any of them...
+
+* * *
+
+3.3.10: My character has turned permanently invisible. How can I become
+visible again?
+
+The only known way to lose permanent invisibility is the same way you can get
+it, by drinking from a pool. Pool effects are random, so this is dangerous and
+is far from guaranteed to make the character visible again. There is a certain
+rare potion that will make you temporarily visible, but the effect does not
+last for a very long time. Therefore, this is not necessarily useful for
+completing the one quest for which it is required that the PC is visible. Not
+being able to complete this quest is part of the price that you must pay for
+permanent invisibility.
+
+* * *
+
+3.3.11: My character has turned permanently blind! What can I do?
+
+Did you turn blind by being hit in the face by a glob of mud? If yes, try the
+wipe 'F'ace command.
+
+* * *
+
+### Section 3.4: Matters Arcane
+
+3.4.1: What do the different altar colors mean?
+
+White corresponds to the lawful deity, gray to the neutral, and black to the
+chaotic.
+
+* * *
+
+3.4.2: How can I tell if an item is cursed?
+
+Drop it on an altar matching your alignment, or play a character with the
+Detect Item Status skill and develop it. Be warned, however, that some
+particularly diabolical items become cursed when you attempt to use them, even
+if they're not cursed to begin with...
+
+* * *
+
+3.4.3: How do I get rid of a cursed item?
+
+There are again several approaches. Dipping the item in holy water will remove
+the curse, as will reading a scroll of uncursing. If you don't mind getting
+roughed up a little, find a suitable trap or monster that has the ability to
+destroy the item in question, and go a few rounds with it... however, this
+method also puts your other equipment in danger, as does reading a scroll of
+item destruction. If the cursed item is a weapon, pick a fight with a monster
+that has the ability to disarm you, and unless you have an ungodly Dexterity
+or incredible weapon skill, you'll be rid of it before you know it. If you're
+desperate, kick an altar (preferably not a co-aligned one) until it falls
+over, which will offend its patron god enough that he'll zap you with a bolt
+that destroys everything you're carrying.
+
+Note that artifacts are immune to destruction, so you'll have to go with holy
+water, scrolls of uncursing, or (for the nasty artifact weapons) getting
+forcibly disarmed.
+
+* * *
+
+3.4.4: How do I get rid of trapped armor?
+
+This is a more difficult one. In many situations, the only feasible option is
+to try to have it destroyed by the usual means of item destruction, such as
+exposing yourself to fire or repeatedly triggering acid traps. Of course this
+is dangerous and puts your other equipment at risk. Be sure to take the
+necessary precautions!
+
+Another option is to read a scroll of item destruction, hoping it will get rid
+of the trapped armor. However, scrolls of item destruction only work if you
+are carrying at least three types of items, so the trick of dropping all your
+other items first does not work.
+
+The most reliable and safest option is to dip the piece of armor into a
+blessed potion of exchange.
+
+* * *
+
+3.4.5: What do all the numbers on the spellcasting menu mean?
+
+The number to the right of the spell name is its cost in power points. The
+leftmost number is the most important. This is a representation of how many
+times you can cast the spell. It's not a straight indicator of the number of
+zaps a spell has left, because this number usually goes down by more than one
+per casting. The effectivity rating tells you how experienced you are with
+that particular spell; raising this through use can lower the spell cost,
+increase the power of the spell (damage, healing, duration, range), and is
+generally a good thing.
+
+* * *
+
+3.4.6: What's all this I hear about corruption?
+
+Corruption is a warping of your body caused by your proximity to the Chaos
+Gate. This effect can be accelerated by corruption traps and attacks from
+Chaos beings. When you've absorbed a sufficient amount of Chaos energy, it
+manifests itself in a Chaos power.
+
+Chaos powers are sometimes helpful, although many of them have nasty side
+effects (like Poison Hands). However, if you become too badly corrupted, you
+mutate into a writhing mass of primal Chaos. Game over.
+
+* * *
+
+3.4.7: Okay, so corruption is a Bad Thing. How do I get rid of it, then?
+
+Scrolls of chaos resistance help greatly here, and potions of cure corruption
+don't hurt, either. The potions can be earned from a certain authority in the
+Chain, while completing a certain quest will net you the reward of having all
+of your corruption removed - _once_. If you are lawful, reading a tract of
+order also helps a little bit, but apart from that, the gods _cannot_ (or will
+not) remove corruption.
+
+* * *
+
+3.4.8: What use is a holy symbol?
+
+Every time you use one, you become a tiny little bit closer to your god. It
+can also be used as a meter for whether your god likes you enough to help you
+or not.
+
+* * *
+
+3.4.9: How come standard Fireball spells don't hurt me, while a so-called
+Improved Fireball _will_ hurt me if I'm in the blast radius?
+
+Well, I hear that the extra incantations required to launch fireballs at a
+distance took up so much space in the spellbook that something had to go, so
+they decided to eliminate the incantation which shielded the caster from the
+fireball's effect...
+
+Seriously, though, the "improvement" with an Improved Fireball is that you can
+indeed launch it away from yourself, and it does more damage. It was designed
+for distance work, not close-up work - that's what the _regular_ Fireball is
+for.
+
+* * *
+
+3.4.10: What's the difference between a ring of fire and a ring of fire
+resistance?
+
+Rings of fire resistance and cold resistance protect you. Rings of ice and
+fire protect your gear.
+
+* * *
+
+3.4.11: What exactly does a wand of ball lightning do? It sure doesn't shoot
+lightning balls!
+
+This fires a standard lightning bolt in a random direction. Dangerous indoors.
+
+* * *
+
+3.4.12: When I cast a spell that lets me choose a target, how do I pick me?
+I'm tired of blessing everyone else!
+
+When asked which direction, press either '5' or '.' to aim at the space you
+occupy. The same applies to the use of wands and several other tools.
+
+* * *
+
+### Section 3.5: Way Beyond Basic
+
+3.5.1a: What's all this fuss about pre/postcrowning? [SPOILY]
+
+Precrowning is the reward of a random artifact gift from your god, but it is
+only given under strict conditions:
+
+- You must be "extremely close" to your god when sacrificing
+- Your experience level must be above or equal to 8 + (3 * n), where n is the
+  total number of artifacts generated by the game so far, including divine
+  gifts and even ones you missed and never found
+- Must not be cursed or doomed, including by worn equipment
+- May not be of extreme alignment (L+, N=, C-), otherwise you'll get crowned
+  instead! (see question 3.5.1b below)
+
+If you satisfy these conditions and pray then your god will be nice and give
+you a random artifact. You will find that the artifact has just as good a
+chance of being useless to your character as it has of being useful.
+
+Because of the restriction based on the number of artifacts generated most
+people like to do this early on in the game, as it becomes pretty much
+impossible later on. Typically players see an early altar in a busy area as
+being the best route to a precrown. With a convenient altar and no artifacts
+generated you can get a precrown as early as level 8. Neutral characters
+should be careful when vying for a precrown, as sacrificing draws them towards
+N= alignment. Normally you would get to the required level of piety, do
+something chaotic (or lawful) to move away from N=, and then pray.
+
+Postcrowning is the same as precrowning, but after you are crowned. Typically
+this is harder because more artifacts have been generated, but it doesn't have
+any alignment restriction.
+
+You can have multiple pre/postcrowns, but this becomes difficult because each
+one costs more piety (and thus more sacrifices) than the last one did, and
+each artifact generated pushes up the level requirement. There is also no
+guarantee that any artifact you generate will be of much use, so putting too
+much effort into this can be a big waste of time when you could be enjoying
+the game instead.
+
+* * *
+
+3.5.1b: What about crowning? Is that the same? [SPOILY]
+
+No, crowning is almost entirely separate. Crowning is a one-time only event,
+and is completely independent of character level or artifacts generated. To be
+crowned you must be "absolutely close" to your deity, not cursed or doomed,
+and be of L+, N= or C- alignment. You then pray and your god crowns you
+champion of your alignment, giving you a random artifact from a subset based
+on your class and race, a random elemental immunity (one you don't already
+have) and permanent Blessed status (like the Bless spell). Crowned characters
+can also equip more artifacts without it affecting their hunger rate.
+
+Once crowned, if you deviate from your alignment (lawful, neutral or chaotic),
+you lose your crowned status and become a "fallen champion". This, of course,
+greatly angers your god, and they will let you know; though with devotion you
+can get back in their good graces. However, fallen champions can never be
+crowned again, not even under another alignment.
+
+* * *
+
+3.5.2: I'm trying to do the Kitty quest, and I killed something I shouldn't
+have, but I didn't get any bad warnings. Does that mean it doesn't count
+against me?
+
+Let me make sure I understand this. You broke the rules of a quest and want to
+know if you can still succeed in the quest? The answer is no. Not getting an
+obvious message doesn't mean your Kitty Karma is unstained; it just means your
+character didn't notice the negative effects of their actions.
+
+* * *
+
+3.5.3: I think I've won, but I can't escape and finish! What's going on?
+
+This is a twist that was introduced to make the ending a little more
+interesting for those using certain tactics. If you look carefully, the
+message didn't say you did succeed; rather, _it appears_ you have succeeded.
+Perhaps someone is still alive who could undo your actions without too much
+difficulty. There is more than one way to resolve the endgame and escape.
+
+* * *
+
+3.5.4: I'm bored with this simple little game; how can I make it more
+interesting?
+
+Okay, so this isn't a frequently asked question, but it's info that might make
+the game more fun or a little more challenging (if you like that sort of
+thing). Your self-imposed challenge can just be an arbitrary goal or
+limitation, or it can be a roleplaying restriction, playing a certain way to
+play a certain type of "character".
+
+Roleplaying challenges: Try magic users that do not use weapons. Try fighters
+that do not use spells. Keep illiterate characters illiterate. Fighters
+without any magic use at all (including scrolls and wands). Keep monks from
+wielding any weapons. Arm trolls with logs or anvils instead of normal
+weapons. Have Hurthlings only eat baked/cooked goods (bread and cooked
+things). Always use gifts from your deity. Never shop. Never use money for any
+purpose. Never pray. Have your character go through the game naked.
+
+Arbitrary goals: Finish the game in as few moves as possible. In as few game
+days. Play a vegetarian. Play a mute (no 'C'hatting at all - it is possible to
+win this way, just a _little_ tricky). Never unwield your starting weapon -
+you can only replace it if it is destroyed in your hand. Self-limit your
+carrying capacity. Sacrifice everything you aren't wearing/wielding the first
+chance you get.
+
+* * *
+
+3.5.5: What are Ironman and Eternium man games?
+
+These are specific challenge games where you never intend to save the world,
+just achieve certain very difficult goals. These can be good for quick and
+dirty games when you don't have the time to commit to anything too long. The
+basic idea is that you start by taking your character to a specific dungeon
+and accomplish something. The rough rules are below.
+
+Ironman: Go immediately to the Infinite Dungeon. Your character must descend
+when the downstairs are spotted, although some allow you to finish any current
+battle and pick up loot in the room with the stairs. The goal is to get a
+certain artifact on a fairly deep level (you'll know it when you hit it) and
+resurface. The difficulties are several: the dungeon levels tend to get harder
+faster than you increase in experience levels; there are no special features
+generated in this dungeon, so there is little help from deities and none from
+shops; sometimes the stairs are on the other side of something you just aren't
+strong enough to deal with. This is possible (i.e. it has been done), but very
+difficult.
+
+Eternium man: Go immediately to the Small Cave and stay there until you reach
+experience level 50. This is extremely difficult since the monster generation
+there is intended to be outrageous. No leaving the level at all unless you're
+dead or at level 50. Some have claimed to live into the teens of levels, but
+to my knowledge the challenge has only been completed a handful of times, and
+never in the latest version.
+
+For more information about these and other challenge games, check [Andy
+Williams' challenge game page](http://www.adomgb.info/challenge.html) and [The
+ADOM Domain](http://www.angelfire.com/nc/atrium/index.html). These links are
+possibly spoily as certain very specific game mechanics are discussed.
+
+* * *
+
+3.5.6: I keep hearing about a Chaos God ending or Ultra endings; what are
+people talking about?
+
+There are specific quests assigned by some shady characters that will get you
+going down this path. You will need to find certain locations that are not
+needed for a normal win. Note that most who have attempted it agree that this
+ending is _much_ more difficult than the traditional ending.
+
+* * *
+
+3.5.7: Has the Red Rooster thingy or the Scroll of Omnipotence been
+implemented yet?
+
+The Trident of the Red Rooster has been implemented and is accessible. As for
+the Scroll of Omnipotence and the Red Rooster Inn, nobody but Thomas knows.
+Solve either of these two puzzles and your name will go down in history
+forever!
+
+* * *
+
+3.5.8: How do I get past the eternal guardian? [SPOILY]
+
+Talk to the mad minstrel, he will give you some clues about a mysterious ring
+of the ancients buried somewhere in one of the distant dungeons.
+
+* * *
+
+(c) Copyright 1996-2014 by Thomas Biskup, Erwin Mascardo, Richard Fowler, Steve
+Zhang, Malte Helmert and Léon Planken. This FAQ may be freely distributed as
+long as this and the following copyright messages are distributed with it.
+Karmic creatures are exempted from this restriction.
+
+* * *
+
+ADOM is (c) Copyright 1994-2014 by Thomas Biskup. All rights reserved.

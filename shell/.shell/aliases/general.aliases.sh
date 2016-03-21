@@ -55,3 +55,5 @@ then
   alias shuf=gshuf
 fi
 
+# my other
+alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'

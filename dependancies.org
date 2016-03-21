@@ -3,18 +3,43 @@
 # might not be complete as started late
 # 2016 03 18
 
-* git
+
+* apt-get install
+** ldxe?
+** emacs24
+** python
+** python pip
+** arduino
+** git
 - store repsitories
 - apt-get install
-* stow
+** stow
 - used to set up symbolic links
 - installed with apt-get
-* vcspull 
-- used to pull multiple git depositories with one command
-- installed with pip install
-* todo.txt-cli
+** realvnc
+** letsencrypt
+** yaml
+** xclip
+
+* git
+** sej
+** dotfiles
+** .emacs.d
+** .gamedata
+
+* other
+** crawl
+** adom
+
+
+
+* git remotes
+** myrepos
+- for updating more than one repo
+- myrepos.branchable.com
+** todo.txt-cli
 - todo framework
 - install from git
-* liquidprompt
+** liquidprompt
 - flexible prompt with gives status of git
 - install from git

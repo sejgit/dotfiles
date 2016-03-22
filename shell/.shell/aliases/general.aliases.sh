@@ -18,9 +18,9 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-alias _="sudo"
-alias sudo='sudo ' # enable alias expansion for sudo
-alias root='sudo su'
+alias _="sudo -E "
+alias sudo='sudo -E ' # enable alias expansion for sudo
+alias root='sudo -E su'
 alias g='git'
 alias make='make --debug=b'
 alias ping='ping -c 8'

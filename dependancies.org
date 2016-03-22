@@ -5,7 +5,6 @@
 
 
 * apt-get install
-** ldxe?
 ** emacs24
 ** python
 ** python pip
@@ -21,6 +20,10 @@
 ** yaml
 ** xclip
 
+** tmux
+
+** crawl
+** corkscrew
 * git
 ** sej
 ** dotfiles
@@ -28,10 +31,11 @@
 ** .gamedata
 
 * other
-** crawl
 ** adom
-
-
+** caplock->control
+- sudo emacs /etc/default/deyboard
+- XKBOPTIONS="ctrl:nocaps"
+- sudo dpkg-reconfigure -phigh console-setup
 
 * git remotes
 ** myrepos

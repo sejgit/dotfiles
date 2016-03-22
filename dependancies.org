@@ -24,6 +24,10 @@
 
 ** crawl
 ** corkscrew
+** arduino
+** arduino-mk
+** myrepos
+
 * git
 ** sej
 ** dotfiles

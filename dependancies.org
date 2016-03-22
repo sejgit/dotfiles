@@ -36,7 +36,7 @@
 - sudo emacs /etc/default/deyboard
 - XKBOPTIONS="ctrl:nocaps"
 - sudo dpkg-reconfigure -phigh console-setup
-
+- on windows Ctrl2Cap /install (app on gdrive/Apps)
 * git remotes
 ** myrepos
 - for updating more than one repo

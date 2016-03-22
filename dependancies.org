@@ -28,6 +28,10 @@
 ** arduino-mk
 ** myrepos
 
+** gpm
+** w3m
+** mc
+
 * git
 ** sej
 ** dotfiles

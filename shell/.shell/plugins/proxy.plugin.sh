@@ -119,8 +119,9 @@ git-global-show-proxy ()
 		echo ""
 		echo "Git (Global Settings)"
 		echo "====================="
-		echo "Git (Global) HTTP  proxy: " `git config --global --get http.proxy`
-		echo "Git (Global) HTTPS proxy: " `git config --global --get https.proxy`
+		while read line; do
+		    echo "$line"
+		done < $GIT_MYAUTH
 	fi
 }
 

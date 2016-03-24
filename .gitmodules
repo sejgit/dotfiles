@@ -4,3 +4,9 @@
 [submodule "todo.txt-cli"]
 	path = todo.txt-cli
 	url = https://github.com/sejgit/todo.txt-cli
+[submodule "github-keygen"]
+	path = github-keygen
+	url = https://github.com/sejgit/github-keygen
+[submodule "git-hub"]
+	path = git-hub
+	url = https://github.com/sejgit/git-hub

@@ -8,7 +8,6 @@
 ** emacs24
 ** python
 ** python pip
-** arduino
 ** git
 - store repsitories
 - apt-get install
@@ -46,9 +45,6 @@
 - sudo dpkg-reconfigure -phigh console-setup
 - on windows Ctrl2Cap /install (app on gdrive/Apps)
 * git remotes
-** myrepos
-- for updating more than one repo
-- myrepos.branchable.com
 ** todo.txt-cli
 - todo framework
 - install from git

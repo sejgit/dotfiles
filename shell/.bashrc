@@ -5,8 +5,11 @@
 
 # path setup
 source ~/.shell/scripts/path-edit.sh
-path_front ~/bin ~/.local/bin ~/.shell/scripts /usr/local/sbin /usr/local/bin
+path_front ~/bin ~/.local/bin ~/.shell/scripts ~/dotfiles/git-hub/lib /usr/local/sbin /usr/local/bin
 path_back /sbin /bin /usr/sbin /usr/bin ~/.local/bin/adom
+
+export MANPATH=~/dotfiles/git-hub/man:$MANPATH
+
 
 # run setup
 source ~/.shell/scripts/run.sh

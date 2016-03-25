@@ -7,6 +7,6 @@
 [submodule "github-keygen"]
 	path = github-keygen
 	url = https://github.com/sejgit/github-keygen
-[submodule "git-hub"]
-	path = git-hub
-	url = https://github.com/sejgit/git-hub
+[submodule "git-extras"]
+	path = git-extras
+	url = https://github.com/tj/git-extras

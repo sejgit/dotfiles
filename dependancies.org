@@ -11,6 +11,7 @@
 ** git
 - store repsitories
 - apt-get install
+** git-extras
 ** stow
 - used to set up symbolic links
 - installed with apt-get

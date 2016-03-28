@@ -14,6 +14,9 @@
 ** stow
 - used to set up symbolic links
 - installed with apt-get
+** sslh
+- /etc/defaut/sslh
+- /etc/apache2/ports.conf
 ** realvnc
 ** letsencrypt
 ** yaml

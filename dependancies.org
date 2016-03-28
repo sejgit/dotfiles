@@ -18,6 +18,7 @@
 ** sslh
 - /etc/defaut/sslh
 - /etc/apache2/ports.conf
+- sudo /etc/init.d/sslh restart
 ** realvnc
 ** letsencrypt
 ** yaml

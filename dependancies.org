@@ -36,11 +36,13 @@
 ** w3m
 ** mc
 
-* git
+
+* sejgit
 ** sej
 ** dotfiles
 ** .emacs.d
 ** .gamedata
+
 
 * other
 ** adom
@@ -57,3 +59,10 @@
 - flexible prompt with gives status of git
 - install from git
 ** git-extras
+** rpi-clone
+** drive
+** Rpi_Cam_Web_Interface
+-git:silvanmelchior/RPi_Cam_Web_Interface
+-elinux.org/RPi-Cam-Web-Interface
+-chmod u+x *.sh
+-./install.sh

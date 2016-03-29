@@ -36,6 +36,8 @@
 ** w3m
 ** mc
 
+** iced-tea plugin
+-to run java programs (ISY)
 
 * sejgit
 ** sej

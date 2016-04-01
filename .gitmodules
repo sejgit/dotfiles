@@ -14,3 +14,9 @@
 [submodule "letsencrypt"]
 	path = letsencrypt
 	url = https://github.com/letsencrypt/letsencrypt
+[submodule "rpi-clone"]
+	path = rpi-clone
+	url = https://github.com/billw2/rpi-clone
+[submodule "RPi_Cam_Web_Interface"]
+	path = RPi_Cam_Web_Interface
+	url = https://github.com/silvanmelchior/RPi_Cam_Web_Interface

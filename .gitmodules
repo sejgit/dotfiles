@@ -11,3 +11,6 @@
 [submodule "git-extras"]
 	path = git-extras
 	url = https://github.com/tj/git-extras
+[submodule "letsencrypt"]
+	path = letsencrypt
+	url = https://github.com/letsencrypt/letsencrypt

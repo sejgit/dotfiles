@@ -20,8 +20,7 @@
 - /etc/apache2/ports.conf
 - sudo /etc/init.d/sslh restart
 ** realvnc
-** letsencrypt
-** yaml
+** libyaml
 ** xclip
 
 ** tmux
@@ -36,7 +35,7 @@
 ** w3m
 ** mc
 
-** iced-tea plugin
+** icedtea-7-plugin
 -to run java programs (ISY)
 
 * sejgit
@@ -56,11 +55,16 @@
 * git remotes
 ** todo.txt-cli
 - todo framework
-- install from git
+- url = https://github.com/sejgit/todo.txt-cli
 ** liquidprompt
 - flexible prompt with gives status of git
-- install from git
+- url = https://github.com/sejgit/liquidprompt
+** letsencrypt
+- certificates
+- url = https://github.com/letsencrypt/letsencrypt
 ** git-extras
+- usefull git commands
+- url = https://github.com/tj/git-extras
 ** rpi-clone
 ** drive
 ** Rpi_Cam_Web_Interface
@@ -68,3 +72,8 @@
 -elinux.org/RPi-Cam-Web-Interface
 -chmod u+x *.sh
 -./install.sh
+** github keygen
+- ??
+- url = https://github.com/sejgit/github-keygen
+
+

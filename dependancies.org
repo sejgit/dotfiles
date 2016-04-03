@@ -38,6 +38,8 @@
 ** icedtea-7-plugin
 -to run java programs (ISY)
 
+** denyhosts
+-automatically deny dictionary attack ip's
 * sejgit
 ** sej
 ** dotfiles

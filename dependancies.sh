@@ -7,6 +7,6 @@ sudo apt-get install arduino arduino-mk git emacs24 stow xclip tmux crawl corksc
 
 
 
-ln -s ~/dotfiles/todo.txt-cli/todo.sh ~/dotfiles/shell/bin/todo.sh
-ln -s ~/dotfiles/todo.txt-cli/todo_completion ~/dotfiles/shell/completions/todo_completion.sh
+#ln -s ~/dotfiles/todo.txt-cli/todo.sh ~/dotfiles/shell/bin/todo.sh
+#ln -s ~/dotfiles/todo.txt-cli/todo_completion ~/dotfiles/shell/completions/todo_completion.sh
 

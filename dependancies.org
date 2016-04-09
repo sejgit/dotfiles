@@ -38,7 +38,9 @@
 ** icedtea-7-plugin
 -to run java programs (ISY)
 
-** denyhosts
+** arp-scan & nmap
+- both are port & ip scanning tools
+** denyhosts(!not!)
 -automatically deny dictionary attack ip's
 * sejgit
 ** sej

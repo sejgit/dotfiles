@@ -256,3 +256,4 @@ ssh-enable-proxy ()
 		echo "Enabled SSH config proxy settings"
 	fi
 }
+$@

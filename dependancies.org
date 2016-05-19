@@ -40,6 +40,10 @@
 
 ** arp-scan & nmap
 - both are port & ip scanning tools
+** sshfs
+- sshfs user@server.com:/remote/dir /home/user/test
+- cp dir/* to test/
+- fusermount -u /home/youruser/test
 ** denyhosts(!not!)
 -automatically deny dictionary attack ip's
 * sejgit

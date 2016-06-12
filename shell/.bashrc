@@ -10,6 +10,8 @@ path_back /sbin /bin /usr/sbin /usr/bin ~/.local/bin/adom
 
 export MANPATH=~/dotfiles/git-hub/man:$MANPATH
 
+# If not running interactively, don't do anything
+[[ $- == *i* ]] || return
 
 # run setup
 source ~/.shell/scripts/run.sh

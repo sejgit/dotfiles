@@ -2,7 +2,7 @@
 # file to list dependancies
 # might not be complete as started late
 # 2016 03 18
-
+# 2016 06 14 htop
 
 * apt-get install
 ** emacs24

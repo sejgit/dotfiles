@@ -34,7 +34,7 @@
 ** gpm
 ** w3m
 ** mc
-
+** htop
 ** icedtea-7-plugin
 -to run java programs (ISY)
 

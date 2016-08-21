@@ -20,3 +20,6 @@
 [submodule "RPi_Cam_Web_Interface"]
 	path = RPi_Cam_Web_Interface
 	url = https://github.com/silvanmelchior/RPi_Cam_Web_Interface
+[submodule "paul"]
+	path = paul
+	url = https://github.com/methanol/paul

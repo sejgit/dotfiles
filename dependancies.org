@@ -20,6 +20,8 @@
 - /etc/apache2/ports.conf
 - sudo /etc/init.d/sslh restart
 ** realvnc
+** wicd-curses
+- console wifi management
 ** libyaml
 ** xclip
 

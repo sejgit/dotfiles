@@ -3,7 +3,7 @@
 # 2016 03 23
 
 
-sudo apt-get install arduino arduino-mk git emacs24 stow xclip tmux crawl corkscrew myrepos gpm w3m mc
+sudo apt-get install arduino arduino-mk git emacs24 stow xclip tmux crawl corkscrew myrepos gpm w3m mc wicd-curses
 
 
 

@@ -1,0 +1,115 @@
+ Dungeon Crawl Stone Soup version 0.15.1 (console) character file.
+
+0 dfg the Ruinous (level 1, 13/13 HPs)
+             Began as a Human Conjurer on Sept 28, 2016.
+             Quit the game on Level 1 of the Dungeon.
+             The game lasted 00:01:11 (0 turns).
+
+dfg the Ruinous (Human Conjurer)                       Turns: 0, Time: 00:01:11
+
+HP  13/13        AC  2     Str  8      XL: 1   Next:  0%
+MP   3/3         EV 12     Int 15      God: 
+Gold 0           SH  0     Dex 13      Spells:  1 memorised,  3 levels left
+
+rFire  . . .     SeeInvis .     (no weapon)
+rCold  . . .     Clarity  .     a - +0 robe
+rNeg   . . .     rCorr    .     (no shield)
+rPois  .         rRot     .     (no helmet)
+rElec  .         Spirit   .     (no cloak)
+SustAb .         Warding  .     (no gloves)
+rMut   .         Stasis   .     (no boots)
+Gourm  .                        (no amulet)
+MR     .....                    (no ring)
+                                (no ring)
+
+@: not resistant to hostile enchantments, unstealthy
+A: no striking features
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+Inventory:
+
+Armour
+ a - a +0 robe (worn)
+Comestibles
+ b - a bread ration
+Books
+ c - a book of Conjurations   
+   
+   Spells                             Type                      Level
+   *Magic Dart                        Conjuration                  1
+   Searing Ray                        Conjuration                  2
+   Dazzling Spray                     Conjuration/Hexes            3
+   Fulminant Prism                    Conjuration/Hexes            4
+   Iskenderun's Mystic Blast          Conjuration                  4
+   Iskenderun's Battlesphere          Conjuration/Charms           5
+
+
+   Skills:
+ + Level 2.0 Dodging
+ + Level 2.0 Stealth
+ + Level 2.0 Spellcasting
+ + Level 4.0 Conjurations
+
+
+You had 3 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Magic Dart            Conj           ##..         4%          1    #......
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+Message History
+
+Spell assigned to 'a'. Welcome, dfg the Human Conjurer.
+The destiny of this world depends on the Orb of Zot. Go down and get it!
+Press ? for a list of commands and other information.
+Found 5 javelins.
+Found a staircase leading out of the dungeon.
+Quiver which item? (- for none, * to show all) (? for menu, Esc to quit)
+Okay, then.
+You aren't carrying any potions.
+Unknown command.
+You aren't carrying any potions.
+Unknown command.
+Unknown command.
+Press: ? - help, v - describe, . - travel
+A staircase leading out of the dungeon.
+Are you sure you want to abandon this character and quit the game? (Confirm with "yes".) 
+Okay, then.
+Are you sure you want to abandon this character and quit the game? (Confirm with "yes".) 
+
+   #.#
+  ..(..
+  #8≈8#
+  #≈≈≈#
+  #8≈8#
+# #≈≈≈# #
+#.#8≈8#.#
+ #.....#
+  #.@.#
+  #####
+
+
+There were no monsters in sight!
+
+
+Notes
+Turn   | Place    | Note
+--------------------------------------------------------------
+     0 | D:1      | dfg, the Human Conjurer, began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 13/13 MP: 3/3
+     0 | D:1      | Quit the game
+

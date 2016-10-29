@@ -23,3 +23,6 @@
 [submodule "paul"]
 	path = paul
 	url = https://github.com/methanol/paul
+[submodule "drive"]
+	path = drive
+	url = git:/odeke-em/drive

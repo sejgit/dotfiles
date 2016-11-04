@@ -3,9 +3,11 @@
 # might not be complete as started late
 # 2016 03 18
 # 2016 06 14 htop
+# 2016 11 04 cleanup
 
 * apt-get install
 ** emacs24
+** emacs24-nox
 ** python
 ** python pip
 ** git
@@ -20,11 +22,6 @@
 - /etc/apache2/ports.conf
 - sudo /etc/init.d/sslh restart
 ** realvnc
-** wicd-curses
-- console wifi management
-** libyaml
-** xclip
-
 ** tmux
 
 ** crawl
@@ -32,7 +29,6 @@
 ** arduino
 ** arduino-mk
 ** myrepos
-
 ** gpm
 ** w3m
 ** mc
@@ -46,8 +42,7 @@
 - sshfs user@server.com:/remote/dir /home/user/test
 - cp dir/* to test/
 - fusermount -u /home/youruser/test
-** denyhosts(!not!)
--automatically deny dictionary attack ip's
+
 * sejgit
 ** sej
 ** dotfiles

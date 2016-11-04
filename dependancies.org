@@ -5,7 +5,7 @@
 # 2016 06 14 htop
 # 2016 11 04 cleanup
 
-* apt-get install
+* apt-get install full-x
 ** emacs24
 ** emacs24-nox
 ** python
@@ -42,6 +42,40 @@
 - sshfs user@server.com:/remote/dir /home/user/test
 - cp dir/* to test/
 - fusermount -u /home/youruser/test
+
+* apt-get install nox
+** emacs24-nox
+** python
+** python pip
+** git
+- store repsitories
+- apt-get install
+** apache2
+** stow
+- used to set up symbolic links
+- installed with apt-get
+** sslh
+- /etc/defaut/sslh
+- /etc/apache2/ports.conf
+- sudo /etc/init.d/sslh restart
+** tmux
+
+** crawl
+** corkscrew
+** arduino
+** arduino-mk
+** myrepos
+** gpm
+** w3m
+** mc
+** htop
+** arp-scan & nmap
+- both are port & ip scanning tools
+** sshfs
+- sshfs user@server.com:/remote/dir /home/user/test
+- cp dir/* to test/
+- fusermount -u /home/youruser/test
+
 
 * sejgit
 ** sej

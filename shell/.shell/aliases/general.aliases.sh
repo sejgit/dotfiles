@@ -57,6 +57,6 @@ fi
 
 # my other
 alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
-alias up='~/bin/./up.sh'
-alias upd='~/bin/./upd.sh'
+alias up=~/bin/./up.sh
+alias upd=~/bin/./upd.sh
 

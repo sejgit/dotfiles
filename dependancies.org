@@ -6,6 +6,8 @@
 # 2016 11 04 cleanup
 
 * apt-get install full-x
+** apt-clone
+- clone or restore all packages on the system
 ** emacs24
 ** emacs24-nox
 ** python

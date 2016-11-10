@@ -40,9 +40,9 @@ alias ipy='ipython'
 alias irc="$IRC_CLIENT"
 
 # power
-alias shutdown='sudo shutdown -P now'
+alias shutdown='sudo shutdown -p now'
 alias reboot='sudo shutdown -r now'
-alias halt='sudo halt -P'
+alias halt='sudo halt -p'
 
 
 if [ $(uname) = "Linux" ]

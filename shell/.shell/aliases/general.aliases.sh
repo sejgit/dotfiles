@@ -59,4 +59,5 @@ fi
 alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
 alias up=~/bin/./up.sh
 alias upd=~/bin/./upd.sh
+alias sshvnc=~/bin/./sshvnc.sh
 

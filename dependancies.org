@@ -45,6 +45,10 @@
 - cp dir/* to test/
 - fusermount -u /home/youruser/test
 
+** sspass
+- used for batch ssh command use
+- sshpass -p xxxx scp /path/to/file pi@server:/path/to/file
+
 * apt-get install nox
 ** emacs24-nox
 ** python

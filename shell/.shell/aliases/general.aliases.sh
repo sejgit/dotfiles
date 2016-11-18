@@ -40,7 +40,7 @@ alias ipy='ipython'
 alias irc="$IRC_CLIENT"
 
 # power
-alias shutdown='sudo shutdown -p now'
+alias shutdown='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'
 alias halt='sudo halt -p'
 

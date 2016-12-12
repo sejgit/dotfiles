@@ -14,4 +14,4 @@ alias et='emacsclient -t'
 alias ed='emacs --daemon'
 alias E='SUDO_EDITOR=emacsclient sudo -e'
 
-alias e='emacsclient -nw --alternate-editor="" --create-frame'
+alias e='emacsclient --alternate-editor="" --create-frame'

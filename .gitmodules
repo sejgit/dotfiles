@@ -28,3 +28,6 @@
 [submodule "sslh"]
 	path = sslh
 	url = https://github.com/yrutschle/sslh
+[submodule "bash-it"]
+	path = bash-it
+	url = https://github.com/Bash-it/bash-it

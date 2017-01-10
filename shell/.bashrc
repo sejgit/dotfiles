@@ -40,7 +40,7 @@ HISTFILESIZE=10000
 MYAUTH=$(<~/.ssh/myauth)
 MYPROXY=$(<~/.ssh/myproxy)
 export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
-export BASH_IT_HTTPS_PROXY=$(printf "https://%s@%s:443" "$MYAUTH" "$MYPROXY")
+export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
 export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
 export GIT_MYAUTH=~/.ssh/myauth.git
 

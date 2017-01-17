@@ -45,7 +45,7 @@ export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
 export GIT_MYAUTH=~/.ssh/myauth.git
 
 #grep options
-export GREP_OPTIONS='--color=auto' GREP_COLORS='100;8'
+#export GREP_OPTIONS='--color=auto' GREP_COLORS='100;8'
 
 # Liquid prompt only load in interactive shells
 [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt

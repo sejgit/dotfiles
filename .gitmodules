@@ -7,9 +7,6 @@
 [submodule "github-keygen"]
 	path = github-keygen
 	url = https://github.com/dolmen/github-keygen
-[submodule "git-extras"]
-	path = git-extras
-	url = https://github.com/tj/git-extras
 [submodule "letsencrypt"]
 	path = letsencrypt
 	url = https://github.com/letsencrypt/letsencrypt

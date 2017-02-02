@@ -1,12 +1,6 @@
-[submodule "liquidprompt"]
-	path = liquidprompt
-	url = https://github.com/nojhan/liquidprompt
 [submodule "todo.txt-cli"]
 	path = todo.txt-cli
 	url = https://github.com/ginatrapani/todo.txt-cli
-[submodule "github-keygen"]
-	path = github-keygen
-	url = https://github.com/dolmen/github-keygen
 [submodule "letsencrypt"]
 	path = letsencrypt
 	url = https://github.com/letsencrypt/letsencrypt

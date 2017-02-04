@@ -27,4 +27,4 @@
 	url = https://github.com/jacobb/prowlpy
 [submodule "liquidprompt"]
 	path = liquidprompt
-	url = https://github.con/nojhan/liquidprompt
+	url = https://github.com/nojhan/liquidprompt

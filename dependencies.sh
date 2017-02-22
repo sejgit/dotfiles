@@ -4,7 +4,7 @@
 # 2017 02 22 update
 
 
-sudo apt-get install git emacs24 stow
+sudo apt-get install git emacs24-nox stow
 git submodule foreach init
 git submodule foreach sync
 git submodule foreach update

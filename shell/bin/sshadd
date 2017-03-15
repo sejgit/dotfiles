@@ -1,0 +1,12 @@
+#!/bin/bash
+# sshadd.sh
+# quick shell to update ssh-add with two keys for sej & pi
+
+# 2017 03 15 init SeJ
+
+
+ssh-add ~/.ssh/id_rsa ~/.ssh/id_rsa-pi
+
+
+
+

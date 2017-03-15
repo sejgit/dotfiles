@@ -1,12 +1,10 @@
 #!/bin/bash
 # dependancies.sh
 # 2016 03 23
+# 2017 02 22 update
 
 
-sudo apt-get install git emacs24 stow tmux
-
-
-
-#ln -s ~/dotfiles/todo.txt-cli/todo.sh ~/dotfiles/shell/bin/todo.sh
-#ln -s ~/dotfiles/todo.txt-cli/todo_completion ~/dotfiles/shell/completions/todo_completion.sh
-
+sudo apt-get install git emacs24-nox stow
+git submodule  init
+git submodule  sync
+git submodule  update

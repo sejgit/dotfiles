@@ -35,6 +35,8 @@ HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=2000
 HISTFILESIZE=10000
 
+#swap caps lock -> control
+setxkbmap -layout us -option ctrl:nocaps
 
 # proxy settings
 MYAUTH=$(<~/.ssh/myauth)

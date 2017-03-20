@@ -3,7 +3,7 @@
 	email = sejgit@github.com
 [core]
 	editor = emacs
-	excludesfile = /home/sej/.config/git/.gitignore_global
+	excludesfile = ~/.config/git/.gitignore_global
 
 [url "https://github.com/"]
      insteadOf = git:

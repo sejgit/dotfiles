@@ -1,6 +1,7 @@
 #!/bin/bash
 # aliases/general.sh
 # sej 2016 03 14
+# 2017 03 21 updates
 
 # List directory contents
 alias sl=ls
@@ -18,12 +19,12 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 #alias -- -="cd -"
 
-alias _="sudo -E "
-alias sudo='sudo -E ' # enable alias expansion for sudo
-alias root='sudo -E su'
+alias _="sudo -EH "
+alias sudo='sudo -EH ' # enable alias expansion for sudo
+alias root='sudo -EH su'
 alias g='git'
 alias make='make --debug=b'
-alias ping='ping -c 8'
+alias ping='_ ping -c 8'
 alias r='run'
 alias q='exit'
 alias c='clear'
@@ -32,12 +33,7 @@ alias cls='clear'
 
 alias edit="$EDITOR"
 alias pager="$PAGER"
-
-# Language aliases
-alias rb='ruby'
 alias py='python'
-alias ipy='ipython'
-alias irc="$IRC_CLIENT"
 
 # power
 alias shutdown='sudo shutdown -P now'

@@ -58,28 +58,7 @@ alias gnew="git log HEAD@{1}..HEAD@{0}"
 # Add uncommitted and unstaged changes to the last commit
 alias gcaa="git commit -a --amend -C HEAD"
 
-case $OSTYPE in
-  darwin*)
-    alias gtls="git tag -l | gsort -V"
-    ;;
-  *)
-    alias gtls='git tag -l | sort -V'
-    ;;
-esac
+alias gtls='git tag -l | sort -V'
+alias gd="git diff | $EDITOR"
 
-if [ -z "$EDITOR" ]; then
-    case $OSTYPE in
-      linux*)
-        alias gd='git diff | vim -R -'
-        ;;
-      darwin*)
-        alias gd='git diff | mate'
-        ;;
-      *)
-        alias gd='git diff'
-        ;;
-    esac
-else
-    alias gd="git diff | $EDITOR"
-fi
 

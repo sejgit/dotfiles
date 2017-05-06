@@ -9,7 +9,7 @@ if [ $(uname -s) == "Darwin" ]; then
     # include .bash_path if it exists
     if [ -f "$HOME/.bash_path" ]; then
 	. "$HOME/.bash_path"
-    fi
+    fi 
 fi
 source ~/.shell/scripts/path-edit.sh
 path_front ~/bin ~/.local/bin ~/.shell/scripts ~/dotfiles/git-hub/lib /usr/local/sbin /usr/local/bin
@@ -50,6 +50,9 @@ fi
 # Liquid prompt only load in interactive shells
 [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
 
+gpip(){
+    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
 
 # Load custom aliases, completion, plugins
 for file_type in "aliases" "completions" "plugins"

@@ -10,3 +10,8 @@ set show-all-if-unmodified on
 
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+"\e[1;5C": forward-word #option-left
+"\e[1;5D": backward-word #option-right
+"\ex": 'cd !$ \C-m\C-m ls\C-m' #option-x jump to the target of the last command
+"\ez": 'cd -\C-m'  #option-z undo a dir change back
+

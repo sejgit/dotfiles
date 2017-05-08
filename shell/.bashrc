@@ -9,7 +9,8 @@ if [ $(uname -s) == "Darwin" ]; then
     # include .bash_path if it exists
     if [ -f "$HOME/.bash_path" ]; then
 	. "$HOME/.bash_path"
-    fi 
+    fi
+    source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 source ~/.shell/scripts/path-edit.sh
 path_front ~/bin ~/.local/bin ~/.shell/scripts ~/dotfiles/git-hub/lib /usr/local/sbin /usr/local/bin

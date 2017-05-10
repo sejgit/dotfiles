@@ -2,6 +2,8 @@
 # .bashrc
 # sej 2016 03 16
 # 2017 05 05 move to mac updates
+# 2017 05 10 added python setups 
+
 
 # path setup
 
@@ -51,9 +53,18 @@ fi
 # Liquid prompt only load in interactive shells
 [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
 
+# PYTHON settings for virtualenv protection 
 gpip(){
     PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
+
+gpip3(){
+    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
+
+# PYTHON settings for startup
+export PYTHONSTARTUP=$HOME/.pythonstartup
+
 
 # Load custom aliases, completion, plugins
 for file_type in "aliases" "completions" "plugins"

@@ -10,7 +10,7 @@ state/
 *.out
 *.out.*
 *.paul*
-shell/.config/git/
+shell/.config/git/config
 
 ### C ###
 # Object files

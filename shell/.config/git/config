@@ -56,3 +56,6 @@
 
 [credential]
 	helper = store --file ~/.ssh/.gitcred
+[github]
+	user = sejgit
+	oauth-token = 86051c9bfc163ff8261170fa1c132143a30de77b

@@ -38,7 +38,6 @@ if [ $(uname -s) == "Linux" ]; then
     setxkbmap -layout us -option ctrl:nocaps
 fi
 
-
 # # proxy settings
 # MYAUTH=$(<~/.ssh/myauth)
 # MYPROXY=$(<~/.ssh/myproxy)
@@ -46,9 +45,6 @@ fi
 # export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
 # export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
 # export GIT_MYAUTH=~/.ssh/myauth.git
-
-#grep options
-#export GREP_OPTIONS='--color=auto' GREP_COLORS='100;8'
 
 # Liquid prompt only load in interactive shells
 [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
@@ -80,5 +76,11 @@ do
 done
 
 unset config_file
+
+
+
+
+
+
 
 

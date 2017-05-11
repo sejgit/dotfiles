@@ -101,7 +101,7 @@ LP_ENABLE_TIME=0
 
 # Show runtime of the last command if over LP_RUNTIME_THRESHOLD
 # Recommended value is 0
-LP_ENABLE_RUNTIME=0
+LP_ENABLE_RUNTIME=1
 
 # Minimal runtime to be displayed
 # Recommended value is 2
@@ -137,10 +137,11 @@ LP_ENABLE_TITLE=0
 LP_ENABLE_SCREEN_TITLE=0
 
 # Use differents colors for differents hosts you SSH in
-LP_ENABLE_SSH_COLORS=0
+LP_ENABLE_SSH_COLORS=1
 
 # Specify a list of complete and colon (":") separated paths in which, all vcs
 # will be disabled
 LP_DISABLED_VCS_PATH=""
 
 # vim: set et sts=4 sw=4 tw=120 ft=sh:
+

@@ -5,7 +5,7 @@
 
 # List directory contents
 alias sl=ls
-alias ls='ls -G'        # Compact view, show colors
+alias ls="ls -G --color=auto"
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -al'
 alias l='ls -a'
@@ -40,11 +40,6 @@ alias shutdown='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'
 alias halt='sudo halt -p'
 
-
-if [ $(uname) = "Linux" ]
-then
-  alias ls="ls --color=auto"
-fi
 which gshuf &> /dev/null
 if [ $? -eq 0 ]
 then

@@ -2,7 +2,7 @@
 # sej 2016 03 16
 # 2017 04 23 add bash_path for Darwin if exists
 # 2017 05 05 move above to .bashrc
-
+# 2017 09 06 add keychain
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -21,6 +21,7 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval $(ssh-agent)
 fi
 
+eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

@@ -22,3 +22,5 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
 fi
 
 
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

@@ -2,12 +2,15 @@
 # .bashrc
 # sej 2016 03 16
 # 2017 05 05 move to mac updates
-# 2017 05 10 added python setups 
+# 2017 05 10 added python setups
+# 2017 09 06 added pass for darwin
 
 
 # path setup
 
 if [ $(uname -s) == "Darwin" ]; then
+    # for pass and Emacs pass
+    source /usr/local/etc/bash_completion.d/password-store
     # include .bash_path if it exists
     if [ -f "$HOME/.bash_path" ]; then
 	. "$HOME/.bash_path"
@@ -76,11 +79,4 @@ do
 done
 
 unset config_file
-
-
-
-
-
-
-
 

@@ -4,10 +4,12 @@
 # 2017 05 05 move to mac updates
 # 2017 05 10 added python setups
 # 2017 09 06 added pass for darwin
+# 2017 09 11 add en_US.UTF-8
 
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
 
 # path setup
-
 if [ $(uname -s) == "Darwin" ]; then
     # for pass and Emacs pass
     source /usr/local/etc/bash_completion.d/password-store
@@ -79,4 +81,6 @@ do
 done
 
 unset config_file
+
+
 

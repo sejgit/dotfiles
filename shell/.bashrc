@@ -11,8 +11,6 @@ export LANGUAGE="en_US:en"
 
 # path setup
 if [ $(uname -s) == "Darwin" ]; then
-    # for pass and Emacs pass
-    source /usr/local/etc/bash_completion.d/password-store
     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     # include .bash_path if it exists

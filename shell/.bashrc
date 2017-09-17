@@ -13,11 +13,13 @@ export LANGUAGE="en_US:en"
 if [ $(uname -s) == "Darwin" ]; then
     # for pass and Emacs pass
     source /usr/local/etc/bash_completion.d/password-store
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     # include .bash_path if it exists
     if [ -f "$HOME/.bash_path" ]; then
 	. "$HOME/.bash_path"
     fi
-    source ~/.iterm2_shell_integration.`basename $SHELL`
+	     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 source ~/.shell/scripts/path-edit.sh
 path_front ~/bin ~/.local/bin ~/.shell/scripts ~/dotfiles/git-hub/lib /usr/local/sbin /usr/local/bin

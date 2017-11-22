@@ -6,8 +6,6 @@
 # 2017 09 06 added pass for darwin
 # 2017 09 11 add en_US.UTF-8
 
-if ! [ $INSIDE_EMACS ]
-then
 
     export LANG="en_US.UTF-8"
     export LANGUAGE="en_US:en"
@@ -20,7 +18,13 @@ then
 	if [ -f "$HOME/.bash_path" ]; then
 	    . "$HOME/.bash_path"
 	fi
+if ! [ $INSIDE_EMACS ]
+then
 	source ~/.iterm2_shell_integration.`basename $SHELL`
+else
+    export PS1="\w> "
+fi
+
     fi
     source ~/.shell/scripts/path-edit.sh
     path_front ~/bin ~/.local/bin ~/.shell/scripts ~/dotfiles/git-hub/lib /usr/local/sbin /usr/local/bin
@@ -57,37 +61,33 @@ then
     # Liquid prompt only load in interactive shells
     [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
 
-    # PYTHON settings for virtualenv protection 
-    gpip(){
-	PIP_REQUIRE_VIRTUALENV="" pip "$@"
-    }
+# PYTHON settings for virtualenv protection 
+gpip(){
+    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
 
-    gpip3(){
-	PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
-    }
+gpip3(){
+    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
 
-    # PYTHON settings for startup
-    export PYTHONSTARTUP=$HOME/.pythonstartup
+# PYTHON settings for startup
+export PYTHONSTARTUP=$HOME/.pythonstartup
 
 
-    # Load custom aliases, completion, plugins
-    for file_type in "aliases" "completions" "plugins"
+# Load custom aliases, completion, plugins
+for file_type in "aliases" "completions" "plugins"
+do
+    CUSTOM=~/.shell/${file_type}/*.sh
+    for config_file in $CUSTOM
     do
-	CUSTOM=~/.shell/${file_type}/*.sh
-	for config_file in $CUSTOM
-	do
-	    if [ -e $config_file ]; then
-		echo $config_file
-		source $config_file
-            fi
-	done
+	if [ -e $config_file ]; then
+	    echo $config_file
+	    source $config_file
+        fi
     done
+done
 
-    unset config_file
-else
-    export PS1="\w> "
-fi
-
+unset config_file
 
 
 

@@ -216,11 +216,11 @@ ssh-show-proxy ()
 		        printf "%s\t%s\n", host, $0
 		    }
 		' ~/.ssh/config | column -t
-
-		echo ""
-		echo "SSH Config Disabled in ~/.ssh/config"
-		echo "===================================="
-		awk '
+	else
+	    echo ""
+	    echo "SSH Config Disabled in ~/.ssh/config"
+	    echo "===================================="
+	    awk '
 		    $1 == "Host" {
 		        host = $2;
 		        next;

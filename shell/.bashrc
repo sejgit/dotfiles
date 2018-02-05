@@ -35,9 +35,9 @@ if [ $(uname -s) == "Darwin" ]; then
     export PROJECT_HOME=$HOME/Projects
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-    source /usr/local/bin/virtualenvwrapper_lazy.sh 
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
     export AUTOENV_ENABLE_LEAVE="true"
-    source ~/.autoenv/activate.sh 
+    source ~/.autoenv/activate.sh
 fi
 
 export MANPATH=~/dotfiles/git-hub/man:$MANPATH
@@ -71,19 +71,6 @@ export GIT_MYAUTH=~/.ssh/myauth.git
 # Liquid prompt only load in interactive shells
 [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
 
-# PYTHON settings for virtualenv protection 
-gpip(){
-    PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
-}
-
-gpip2(){
-    PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
-}
-
-gpip3(){
-    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
-}
-
 # Load custom aliases, completion, plugins
 for file_type in "aliases" "completions" "plugins"
 do
@@ -93,9 +80,8 @@ do
 	if [ -e $config_file ]; then
 	    echo $config_file
 	    source $config_file
-        fi
+	fi
     done
 done
 
 unset config_file
-

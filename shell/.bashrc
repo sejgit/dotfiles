@@ -6,7 +6,7 @@
 # 2017 09 06 added pass for darwin
 # 2017 09 11 add en_US.UTF-8
 # 2017 12 11 modify python portion
-
+# 2018 02 08 add some completions for darwin aws
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
@@ -19,6 +19,8 @@ path_back /sbin /bin /usr/sbin /usr/bin
 if [ $(uname -s) == "Darwin" ]; then
     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    complete -C '/Users/stephenjenkins/.local/bin/eb_completion' eb
+    complete -C '/Users/stephenjenkins/.local/bin/aws_completer' aws
     # include .bash_path if it exists
     if [ -f "$HOME/.bash_path" ]; then
 	. "$HOME/.bash_path"

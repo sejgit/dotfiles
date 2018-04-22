@@ -15,16 +15,19 @@ source ~/.shell/scripts/path-edit.sh
 path_front ~/bin ~/.local/bin ~/.shell/scripts ~/dotfiles/git-hub/lib /usr/local/sbin /usr/local/bin
 path_back /sbin /bin /usr/sbin /usr/bin
 
+# Use Liquid Prompt
+source ~/dotfiles/liquidprompt/liquidprompt
+
 # path setup
- if [ $(uname -s) == "Darwin" ]; then
-     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-     complete -C '/Users/stephenjenkins/.local/bin/eb_completion' eb
-     complete -C '/Users/stephenjenkins/.local/bin/aws_completer' aws
-     # include .bash_path if it exists
-     if [ -f "$HOME/.bash_path" ]; then
+if [ $(uname -s) == "Darwin" ]; then
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    complete -C '/Users/stephenjenkins/.local/bin/eb_completion' eb
+    complete -C '/Users/stephenjenkins/.local/bin/aws_completer' aws
+    # include .bash_path if it exists
+    if [ -f "$HOME/.bash_path" ]; then
 	. "$HOME/.bash_path"
-     fi
+    fi
       if ! [ $INSIDE_EMACS ]
      then
 	source ~/.iterm2_shell_integration.`basename $SHELL`
@@ -46,6 +49,21 @@ path_back /sbin /bin /usr/sbin /usr/bin
 
  # If not running interactively, don't do anything
  [[ $- == *i* ]] || return
+ # Use the system config if it exists
+ if [ -f /etc/bashrc ]; then
+     . /etc/bashrc        # --> Read /etc/bashrc, if present.
+ elif [ -f /etc/bash.bashrc ]; then
+     . /etc/bash.bashrc   # --> Read /etc/bash.bashrc, if present.
+ fi
+
+ # The following lines are only for interactive shells
+ [[ $- = *i* ]] || return
+
+ # Use Bash completion, if installed
+ if [ -f /etc/bash_completion ]; then
+     . /etc/bash_completion
+ fi
+
 
  # run setup
  source ~/.shell/scripts/run.sh
@@ -69,9 +87,6 @@ path_back /sbin /bin /usr/sbin /usr/bin
  export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
  export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
  export GIT_MYAUTH=~/.ssh/myauth.git
-
- # Liquid prompt only load in interactive shells
- [[ $- = *i* ]] && source ~/dotfiles/liquidprompt/liquidprompt
 
  # Load custom aliases, completion, plugins
  for file_type in "aliases" "completions" "plugins"

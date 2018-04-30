@@ -7,6 +7,7 @@
 # 2017 09 11 add en_US.UTF-8
 # 2017 12 11 modify python portion
 # 2018 02 08 add some completions for darwin aws
+# 2018 04 22 add variables for arduino-mk
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
@@ -43,7 +44,16 @@ if [ $(uname -s) == "Darwin" ]; then
      source /usr/local/bin/virtualenvwrapper_lazy.sh
      export AUTOENV_ENABLE_LEAVE="true"
      source ~/.autoenv/activate.sh
- fi
+
+     export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
+     export ARDMK_DIR=$HOME/Projects/sej/Arduino/Arduino-Makefile
+     #export AVR_TOOLS_DIR=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr
+     export MONITOR_PORT=/dev/tty.usbmodem1441
+     export BOARD_TAG=mega
+     export BOARD_SUB=atmega2560
+     export ESPLIBS=$HOME/Library/Arduino15/packages/esp8266/hardware/esp8266/2.4.1/Libraries
+     export ARLIBS=$HOME/Projects/sej/Arduino/libraries
+fi
 
  export MANPATH=~/dotfiles/git-hub/man:$MANPATH
 

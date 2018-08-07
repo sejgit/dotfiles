@@ -1,9 +1,7 @@
-
 # Created by https://www.gitignore.io/api/c,c++,emacs,go,java,jekyll,linux,python,virtualenv
 ### sej ###
 .saves/
 *~
-*.json
 state/
 *.log
 *.log.*

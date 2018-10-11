@@ -42,11 +42,11 @@ if [ $(uname -s) == "Darwin" ]; then
      export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
      export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
      source /usr/local/bin/virtualenvwrapper_lazy.sh
-     export AUTOENV_ENABLE_LEAVE="true"
+     export AUTOENV_ENABLE_LEAVE="True"
      source ~/.autoenv/activate.sh
 
      export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
-     export ARDMK_DIR=$HOME/Projects/sej/Arduino/Arduino-Makefile
+     export ARDMK_DIR=/usr/local/opt/arduino-mk
      #export AVR_TOOLS_DIR=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr
      export MONITOR_PORT=/dev/tty.usbmodem1441
      export BOARD_TAG=mega

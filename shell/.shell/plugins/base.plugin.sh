@@ -2,6 +2,9 @@
 # base.plugin.sh
 # sej 2016 03 15
 
+#Updatelog
+# 2018 10 11 clean-up & reduce
+
 function ips ()
 {
     about 'display all ip addresses for this host'
@@ -34,54 +37,6 @@ function myip ()
     echo -e "Your public IP is: ${echo_bold_green} $res ${echo_normal}"
 }
 
-function pickfrom ()
-{
-    about 'picks random line from file'
-    param '1: filename'
-    example '$ pickfrom /usr/share/dict/words'
-    group 'base'
-    local file=$1
-    [ -z "$file" ] && reference $FUNCNAME && return
-    length=$(cat $file | wc -l)
-    n=$(expr $RANDOM \* $length \/ 32768 + 1)
-    head -n $n $file | tail -1
-}
-
-function passgen ()
-{
-    about 'generates random password from dictionary words'
-    param 'optional integer length'
-    param 'if unset, defaults to 4'
-    example '$ passgen'
-    example '$ passgen 6'
-    group 'base'
-    local i pass length=${1:-4}
-    pass=$(echo $(for i in $(eval echo "{1..$length}"); do pickfrom /usr/share/dict/words; done))
-    echo "With spaces (easier to memorize): $pass"
-    echo "Without (use this as the password): $(echo $pass | tr -d ' ')"
-}
-
-# Create alias pass to passgen when pass isn't installed or
-# BASH_IT_LEGACY_PASS is true.
-if ! command -v pass &>/dev/null || [ "$BASH_IT_LEGACY_PASS" = true ]
-then
-  alias pass=passgen
-fi
-
-function pmdown ()
-{
-    about 'preview markdown file in a browser'
-    param '1: markdown file'
-    example '$ pmdown README.md'
-    group 'base'
-    if command -v markdown &>/dev/null
-    then
-      markdown $1 | browser
-    else
-      echo "You don't have a markdown command installed!"
-    fi
-}
-
 function mkcd ()
 {
     about 'make a directory and cd into it'
@@ -98,22 +53,6 @@ function lsgrep ()
     about 'search through directory contents with grep'
     group 'base'
     ls | grep "$*"
-}
-
-function quiet ()
-{
-    about 'what *does* this do?'
-    group 'base'
-    $* &> /dev/null &
-}
-
-function banish-cookies ()
-{
-    about 'redirect .adobe and .macromedia files to /dev/null'
-    group 'base'
-    rm -r ~/.macromedia ~/.adobe
-    ln -s /dev/null ~/.adobe
-    ln -s /dev/null ~/.macromedia
 }
 
 function usage ()
@@ -152,15 +91,6 @@ if [ ! -e $BASH_IT/plugins/enabled/todo.plugin.bash ]; then
     }
 fi
 
-function command_exists ()
-{
-    about 'checks for existence of a command'
-    param '1: command to check'
-    example '$ command_exists ls && echo exists'
-    group 'base'
-    type "$1" &> /dev/null ;
-}
-
 mkiso ()
 {
     about 'creates iso from current dir in the parent dir (unless defined)'
@@ -185,23 +115,4 @@ mkiso ()
     else
         echo "mkisofs cmd does not exist, please install cdrtools"
     fi
-}
-
-# useful for administrators and configs
-function buf ()
-{
-    about 'back up file with timestamp'
-    param 'filename'
-    group 'base'
-    local filename=$1
-    local filetime=$(date +%Y%m%d_%H%M%S)
-    cp -a "${filename}" "${filename}_${filetime}"
-}
-
-function del() { 
-    about 'move files to hidden folder in tmp, that gets cleared on each reboot'
-    param 'file or folder to be deleted'
-    example 'del ./file.txt'
-    group 'base'
-    mkdir -p /tmp/.trash && mv "$@" /tmp/.trash; 
 }

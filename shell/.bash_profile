@@ -5,6 +5,7 @@
 # 2017 09 06 add keychain
 # 2017 11 21 add INSIDE_EMACS test
 # 2018 10 26 add for GPG
+# 2018 10 28 add for autojump
 
 # if running bash
 if ! [ $INSIDE_EMACS ]
@@ -34,4 +35,8 @@ then
     if [[ -n "$SSH_CONNECTION" ]]; then
         export PINENTRY_USER_DATA="USE_CURSES=1"
     fi
+
+    # for autojump
+    # https://github.com/wting/autojump
+    [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 fi

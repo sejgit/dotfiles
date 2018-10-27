@@ -53,62 +53,64 @@ if [ $(uname -s) == "Darwin" ]; then
      export BOARD_SUB=atmega2560
      export ESPLIBS=$HOME/Library/Arduino15/packages/esp8266/hardware/esp8266/2.4.1/Libraries
      export ARLIBS=$HOME/Projects/sej/Arduino/libraries
+
+     export GPG_TTY=$(tty)
 fi
 
- export MANPATH=~/dotfiles/git-hub/man:$MANPATH
+export MANPATH=~/dotfiles/git-hub/man:$MANPATH
 
- # If not running interactively, don't do anything
- [[ $- == *i* ]] || return
- # Use the system config if it exists
- if [ -f /etc/bashrc ]; then
-     . /etc/bashrc        # --> Read /etc/bashrc, if present.
- elif [ -f /etc/bash.bashrc ]; then
-     . /etc/bash.bashrc   # --> Read /etc/bash.bashrc, if present.
- fi
+# If not running interactively, don't do anything
+[[ $- == *i* ]] || return
+# Use the system config if it exists
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc        # --> Read /etc/bashrc, if present.
+elif [ -f /etc/bash.bashrc ]; then
+    . /etc/bash.bashrc   # --> Read /etc/bash.bashrc, if present.
+fi
 
- # The following lines are only for interactive shells
- [[ $- = *i* ]] || return
+# The following lines are only for interactive shells
+[[ $- = *i* ]] || return
 
- # Use Bash completion, if installed
- if [ -f /etc/bash_completion ]; then
-     . /etc/bash_completion
- fi
+# Use Bash completion, if installed
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
 
- # run setup
- source ~/.shell/scripts/run.sh
+# run setup
+source ~/.shell/scripts/run.sh
 
- # history options
- shopt -s cmdhist histappend histverify
+# history options
+shopt -s cmdhist histappend histverify
 
- HISTCONTROL=ignoreboth:erasedups
- HISTSIZE=2000
- HISTFILESIZE=10000
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=2000
+HISTFILESIZE=10000
 
- if [ $(uname -s) == "Linux" ]; then
-     #swap caps lock -> control
-     setxkbmap -layout us -option ctrl:nocaps
- fi
+if [ $(uname -s) == "Linux" ]; then
+    #swap caps lock -> control
+    setxkbmap -layout us -option ctrl:nocaps
+fi
 
- # proxy settings
- MYAUTH=$(<~/.ssh/myauth)
- MYPROXY=$(<~/.ssh/myproxy)
- export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
- export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
- export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
- export GIT_MYAUTH=~/.ssh/myauth.git
+# proxy settings
+MYAUTH=$(<~/.ssh/myauth)
+MYPROXY=$(<~/.ssh/myproxy)
+export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
+export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:80" "$MYAUTH" "$MYPROXY")
+export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
+export GIT_MYAUTH=~/.ssh/myauth.git
 
- # Load custom aliases, completion, plugins
- for file_type in "aliases" "completions" "plugins"
- do
-     CUSTOM=~/.shell/${file_type}/*.sh
-     for config_file in $CUSTOM
-     do
-	 if [ -e $config_file ]; then
-	     echo $config_file
-	     source $config_file
-	 fi
-     done
- done
+# Load custom aliases, completion, plugins
+for file_type in "aliases" "completions" "plugins"
+do
+    CUSTOM=~/.shell/${file_type}/*.sh
+    for config_file in $CUSTOM
+    do
+	      if [ -e $config_file ]; then
+	          echo $config_file
+	          source $config_file
+	      fi
+    done
+done
 
- unset config_file
+unset config_file

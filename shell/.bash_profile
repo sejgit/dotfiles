@@ -4,6 +4,7 @@
 # 2017 05 05 move above to .bashrc
 # 2017 09 06 add keychain
 # 2017 11 21 add INSIDE_EMACS test
+# 2018 10 26 add for GPG
 
 # if running bash
 if ! [ $INSIDE_EMACS ]
@@ -26,5 +27,9 @@ then
 
     eval `keychain --eval --agents ssh --inherit any id_rsa`
 
-   test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+    export GPG_TTY=$(tty)
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        export PINENTRY_USER_DATA="USE_CURSES=1"
+    fi
 fi

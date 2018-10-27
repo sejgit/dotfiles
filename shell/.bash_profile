@@ -28,6 +28,8 @@ then
     eval `keychain --eval --agents ssh --inherit any id_rsa`
 
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# below are for GPG support & use
     export GPG_TTY=$(tty)
     if [[ -n "$SSH_CONNECTION" ]]; then
         export PINENTRY_USER_DATA="USE_CURSES=1"

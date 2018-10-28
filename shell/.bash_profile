@@ -10,16 +10,18 @@
 # if running bash
 if ! [ $INSIDE_EMACS ]
 then
+    archey -c
     if [ -n "$BASH_VERSION" ]; then
-	# Add tab completion for bash completion 2
-	if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-	    source "$(brew --prefix)/share/bash-completion/bash_completion";
-	elif [ -f /etc/bash_completion ]; then
-	    source /etc/bash_completion;
-	fi;    # include .bashrc if it exists
-	if [ -f "$HOME/.bashrc" ]; then
-	    . "$HOME/.bashrc"
-	fi
+	      # Add tab completion for bash completion 2
+	      if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+	          source "$(brew --prefix)/share/bash-completion/bash_completion";
+            alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+	      elif [ -f /etc/bash_completion ]; then
+	          source /etc/bash_completion;
+	      fi;    # include .bashrc if it exists
+	      if [ -f "$HOME/.bashrc" ]; then
+	          . "$HOME/.bashrc"
+	      fi
     fi
 
     if [ -z "$SSH_AUTH_SOCK" ] ; then

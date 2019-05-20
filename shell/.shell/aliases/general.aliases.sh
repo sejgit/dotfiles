@@ -35,6 +35,9 @@ alias edit="$EDITOR"
 alias pager="$PAGER"
 alias py='python'
 
+alias h='history'
+alias my='cd My\ Documents'
+
 # power
 alias shutdown='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'

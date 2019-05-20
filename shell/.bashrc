@@ -15,8 +15,8 @@ export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
 
 # include .bash_path if it exists
-if [ -f "$HOME/.bash_path" ]; then
-    . "$HOME/.bash_path"
+if [ -f "$HOME.bash_path" ]; then
+    source "$HOME.bash_path"
 fi
 
 
@@ -30,14 +30,14 @@ if [ $(uname -s) == "Darwin" ]; then
     PATH="/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
     export MANPATH="=~/dotfiles/git-hub/man:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    complete -C '$(HOME)/.local/bin/eb_completion' eb
-    complete -C '$(HOME)/.local/bin/aws_completer' aws
+    complete -C '$HOME.local/bin/eb_completion' eb
+    complete -C '$HOME.local/bin/aws_completer' aws
 
     if ! [ $INSIDE_EMACS ]
     then
         # Add tab completion for bash completion 2
-        if [[ -x "$(command -v brew)" ]  &&
-                [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]] ; then
+        if [ -x "$(command -v brew)" ]  &&
+               [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
             source "$(brew --prefix)/share/bash-completion/bash_completion";
             alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
         elif [ -f /etc/bash_completion ]; then
@@ -86,11 +86,13 @@ if [ $(uname -s) == "Darwin" ]; then
     export ARLIBS=$HOME/Projects/sej/Arduino/libraries
 
     export GPG_TTY=$(tty)
+    shellfiles="$HOME\.shell"
 fi
 
 if [ $(uname -s) == "Linux" ]; then
     #swap caps lock -> control
     setxkbmap -layout us -option ctrl:nocaps
+    shellfiles="$HOME\.shell"
 fi
 
 if [ $(uname -o) == "Msys" ]; then
@@ -113,7 +115,7 @@ if [ $(uname -o) == "Msys" ]; then
 
     # tweaks
     LS_COLORS=$LS_COLORS:'di=0;37:' ; export LS_COLORS
-
+    shellfiles="$HOME/dotfiles/shell/.shell"
     cd $HOME
 fi
 
@@ -145,15 +147,15 @@ HISTFILESIZE=10000
 MYAUTH=$(<~/.ssh/myauth)
 MYPROXY=$(<~/.ssh/myproxy)
 MYPORT=$(<~/.ssh/myport)
-export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:" "$MYPORT" "$MYAUTH" "$MYPROXY")
-export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:" "$MYPORT" "$MYAUTH" "$MYPROXY")
+export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
+export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
 export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
 export GIT_MYAUTH=~/.ssh/myauth.git
 
 # Load custom aliases, completion, plugins
 for file_type in "aliases" "completions" "plugins" "scripts"
 do
-    CUSTOM=~/.shell/${file_type}/*.sh
+    CUSTOM=${shellfiles}/${file_type}/*.sh
     for config_file in $CUSTOM
     do
         if [ -e $config_file ]; then
@@ -165,5 +167,4 @@ done
 
 unset config_file
 
-exit 0
 # end of .bashrc

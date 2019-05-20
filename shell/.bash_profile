@@ -11,18 +11,17 @@
 # 2019 05 20 clean-up & add Msys
 
 # some fun
-if ! [ -x "$(command -v archey)" ] ; then
+if [ -x "$(command -v archey)" ] ; then
     archey -c
 fi
 
 # include .bashrc if it exists
-if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+if [ -f "$HOME.bashrc" ]; then
+    source "$HOME.bashrc"
 fi
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval $(ssh-agent)
 fi
 
-exit 0
 # end of .bash_profile

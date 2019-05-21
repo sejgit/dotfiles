@@ -30,8 +30,8 @@ if [ $(uname -s) == "Darwin" ]; then
     PATH="/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
     export MANPATH="=~/dotfiles/git-hub/man:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    complete -C '$HOME.local/bin/eb_completion' eb
-    complete -C '$HOME.local/bin/aws_completer' aws
+    complete -C '$HOME/local/bin/eb_completion' eb
+    complete -C '$HOME/local/bin/aws_completer' aws
 
     if ! [ $INSIDE_EMACS ]
     then
@@ -40,9 +40,9 @@ if [ $(uname -s) == "Darwin" ]; then
                [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
             source "$(brew --prefix)/share/bash-completion/bash_completion";
             alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-        elif [ -f /etc/bash_completion ]; then
-            source /etc/bash_completion;
-        fi;
+            elif [ -f /etc/bash_completion ]; then
+               source /etc/bash_completion
+           fi
 
         eval `keychain --eval --agents ssh --inherit any id_rsa`
 
@@ -54,11 +54,11 @@ if [ $(uname -s) == "Darwin" ]; then
 
         # below are for GPG support & use
         export GPG_TTY=$(tty)
-        if [[ -n "$SSH_CONNECTION" ]]; then
+        if [ -n "$SSH_CONNECTION" ] ; then
             export PINENTRY_USER_DATA="USE_CURSES=1"
         fi
 
-        if [ -f "~/.iterm2_shell_integration.bash"] ; then
+        if [ -f "~/.iterm2_shell_integration.bash" ] ; then
             source ~/.iterm2_shell_integration.bash
         fi
 
@@ -86,13 +86,13 @@ if [ $(uname -s) == "Darwin" ]; then
     export ARLIBS=$HOME/Projects/sej/Arduino/libraries
 
     export GPG_TTY=$(tty)
-    shellfiles="$HOME\.shell"
+    shellfiles="$HOME/.shell"
 fi
 
 if [ $(uname -s) == "Linux" ]; then
     #swap caps lock -> control
     setxkbmap -layout us -option ctrl:nocaps
-    shellfiles="$HOME\.shell"
+    shellfiles="$HOME/.shell"
 fi
 
 if [ $(uname -o) == "Msys" ]; then
@@ -144,13 +144,15 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 
 # proxy settings
-MYAUTH=$(<~/.ssh/myauth)
-MYPROXY=$(<~/.ssh/myproxy)
-MYPORT=$(<~/.ssh/myport)
-export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
-export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
-export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
-export GIT_MYAUTH=~/.ssh/myauth.git
+if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ] ; then
+    MYAUTH=$(<~/.ssh/myauth)
+    MYPROXY=$(<~/.ssh/myproxy)
+    MYPORT=$(<~/.ssh/myport)
+    export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
+    export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
+    export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
+    export GIT_MYAUTH=~/.ssh/myauth.git
+fi
 
 # Load custom aliases, completion, plugins
 for file_type in "aliases" "completions" "plugins" "scripts"

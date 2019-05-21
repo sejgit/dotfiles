@@ -8,7 +8,7 @@ state/
 *.out
 *.out.*
 *.paul*
-shell/.config/git/config
+shell/.config/
 
 ### C ###
 # Object files

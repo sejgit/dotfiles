@@ -10,6 +10,7 @@
 # 2018 02 08 add some completions for darwin aws
 # 2018 04 22 add variables for arduino-mk
 # 2019 05 20 clean-up & add Msys stuff
+# 2019 05 23 add winsymlinks
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
@@ -98,6 +99,12 @@ fi
 if [ $(uname -o) == "Msys" ]; then
     if ! [ $INSIDE_EMACS ] ; then
         PATH="/mingw64/bin:$PATH"
+
+	# USE ONE or NONE but NOT both of below:
+	# native link simulation
+	export MSYS=winsymlinks:nativestrict
+	# symlink simulation on Msys
+	export MSYS=winsymlinks:lnk
 
         # git status on PS1 prompt
         git_branch() {

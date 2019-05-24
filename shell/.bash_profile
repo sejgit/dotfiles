@@ -16,8 +16,8 @@ if [ -x "$(command -v archey)" ] ; then
 fi
 
 # include .bashrc if it exists
-if [ -f "$HOME.bashrc" ]; then
-    source "$HOME.bashrc"
+if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
 fi
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then

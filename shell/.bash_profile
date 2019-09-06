@@ -9,10 +9,16 @@
 # 2018 10 26 add for GPG
 # 2018 10 28 add for autojump
 # 2019 05 20 clean-up & add Msys
+# 2019 09 06 archey3 add
+
 
 # some fun
 if [ -x "$(command -v archey)" ] ; then
     archey -c
+fi
+
+if [ -x "$(command -v archey3)" ] ; then
+    archey3
 fi
 
 # include .bashrc if it exists

@@ -2,11 +2,12 @@
 # aliases/general.sh
 # sej 2016 03 14
 # 2017 03 21 updates
+# 2019 10 03 format with format-all
 
 # List directory contents
 alias sl=ls
 alias ls="ls -G --color=auto"
-alias la='ls -AF'       # Compact view, show hidden
+alias la='ls -AF' # Compact view, show hidden
 alias ll='ls -al'
 alias l='ls -a'
 alias l1='ls -1'
@@ -43,10 +44,9 @@ alias shutdown='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'
 alias halt='sudo halt -p'
 
-which gshuf &> /dev/null
-if [ $? -eq 0 ]
-then
-  alias shuf=gshuf
+which gshuf &>/dev/null
+if [ $? -eq 0 ]; then
+    alias shuf=gshuf
 fi
 
 # my other
@@ -61,4 +61,3 @@ pipoff() {
 pipon() {
     export PIP_REQUIRE_VIRTUALENV=true
 }
-

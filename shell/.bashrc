@@ -11,6 +11,7 @@
 # 2018 04 22 add variables for arduino-mk
 # 2019 05 20 clean-up & add Msys stuff
 # 2019 05 23 add winsymlinks
+# 2019 10 04 reformat with all-format
 
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
@@ -19,7 +20,6 @@ export LANGUAGE="en_US:en"
 if [ -f "$HOME.bash_path" ]; then
     source "$HOME.bash_path"
 fi
-
 
 # OSX
 if [ $(uname -s) == "Darwin" ]; then
@@ -34,32 +34,31 @@ if [ $(uname -s) == "Darwin" ]; then
     complete -C '$HOME/local/bin/eb_completion' eb
     complete -C '$HOME/local/bin/aws_completer' aws
 
-    if ! [ $INSIDE_EMACS ]
-    then
+    if ! [ $INSIDE_EMACS ]; then
         # Add tab completion for bash completion 2
-        if [ -x "$(command -v brew)" ]  &&
-               [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
-            source "$(brew --prefix)/share/bash-completion/bash_completion";
+        if [ -x "$(command -v brew)" ] &&
+               [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+            source "$(brew --prefix)/share/bash-completion/bash_completion"
             alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-            elif [ -f /etc/bash_completion ]; then
-               source /etc/bash_completion
-           fi
+        elif [ -f /etc/bash_completion ]; then
+            source /etc/bash_completion
+        fi
 
-        eval `keychain --eval --agents ssh --inherit any id_rsa`
+        eval $(keychain --eval --agents ssh --inherit any id_rsa)
 
         # for autojump
         # https://github.com/wting/autojump
-        if [ -f "/usr/local/etc/profile.d/autojump.sh" ] ; then
+        if [ -f "/usr/local/etc/profile.d/autojump.sh" ]; then
             source "/usr/local/etc/profile.d/autojump.sh"
         fi
 
         # below are for GPG support & use
         export GPG_TTY=$(tty)
-        if [ -n "$SSH_CONNECTION" ] ; then
+        if [ -n "$SSH_CONNECTION" ]; then
             export PINENTRY_USER_DATA="USE_CURSES=1"
         fi
 
-        if [ -f "~/.iterm2_shell_integration.bash" ] ; then
+        if [ -f "~/.iterm2_shell_integration.bash" ]; then
             source ~/.iterm2_shell_integration.bash
         fi
 
@@ -75,6 +74,7 @@ if [ $(uname -s) == "Darwin" ]; then
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
     source /usr/local/bin/virtualenvwrapper_lazy.sh
     export AUTOENV_ENABLE_LEAVE="True"
+    export PIP_REQUIRE_VIRTUALENV=false
     source ~/.autoenv/activate.sh
 
     export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
@@ -97,18 +97,18 @@ if [ $(uname -s) == "Linux" ]; then
 fi
 
 if [ $(uname -o) == "Msys" ]; then
-    if ! [ $INSIDE_EMACS ] ; then
+    if ! [ $INSIDE_EMACS ]; then
         PATH="/mingw64/bin:$PATH"
 
-	# USE ONE or NONE but NOT both of below:
-	# native link simulation
-	export MSYS=winsymlinks:nativestrict
-	# symlink simulation on Msys
-	export MSYS=winsymlinks:lnk
+        # USE ONE or NONE but NOT both of below:
+        # native link simulation
+        export MSYS=winsymlinks:nativestrict
+        # symlink simulation on Msys
+        export MSYS=winsymlinks:lnk
 
         # git status on PS1 prompt
         git_branch() {
-            git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+            git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
         }
 
         export PS1="\[\e]0;\w\a\]\[\e[32m\]${HOSTNAME,,}:\[\e[33m\]\w\[\e[0m\]\[\033[35m\]\$(git_branch)\[\033[96m\]$\[\033[0m\] "
@@ -121,7 +121,8 @@ if [ $(uname -o) == "Msys" ]; then
     fi
 
     # tweaks
-    LS_COLORS=$LS_COLORS:'di=0;37:' ; export LS_COLORS
+    LS_COLORS=$LS_COLORS:'di=0;37:'
+    export LS_COLORS
     shellfiles="$HOME/dotfiles/shell/.shell"
     cd $HOME
 fi
@@ -133,9 +134,9 @@ fi
 
 # Use the system config if it exists
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc        # --> Read /etc/bashrc, if present.
+    . /etc/bashrc # --> Read /etc/bashrc, if present.
 elif [ -f /etc/bash.bashrc ]; then
-    . /etc/bash.bashrc   # --> Read /etc/bash.bashrc, if present.
+    . /etc/bash.bashrc # --> Read /etc/bash.bashrc, if present.
 fi
 
 # Use Bash completion, if installed
@@ -151,7 +152,7 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 
 # proxy settings
-if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ] ; then
+if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ]; then
     MYAUTH=$(<~/.ssh/myauth)
     MYPROXY=$(<~/.ssh/myproxy)
     MYPORT=$(<~/.ssh/myport)
@@ -162,11 +163,9 @@ if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ] ; then
 fi
 
 # Load custom aliases, completion, plugins
-for file_type in "aliases" "completions" "plugins" "scripts"
-do
+for file_type in "aliases" "completions" "plugins" "scripts"; do
     CUSTOM=${shellfiles}/${file_type}/*.sh
-    for config_file in $CUSTOM
-    do
+    for config_file in $CUSTOM; do
         if [ -e $config_file ]; then
             echo $config_file
             source $config_file

@@ -5,7 +5,3 @@
 # shell to keep wifi on osx
 
 ping -i 5 -n 10.186.192.1
-
-
-
-

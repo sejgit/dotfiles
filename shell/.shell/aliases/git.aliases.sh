@@ -2,7 +2,6 @@
 # git.aliases.sh
 # 2016 03 15
 
-
 # Aliases
 alias gcl='git clone'
 alias ga='git add'
@@ -60,5 +59,3 @@ alias gcaa="git commit -a --amend -C HEAD"
 
 alias gtls='git tag -l | sort -V'
 alias gd="git diff | $EDITOR"
-
-

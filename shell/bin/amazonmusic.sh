@@ -33,55 +33,71 @@ USAGE
 
 main() {
     if [[ $# -eq 0 ]]; then
-	usage;
-	exit 1;
+        usage
+        exit 1
     fi
     local ACTION=(usage)
     while [[ $# -gt 0 ]]; do
-	case "$1" in
-	    play) shift; ACTION=(doAmazonMusicPlayback "Play"); ;;
-	    pause) shift; ACTION=(doAmazonMusicPlayback "Pause"); ;;
-	    next) shift; ACTION=(doAmazonMusicPlayback "Next"); ;;
-	    prev) shift; ACTION=(doAmazonMusicPlayback "Prev"); ;;
-	    is_playing) shift; ACTION=(isAmazonMusicPlaying); ;;
-	    *)
-		fatal "unknown parameter: $1"
-		;;
-	esac
+        case "$1" in
+            play)
+                shift
+                ACTION=(doAmazonMusicPlayback "Play")
+                ;;
+            pause)
+                shift
+                ACTION=(doAmazonMusicPlayback "Pause")
+                ;;
+            next)
+                shift
+                ACTION=(doAmazonMusicPlayback "Next")
+                ;;
+            prev)
+                shift
+                ACTION=(doAmazonMusicPlayback "Prev")
+                ;;
+            is_playing)
+                shift
+                ACTION=(isAmazonMusicPlaying)
+                ;;
+            *)
+                fatal "unknown parameter: $1"
+                ;;
+        esac
     done
 
     "${ACTION[@]}"
 }
 
 isAmazonMusicPlaying() {
-    local VALUE="$(/usr/bin/osascript 2>/dev/null <<'APPLESCRIPT'
+    local VALUE="$(
+    /usr/bin/osascript 2>/dev/null <<'APPLESCRIPT'
 set isplaying to false
 tell application "System Events"
     -- set frontmostProcess to first process where it is frontmost
     tell process "Amazon Music"
-	set pauseMenuItem to null
-	try
-	    set pauseMenuItem to (menu item 1 where its name starts with "Pause") of menu 1 of menu bar item "Playback" of menu bar 1
-	on error errorMsg
-	end try
-	set playMenuItem to null
-	try
-	    set playMenuItem to (menu item 1 where its name starts with "Play") of menu 1 of menu bar item "Playback" of menu bar 1
-	on error errorMsg
-	end try
-	set isplaying to (pauseMenuItem is not null and playMenuItem is null)
+  set pauseMenuItem to null
+  try
+      set pauseMenuItem to (menu item 1 where its name starts with "Pause") of menu 1 of menu bar item "Playback" of menu bar 1
+  on error errorMsg
+  end try
+  set playMenuItem to null
+  try
+      set playMenuItem to (menu item 1 where its name starts with "Play") of menu 1 of menu bar item "Playback" of menu bar 1
+  on error errorMsg
+  end try
+  set isplaying to (pauseMenuItem is not null and playMenuItem is null)
     end tell
     -- set frontmost of frontmostProcess to true
 end tell
 isplaying
 APPLESCRIPT
-)"
+  )"
     if [[ $VALUE == "true" ]]; then
-	log "Amazon Music is playing."
-	exit 0;
+        log "Amazon Music is playing."
+        exit 0
     else
-	log "Amazon Music is not playing."
-	exit 1;
+        log "Amazon Music is not playing."
+        exit 1
     fi
 }
 
@@ -89,12 +105,12 @@ doAmazonMusicPlayback() {
     PREFIX="$1" /usr/bin/osascript 2>/dev/null >&2 -so <<'APPLESCRIPT'
     set PREFIX to system attribute "PREFIX"
     tell application "System Events"
-	-- set frontmostProcess to first process where it is frontmost
-	tell process "Amazon Music"
-	    -- set frontmost to true
-	    click (menu item 1 where its name starts with PREFIX) of menu 1 of menu bar item "Playback" of menu bar 1
-	end tell
-	-- set frontmost of frontmostProcess to true
+  -- set frontmostProcess to first process where it is frontmost
+  tell process "Amazon Music"
+      -- set frontmost to true
+      click (menu item 1 where its name starts with PREFIX) of menu 1 of menu bar item "Playback" of menu bar 1
+  end tell
+  -- set frontmost of frontmostProcess to true
     end tell
 APPLESCRIPT
 }

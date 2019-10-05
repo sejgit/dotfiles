@@ -10,15 +10,19 @@
 # 2018 10 28 add for autojump
 # 2019 05 20 clean-up & add Msys
 # 2019 09 06 archey3 add
-
+# 2019 10 04 reformat with format-all & add archey4
 
 # some fun
-if [ -x "$(command -v archey)" ] ; then
+if [ -x "$(command -v archey)" ]; then
     archey -c
 fi
 
-if [ -x "$(command -v archey3)" ] ; then
+if [ -x "$(command -v archey3)" ]; then
     archey3
+fi
+
+if [ -x "$(command -v archey4)" ]; then
+    archey4
 fi
 
 # include .bashrc if it exists
@@ -26,7 +30,7 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
+if [ -z "$SSH_AUTH_SOCK" ]; then
     eval $(ssh-agent)
 fi
 

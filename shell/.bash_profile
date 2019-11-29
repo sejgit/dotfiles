@@ -33,5 +33,5 @@ fi
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval $(ssh-agent)
 fi
-
+# eval $(keychain --eval --agents ssh --inherit any id_rsa)
 # end of .bash_profile

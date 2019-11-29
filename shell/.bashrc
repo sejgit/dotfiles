@@ -44,8 +44,6 @@ if [ $(uname -s) == "Darwin" ]; then
             source /etc/bash_completion
         fi
 
-        eval $(keychain --eval --agents ssh --inherit any id_rsa)
-
         # for autojump
         # https://github.com/wting/autojump
         if [ -f "/usr/local/etc/profile.d/autojump.sh" ]; then

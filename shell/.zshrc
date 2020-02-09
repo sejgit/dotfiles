@@ -1,5 +1,7 @@
 #!/bin/env zsh
 # .zshrc for use on osx & maybe others later
+# 2020-02-08 init sej
+
 
 emulate -LR zsh # reset zsh options
 

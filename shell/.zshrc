@@ -27,16 +27,40 @@ setopt CORRECT
 setopt CORRECT_ALL
 
 # path setup
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:~/bin~:/.local/bin:~/.shell/scripts:~/dotfiles/git-hub/lib:/usr/local/sbin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin~:/.local/bin:~/.shell/scripts:~/dotfiles/git-hub/lib:/usr/local/sbin:/usr/local/bin:$PATH
 export MANPATH="=~/dotfiles/git-hub/man:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
+fpath=(~/.zsh $fpath)
+
+# zsh completion
+
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+# partial completion suggestions
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+
+# load bashcompinit for some old bash completions
+autoload bashcompinit && bashcompinit
+
+# load and init completion system
+autoload -Uz compinit && compinit
+
 # prompt
-PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{7}%1~%f%b %# '
+source ~/.zsh/git-prompt.sh
+PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{7}%3~%f%b %# '
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
+GIT_PS1_SHOWDIRTYSTATE="true"
+GIT_PS1_SHOWSTASHSTATE="true"
+GIT_PS1_SHOWUNTRACKEDFILES="true"
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS="true"
+GIT_PS1_DESCRIBE_STYLE="default"
+RPROMPT='$(__git_ps1 "(%s)")'
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
 
@@ -213,21 +237,6 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-
-# zsh completion
-
-# case insensitive path-completion
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
-# partial completion suggestions
-zstyle ':completion:*' list-suffixes
-zstyle ':completion:*' expand prefix suffix
-
-# load bashcompinit for some old bash completions
-autoload bashcompinit && bashcompinit
-
-# load and init completion system
-autoload -Uz compinit && compinit
 
 
 # end of .zshrc

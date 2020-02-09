@@ -51,8 +51,6 @@ fi
 
 # my other
 alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
-alias pip3update="pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
-alias pip2update="pip2 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip2 install -U"
 
 pipoff() {
     export PIP_REQUIRE_VIRTUALENV=false

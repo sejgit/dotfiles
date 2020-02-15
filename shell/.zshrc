@@ -29,7 +29,7 @@ setopt CORRECT
 setopt CORRECT_ALL
 
 # path setup
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin~:/.local/bin:~/.shell/scripts:~/dotfiles/git-hub/lib:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:~/.local/bin:~/.shell/scripts:~/dotfiles/git-hub/lib:/usr/local/sbin:/usr/local/bin:$PATH
 export MANPATH="=~/dotfiles/git-hub/man:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 fpath=(~/.zsh $fpath)
@@ -210,6 +210,8 @@ if [ $? -eq 0 ]; then
     alias shuf=gshuf
 fi
 
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 # Arduino setup
 export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java

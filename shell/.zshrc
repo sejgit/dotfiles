@@ -69,7 +69,8 @@ zstyle ':vcs_info:*' enable git
 
 # below are for GPG support & use
 export GPG_TTY=$(tty)
-if [ -n "$SSH_CONNECTION" ]; then
+if [[ -n "$SSH_CONNECTION" ]]
+then
     export PINENTRY_USER_DATA="USE_CURSES=1"
 fi
 export GPG_TTY=$(tty)
@@ -91,9 +92,11 @@ pipon() {
 # Emacs aliases
 
 #set-up for darwin (not always used)
-#if [ $(uname -s) == "Darwin" ]; then
-#    alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
-#fi
+if [[ $(uname -s) == "Darwin" ]]
+then
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+fi
 
 # use emacsclient for programs opening an editor
 VISUAL='e'
@@ -101,7 +104,6 @@ EDITOR="$VISUAL"
 
 alias em='emacs'
 alias en='emacs -nw'
-# alias e='emacsclient -n'
 alias et='emacsclient -t'
 alias ed='emacs --daemon'
 alias E='SUDO_EDITOR=emacsclient sudo -e'
@@ -225,7 +227,8 @@ export ARLIBS=$HOME/Projects/sej/Arduino/libraries
 
 
 # proxy settings
-if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ]; then
+if [[ -f ~/.ssh/myauth ]] && [[ -f ~/.ssh/myproxy ]] && [[ -f ~/.ssh/myport ]]
+then
     MYAUTH=$(<~/.ssh/myauth)
     MYPROXY=$(<~/.ssh/myproxy)
     MYPORT=$(<~/.ssh/myport)
@@ -236,11 +239,11 @@ if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ]; then
 fi
 
 # Go development
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+    export GOPATH="${HOME}/.go"
+    export GOROOT="$(brew --prefix golang)/libexec"
+    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+    test -d "${GOPATH}" || mkdir "${GOPATH}"
+    test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 
-# end of .zshrc
+    # end of .zshrc

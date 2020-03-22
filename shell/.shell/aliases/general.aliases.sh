@@ -34,7 +34,12 @@ alias cls='clear'
 
 alias edit="$EDITOR"
 alias pager="$PAGER"
+
+alias python3='/usr/local/bin/python3'
+alias python='/usr/local/bin/python3'
 alias py='python'
+alias pip3='/usr/local/opt/python/bin/pip3'
+alias pip='/usr/local/opt/python/bin/pip3'
 
 alias h='history'
 alias my='cd My\ Documents'

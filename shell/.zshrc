@@ -198,11 +198,11 @@ alias cls='clear'
 alias edit="$EDITOR"
 alias pager="$PAGER"
 
-alias python3='/usr/local/bin/python3'
-alias python='/usr/local/bin/python3'
-alias py='python'
-alias pip3='/usr/local/opt/python/bin/pip3'
-alias pip='/usr/local/opt/python/bin/pip3'
+# alias python3='/usr/local/bin/python3'
+# alias python='/usr/local/bin/python3'
+# alias py='python'
+# alias pip3='/usr/local/opt/python/bin/pip3'
+# alias pip='/usr/local/opt/python/bin/pip3'
 
 alias h='history'
 alias my='cd My\ Documents'
@@ -217,8 +217,23 @@ if [ $? -eq 0 ]; then
     alias shuf=gshuf
 fi
 
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
+if [ -e /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]
+then
+    source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+    bindkey "^[[A" history-substring-search-up
+    bindkey "^[[B" history-substring-search-down
+else
+    if [ -e ~/.config/zsh-history-substring-search.zsh]
+    then
+        source ~/.config/zsh-history-substring-search.zsh
+        bindkey "^[[A" history-substring-search-up
+        bindkey "^[[B" history-substring-search-down
+    else
+        bindkey "^[[A" history-search-backward
+        bindkey "^[[B" history-search-forward
+    fi
+fi
+
 
 # Arduino setup
 export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
@@ -244,11 +259,14 @@ then
 fi
 
 # Go development
-    export GOPATH="${HOME}/.go"
-    export GOROOT="$(brew --prefix golang)/libexec"
-    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-    test -d "${GOPATH}" || mkdir "${GOPATH}"
-    test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 
-    # end of .zshrc
+# end of .zshrc
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi

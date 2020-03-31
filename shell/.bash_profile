@@ -1,37 +1,113 @@
 #!/bin/env bash
 # .bash_profile
 
-# sej 2016 03 16
-# 2017 04 23 add bash_path for Darwin if exists
-# 2017 05 05 move above to .bashrc
-# 2017 09 06 add keychain
-# 2017 11 21 add INSIDE_EMACS test
-# 2018 10 26 add for GPG
-# 2018 10 28 add for autojump
-# 2019 05 20 clean-up & add Msys
-# 2019 09 06 archey3 add
-# 2019 10 04 reformat with format-all & add archey4
+# sej 2020 03 01 init
 
-# some fun
-if [ -x "$(command -v archey)" ]; then
-    archey -c
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+
+# include .bash_path if it exists
+if [ -f "$HOME.bash_path" ]; then
+    source "$HOME.bash_path"
 fi
 
-if [ -x "$(command -v archey3)" ]; then
-    archey3
+# OSX
+if [ $(uname -s) == "Darwin" ]; then
+    # path setup
+    PATH="~/bin:~/.local/bin:~/.shell/scripts:~/dotfiles/git-hub/lib:/usr/local/sbin:$PATH"
+    PATH="/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    PATH="$PATH:/sbin:/bin:/usr/sbin:/usr/bin"
+    export MANPATH="=~/dotfiles/git-hub/man:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+    if ! [ $INSIDE_EMACS ]; then
+        # Add tab completion for bash completion 2
+        if [ -x "$(command -v brew)" ] &&
+               [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+            source "$(brew --prefix)/share/bash-completion/bash_completion"
+            alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+        elif [ -f /etc/bash_completion ]; then
+            source /etc/bash_completion
+        fi
+
+        # for autojump
+        # https://github.com/wting/autojump
+        if [ -f "/usr/local/etc/profile.d/autojump.sh" ]; then
+            source "/usr/local/etc/profile.d/autojump.sh"
+        fi
+
+        # below are for GPG support & use
+        export GPG_TTY=$(tty)
+        if [ -n "$SSH_CONNECTION" ]; then
+            export PINENTRY_USER_DATA="USE_CURSES=1"
+        fi
+
+        if [ -f "~/.iterm2_shell_integration.bash" ]; then
+            source ~/.iterm2_shell_integration.bash
+        fi
+
+    else
+        export PS1="\w> "
+    fi
+
+    # PYTHON settings for startup
+    export PYTHONSTARTUP=$HOME/.pythonstartup
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Projects
+    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+    export AUTOENV_ENABLE_LEAVE="True"
+    export PIP_REQUIRE_VIRTUALENV=false
+    source ~/.autoenv/activate.sh
+
+    export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
+    export ARDMK_DIR=/usr/local/opt/arduino-mk
+    #export AVR_TOOLS_DIR=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr
+    export MONITOR_PORT=/dev/tty.usbmodem1441
+    export BOARD_TAG=mega
+    export BOARD_SUB=atmega2560
+    export ESPLIBS=$HOME/Library/Arduino15/packages/esp8266/hardware/esp8266/2.4.1/Libraries
+    export ARLIBS=$HOME/Projects/sej/Arduino/libraries
+
+    export GPG_TTY=$(tty)
+    shellfiles="$HOME/.shell"
 fi
 
-if [ -x "$(command -v archey4)" ]; then
-    archey4
+if [ $(uname -s) == "Linux" ]; then
+    #swap caps lock -> control
+    setxkbmap -layout us -option ctrl:nocaps
+    shellfiles="$HOME/.shell"
 fi
 
-# include .bashrc if it exists
-if [ -f "$HOME/.bashrc" ]; then
-    source "$HOME/.bashrc"
+if [ $(uname -o) == "Msys" ]; then
+    if ! [ $INSIDE_EMACS ]; then
+        PATH="/mingw64/bin:$PATH"
+
+        # USE ONE or NONE but NOT both of below:
+        # native link simulation
+        export MSYS=winsymlinks:nativestrict
+        # symlink simulation on Msys
+        export MSYS=winsymlinks:lnk
+
+        # git status on PS1 prompt
+        git_branch() {
+            git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+        }
+
+        export PS1="\[\e]0;\w\a\]\[\e[32m\]${HOSTNAME,,}:\[\e[33m\]\w\[\e[0m\]\[\033[35m\]\$(git_branch)\[\033[96m\]$\[\033[0m\] "
+
+        # use xon/xoff control
+        stty -ixon
+
+    else
+        export PS1="\w> "
+    fi
+
+    # tweaks
+    LS_COLORS=$LS_COLORS:'di=0;37:'
+    export LS_COLORS
+    shellfiles="$HOME/dotfiles/shell/.shell"
+    cd $HOME
 fi
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval $(ssh-agent)
-fi
-# eval $(keychain --eval --agents ssh --inherit any id_rsa)
-# end of .bash_profile
+# end of .bashrc

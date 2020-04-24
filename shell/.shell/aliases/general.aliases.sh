@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # aliases/general.sh
 # sej 2016 03 14
 # 2017 03 21 updates

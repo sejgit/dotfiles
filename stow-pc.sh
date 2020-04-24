@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # stow-pc.sh
 
 # sej 2019 05 24 init

@@ -1,4 +1,4 @@
-#! /bin/env bash
+#! /usr/bin/env bash
 # .bash_logout
 
 # this file is sourced on logout

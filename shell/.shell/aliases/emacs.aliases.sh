@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # emacs.aliases.sh
 # sej 2016 03 15
 # sej 2017 05 08 emacs for darwin
@@ -21,4 +21,3 @@ alias ed='emacs --daemon'
 alias E='SUDO_EDITOR=emacsclient sudo -e'
 
 alias e='emacsclient --alternate-editor="" --create-frame'
-

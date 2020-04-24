@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # git.aliases.sh
 # 2016 03 15
 

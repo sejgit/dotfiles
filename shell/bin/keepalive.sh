@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # keepalive.sh
 # 2017 10 13 sej init
 

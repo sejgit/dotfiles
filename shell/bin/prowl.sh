@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 # Script by aus
 # Requirements: curl
 # Usage: ./prowl.sh priority(-2 to 2) appname description

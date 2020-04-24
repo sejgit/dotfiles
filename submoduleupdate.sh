@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # .bashrc
 # sej 2016 09 15
 

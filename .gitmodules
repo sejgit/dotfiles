@@ -16,3 +16,6 @@
 [submodule "liquidprompt"]
 	path = liquidprompt
 	url = https://github.com/nojhan/liquidprompt
+[submodule "zsh-autocomplete"]
+	path = zsh-autocomplete
+	url = http://github.com/marlonrichert/zsh-autocomplete

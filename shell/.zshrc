@@ -28,20 +28,22 @@ setopt CORRECT_ALL
 
 # zsh completion
 
+# load bashcompinit for some old bash completions
+autoload bashcompinit && bashcompinit
+
+# load and init completion system
+zmodload -i zsh/complist
+autoload -U compinit
+compinit
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/dotfiles/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 # case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 # partial completion suggestions
 zstyle ':completion:*' list-suffixes
 zstyle ':completion:*' expand prefix suffix
-
-# load bashcompinit for some old bash completions
-autoload bashcompinit && bashcompinit
-
-# load and init completion system
-autoload -Uz compinit
-compinit
-zmodload -i zsh/complist
 
 # use the nice menu
 zstyle ':completion:*:*:*:*:*' menu select
@@ -205,22 +207,22 @@ if [ $? -eq 0 ]; then
     alias shuf=gshuf
 fi
 
-if [ -e /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]
-then
-    source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-    bindkey "^[[A" history-substring-search-up
-    bindkey "^[[B" history-substring-search-down
-else
-    if [ -e ~/.config/zsh-history-substring-search.zsh]
-    then
-        source ~/.config/zsh-history-substring-search.zsh
-        bindkey "^[[A" history-substring-search-up
-        bindkey "^[[B" history-substring-search-down
-    else
-        bindkey "^[[A" history-search-backward
-        bindkey "^[[B" history-search-forward
-    fi
-fi
+# if [ -e /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]
+# then
+#     source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+#     bindkey "^[[A" history-substring-search-up
+#     bindkey "^[[B" history-substring-search-down
+# else
+#     if [ -e ~/.config/zsh-history-substring-search.zsh]
+#     then
+#         source ~/.config/zsh-history-substring-search.zsh
+#         bindkey "^[[A" history-substring-search-up
+#         bindkey "^[[B" history-substring-search-down
+#     else
+#         bindkey "^[[A" history-search-backward
+#         bindkey "^[[B" history-search-forward
+#     fi
+# fi
 
 
 # end of .zshrc

@@ -233,5 +233,11 @@ fi
 
 test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
 
-archey -p
+if [[ $(uname -s) == "Darwin" ]]
+then
+    archey -p
+else
+    archey
+fi
+
 # end of .zshrc

@@ -84,8 +84,8 @@ pipon() {
 #set-up for darwin (not always used)
 if [[ $(uname -s) == "Darwin" ]]
 then
-    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-    alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+    #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 fi
 
 # use emacsclient for programs opening an editor

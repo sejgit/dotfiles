@@ -202,12 +202,19 @@ alias shutdown='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'
 alias halt='sudo halt -p'
 
+# gnu shuf for random permutations
 which gshuf &>/dev/null
 if [ $? -eq 0 ]; then
     alias shuf=gshuf
 fi
 
-# end of .zshrc
+# use most for paging if exist
+if command -v most 1>/dev/null 2>&1; then
+    export PAGER='most'
+    alias less=most
+fi
+
+# set up pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"

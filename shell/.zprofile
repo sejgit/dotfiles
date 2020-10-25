@@ -53,12 +53,4 @@ then
     export ESPIDF=${MICROPYTHON}/esp-idf
 fi
 
-
-# path setup
-export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.shell/scripts:${HOME}/dotfiles/git-hub/lib:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/Library/TeX/texbin:/opt/X11/bin:$PATH:${GOPATH}/bin:${GOROOT}/bin:${MICROPYTHON}/crosstool-NG/builds/xtensa-esp32-elf/bin"
-
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:${HOME}/dotfiles/git-hub/man"
-
-fpath=(~/.zsh $fpath)
-
 # end of .zprofile

@@ -3,67 +3,78 @@
 # 2020-02-08 init sej
 # 2020-04-04 updates between .zshrc & .zshenv
 
-
-# set vars
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-SAVEHIST=5000
-HISTSIZE=2000
-
-
-# set options
-emulate -LR zsh # reset zsh options
-setopt AUTO_CD
-setopt NO_CASE_GLOB
-setopt EXTENDED_HISTORY
-setopt SHARE_HISTORY
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_FIND_NO_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
-setopt CORRECT
-setopt CORRECT_ALL
-
-# zsh completion
-
-# load bashcompinit for some old bash completions
-autoload bashcompinit && bashcompinit
-
-# load and init completion system
+# Enable autocompletions
+autoload -Uz compinit
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+if [ $(date +'%j') != $updated_at ]; then
+  compinit -i
+else
+  compinit -C -i
+fi
 zmodload -i zsh/complist
-autoload -U compinit
-compinit
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/dotfiles/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-# case insensitive path-completion
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+# Save history so we get auto suggestions
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
 
-# partial completion suggestions
-zstyle ':completion:*' list-suffixes
-zstyle ':completion:*' expand prefix suffix
+# Options
+setopt auto_cd # cd by typing directory name if it's not a command
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks # remove superfluous blanks from history items
+setopt inc_append_history # save history entries as soon as they are entered
+setopt share_history # share history between different instances
+setopt correct_all # autocorrect commands
+setopt interactive_comments # allow comments in interactive shells
 
-# use the nice menu
-zstyle ':completion:*:*:*:*:*' menu select
+# Improve autocompletion style
+zstyle ':completion:*' menu select # select completions with arrow keys
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
-# prompt
-source ~/.zsh/git-prompt.sh
-PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{7}%3~%f%b %# '
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-GIT_PS1_SHOWDIRTYSTATE="true"
-GIT_PS1_SHOWSTASHSTATE="true"
-GIT_PS1_SHOWUNTRACKEDFILES="true"
-GIT_PS1_SHOWUPSTREAM="auto"
-GIT_PS1_SHOWCOLORHINTS="true"
-GIT_PS1_DESCRIBE_STYLE="default"
-RPROMPT='$(__git_ps1 "(%s)")'
-zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
-zstyle ':vcs_info:*' enable git
+if command -v antibody 1>/dev/null 2>&1; then
+    # Load antibody plugin manager
+    source <(antibody init)
+
+    # Plugins
+    antibody bundle zdharma/fast-syntax-highlighting
+    antibody bundle zsh-users/zsh-autosuggestions
+    antibody bundle zsh-users/zsh-history-substring-search
+    antibody bundle zsh-users/zsh-completions
+    antibody bundle marzocchi/zsh-notify
+    antibody bundle buonomo/yarn-completion
+
+    # Keybindings
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+    bindkey '^[[3~' delete-char
+    bindkey '^[3;5~' delete-char
+
+    # Theme
+    SPACESHIP_PROMPT_ORDER=(
+        user          # Username section
+        dir           # Current directory section
+        host          # Hostname section
+        git           # Git section (git_branch + git_status)
+        hg            # Mercurial section (hg_branch  + hg_status)
+        aws           # Amazon Web Services section
+        venv          # virtualenv section
+        pyenv         # pyenv section
+        exec_time     # Execution time
+        line_sep      # Line break
+        jobs          # Background jobs indicator
+        exit_code     # Exit code section
+        char          # Prompt character
+    )
+    SPACESHIP_PROMPT_ADD_NEWLINE=false
+    SPACESHIP_CHAR_SYMBOL="❯"
+    SPACESHIP_CHAR_SUFFIX=" "
+
+    antibody bundle denysdovhan/spaceship-prompt
+fi
 
 
 # aliases
@@ -228,5 +239,7 @@ then
 else
     archey
 fi
+
+export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.shell/scripts:${HOME}/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/Library/TeX/texbin:/opt/X11/bin:$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # end of .zshrc

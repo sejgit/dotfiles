@@ -44,7 +44,10 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle zsh-users/zsh-autosuggestions
     antibody bundle zsh-users/zsh-history-substring-search
     antibody bundle zsh-users/zsh-completions
-    antibody bundle marzocchi/zsh-notify
+    if [[ $(uname -s) == "Darwin" ]]
+    then
+        antibody bundle marzocchi/zsh-notify
+    fi
     antibody bundle buonomo/yarn-completion
 
     # Keybindings

@@ -2,6 +2,8 @@
 # .zshrc for use on osx & maybe others later
 # 2020-02-08 init sej
 # 2020-04-04 updates between .zshrc & .zshenv
+# 2020-10-29 fix for non-darwin and clean-up
+
 
 # Enable autocompletions
 autoload -Uz compinit
@@ -245,6 +247,6 @@ fi
 
 export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.shell/scripts:${HOME}/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/Library/TeX/texbin:/opt/X11/bin:$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
-# end of .zshrc
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# end of .zshrc

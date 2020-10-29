@@ -1,0 +1,70 @@
+{
+	"allow_overriding": true,
+	"parallel_loading": true,
+  // changed supppress_warnings from fase to true for the sake of rpi
+	"suppress_warnings": true,
+	"entries": {
+		"User": true,
+		"Hostname": true,
+		"Model": true,
+		"Distro": true,
+		"Kernel": true,
+		"Uptime": true,
+		"Processes": true,
+		"WindowManager": true,
+		"DesktopEnvironment": true,
+		"Shell": true,
+		"Terminal": true,
+		"Packages": true,
+		"Temperature": true,
+		"CPU": true,
+		"GPU": true,
+		"RAM": true,
+		"Disk": true,
+		"LAN_IP": true,
+		"WAN_IP": true
+	},
+	"colors_palette": {
+		"use_unicode": true,
+		"honor_ansi_color": true
+	},
+	"disk": {
+		"show_filesystems": ["local"],
+		"combine_total": true,
+		"disk_labels": null,
+		"hide_entry_name": null
+	},
+	"default_strings": {
+		"no_address": "No Address",
+		"not_detected": "Not detected",
+		"virtual_environment": "Virtual Environment"
+	},
+	"gpu": {
+		"one_line": true,
+		"max_count": 2
+	},
+	"ip_settings": {
+		"lan_ip_max_count": 2,
+		"lan_ip_v6_support": true,
+		"wan_ip_v6_support": true
+	},
+	"limits": {
+		"ram": {
+			"warning": 33.3,
+			"danger": 66.7
+		},
+		"disk": {
+			"warning": 50,
+			"danger": 75
+		}
+	},
+	"temperature": {
+		"char_before_unit": " ",
+		"sensors_chipsets": [],
+		"use_fahrenheit": false
+	},
+	"timeout": {
+		"ipv4_detection": 1,
+		"ipv6_detection": 1
+	}
+}

@@ -1,7 +1,6 @@
 {
 	"allow_overriding": true,
 	"parallel_loading": true,
-  // changed supppress_warnings from fase to true for the sake of rpi
 	"suppress_warnings": true,
 	"entries": {
 		"User": true,

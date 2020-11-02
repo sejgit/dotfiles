@@ -26,4 +26,9 @@ PERL_LOCAL_LIB_ROOT="/Users/stephenjenkins/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_L
 PERL_MB_OPT="--install_base \"/Users/stephenjenkins/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/stephenjenkins/perl5"; export PERL_MM_OPT;
 
+# virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export WORKON_HOME=${HOME}/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
 # end of .zshenv

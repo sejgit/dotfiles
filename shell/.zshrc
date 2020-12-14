@@ -204,12 +204,6 @@ alias cls='clear'
 alias edit="$EDITOR"
 alias pager="$PAGER"
 
-# alias python3='/usr/local/bin/python3'
-# alias python='/usr/local/bin/python3'
-# alias py='python'
-# alias pip3='/usr/local/opt/python/bin/pip3'
-# alias pip='/usr/local/opt/python/bin/pip3'
-
 alias h='history'
 alias my='cd My\ Documents'
 
@@ -245,7 +239,9 @@ else
     archey
 fi
 
-export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.shell/scripts:${HOME}/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/llvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/Library/TeX/texbin:/opt/X11/bin:$PATH:${GOPATH}/bin:${GOROOT}/bin"
+PATH="/Users/stephenjenkins/.pyenv/shims:/Users/stephenjenkins/bin:/Users/stephenjenkins/.local/bin:/Users/stephenjenkins/.shell/scripts:/Users/stephenjenkins/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/llvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/stephenjenkins/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
+MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:/Users/stephenjenkins/dotfiles/git-hub/man"; export MANPATH;
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

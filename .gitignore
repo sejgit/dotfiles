@@ -173,3 +173,6 @@ pip-delete-this-directory.txt
 # virtualenv
 venv/
 ENV/
+/shell/.config/configstore/
+/shell/.config/hub
+/shell/.config/proselint/

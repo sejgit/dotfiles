@@ -174,12 +174,12 @@ alias gtls='git tag -l | sort -V'
 alias gd="git diff | $EDITOR"
 
 # List directory contents
-alias sl=ls
-alias ls="ls -G --color=auto"
-alias la='ls -AF' # Compact view, show hidden
-alias ll='ls -al'
-alias l='ls -a'
-alias l1='ls -1'
+alias sl='gls'
+alias ls="gls -G --color=auto"
+alias la='gls -AF --color=auto' # Compact view, show hidden
+alias ll='gls -al --color=auto'
+alias l='gls -a --color=auto'
+alias l1='gls -1 --color=auto'
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -234,13 +234,18 @@ test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zs
 
 if [[ $(uname -s) == "Darwin" ]]
 then
-    archey -p
+    screenfetch -D 'Mac OS x'
 else
-    archey
+    screenfetch
 fi
 
-PATH="/Users/stephenjenkins/.pyenv/shims:/Users/stephenjenkins/bin:/Users/stephenjenkins/.local/bin:/Users/stephenjenkins/.shell/scripts:/Users/stephenjenkins/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/llvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/stephenjenkins/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
-MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:/Users/stephenjenkins/dotfiles/git-hub/man"; export MANPATH;
+if [[ $(uname -s) == "Darwin" ]]
+then
+    PATH="/Users/stephenjenkins/.pyenv/shims:/Users/stephenjenkins/bin:/Users/stephenjenkins/.local/bin:/Users/stephenjenkins/.shell/scripts:/Users/stephenjenkins/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/llvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/stephenjenkins/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
+    MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:/Users/stephenjenkins/dotfiles/git-hub/man"; export MANPATH;
+else
+# path
+fi
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

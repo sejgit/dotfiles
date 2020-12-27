@@ -174,12 +174,22 @@ alias gtls='git tag -l | sort -V'
 alias gd="git diff | $EDITOR"
 
 # List directory contents
+if [[ $(uname -s) == "Darwin" ]]
+then
 alias sl='gls'
 alias ls="gls -G --color=auto"
 alias la='gls -AF --color=auto' # Compact view, show hidden
 alias ll='gls -al --color=auto'
 alias l='gls -a --color=auto'
 alias l1='gls -1 --color=auto'
+else
+alias sl='ls'
+alias ls="ls -G --color=auto"
+alias la='ls -AF --color=auto' # Compact view, show hidden
+alias ll='ls -al --color=auto'
+alias l='ls -a --color=auto'
+alias l1='ls -1 --color=auto'
+fi
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."

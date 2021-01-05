@@ -61,13 +61,23 @@ if [ $(uname -s) == "Darwin" ]; then
 
     export GPG_TTY=$(tty)
     shellfiles="$HOME/.shell"
+
+    # Go development
+    export GOPATH="${HOME}/.go"
+    export GOROOT="$(brew --prefix golang)/libexec"
+    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+    test -d "${GOPATH}" || mkdir "${GOPATH}"
+    test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+
 fi
+
 
 if [ $(uname -s) == "Linux" ]; then
     #swap caps lock -> control
     setxkbmap -layout us -option ctrl:nocaps
     shellfiles="$HOME/.shell"
 fi
+
 
 if [ $(uname -o) == "Msys" ]; then
     if ! [ $INSIDE_EMACS ]; then
@@ -110,13 +120,6 @@ if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ]; then
     export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
     export GIT_MYAUTH=~/.ssh/myauth.git
 fi
-
-# Go development
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 
 # end of .bash_profile

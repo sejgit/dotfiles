@@ -176,3 +176,5 @@ ENV/
 /shell/.config/configstore/
 /shell/.config/hub
 /shell/.config/proselint/
+/shell/.config/iterm2/
+/shell/bin/ccls

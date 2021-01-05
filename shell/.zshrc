@@ -3,7 +3,7 @@
 # 2020-02-08 init sej
 # 2020-04-04 updates between .zshrc & .zshenv
 # 2020-10-29 fix for non-darwin and clean-up
-
+# 2021-01-04 add eln stuff
 
 # Enable autocompletions
 autoload -Uz compinit
@@ -46,6 +46,7 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle zsh-users/zsh-autosuggestions
     antibody bundle zsh-users/zsh-history-substring-search
     antibody bundle zsh-users/zsh-completions
+    antibody bundle bobthecow/git-flow-completions
     if [[ $(uname -s) == "Darwin" ]]
     then
         antibody bundle marzocchi/zsh-notify
@@ -257,7 +258,10 @@ else
 # path
 fi
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# start pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
 
 # end of .zshrc

@@ -46,7 +46,7 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle zsh-users/zsh-autosuggestions
     antibody bundle zsh-users/zsh-history-substring-search
     antibody bundle zsh-users/zsh-completions
-    antibody bundle bobthecow/git-flow-completions
+    antibody bundle bobthecow/git-flow-completion
     if [[ $(uname -s) == "Darwin" ]]
     then
         antibody bundle marzocchi/zsh-notify
@@ -237,6 +237,7 @@ fi
 
 # set up pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
+    export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
@@ -260,8 +261,9 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# start pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
+# guile setup
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 
 # end of .zshrc

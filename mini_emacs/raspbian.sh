@@ -5,6 +5,7 @@ sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-keys 648ACFD622F3D13
 echo -e "deb http://deb.debian.org/debian buster-backports main\n" | sudo tee /etc/apt/sources.list
 sudo apt update
 sudo apt install -t buster-backports emacs-nox
+rm -rf ~/.emacs.d/
 cp mini_emacs ~/.emacs.d
 emacs --version
 sudo rm -rf /etc/emacs/site-start.d

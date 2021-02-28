@@ -6,8 +6,7 @@ sudo su -c 'echo -e "deb http://deb.debian.org/debian buster-backports main\n" >
 sudo apt update
 sudo apt install -t buster-backports emacs-nox
 rm -rf ~/.emacs.d/
-cp mini_emacs ~/.emacs.d
+cp -avr ~/dotfiles/mini_emacs/ ~/.emacs.d/
 emacs --version
 sudo rm -rf /etc/emacs/site-start.d
 sudo mkdir /etc/emacs/site-start.d
-emacs

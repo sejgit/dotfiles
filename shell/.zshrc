@@ -47,6 +47,7 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle zsh-users/zsh-history-substring-search
     antibody bundle zsh-users/zsh-completions
     antibody bundle bobthecow/git-flow-completion
+    antibody bundle junegunn/fzf
     if [[ $(uname -s) == "Darwin" ]]
     then
         antibody bundle marzocchi/zsh-notify
@@ -258,8 +259,6 @@ then
 else
 # path
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # guile setup
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"

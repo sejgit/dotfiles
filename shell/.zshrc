@@ -42,7 +42,7 @@ if command -v antibody 1>/dev/null 2>&1; then
     source <(antibody init)
 
     # Plugins
-    antibody bundle zdharma/fast-syntax-highlighting
+    antibody bundle zsh-users/zsh-syntax-highlighting
     antibody bundle zsh-users/zsh-autosuggestions
     antibody bundle zsh-users/zsh-history-substring-search
     antibody bundle zsh-users/zsh-completions

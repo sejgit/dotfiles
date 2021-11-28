@@ -4,6 +4,7 @@
 # 2020-04-04 updates between .zshrc & .zshenv
 # 2020-10-29 fix for non-darwin and clean-up
 # 2021-01-04 add eln stuff
+# 2021-11-27 mods for Emacs shell mode
 
 # Enable autocompletions
 autoload -Uz compinit
@@ -105,6 +106,20 @@ then
     #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 fi
+
+case ${INSIDE_EMACS/*,/} in
+  (comint)
+    echo 'Inside Emacs!'
+    export TERM='xterm-256color'
+    ;;
+  (tramp)
+    echo "We somehow have a dumb Emacs terminal." >&2
+    ;;
+  ("")
+    test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
+    ;;
+esac
+
 
 # use emacsclient for programs opening an editor
 VISUAL='e'
@@ -242,8 +257,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
-
-test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
 
 if [[ $(uname -s) == "Darwin" ]]
 then

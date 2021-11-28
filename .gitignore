@@ -9,6 +9,7 @@ state/
 *.out.*
 *.paul*
 shell/.config/Autodesk/
+shell/.config/Karabiner/automatic_backups/
 
 ### C ###
 # Object files

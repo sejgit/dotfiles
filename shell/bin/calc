@@ -1,0 +1,2 @@
+#!/bin/sh
+emacsclient -a EDITOR -F 40x20-0-0 -eval '(progn (calc) (message "") (delete-other-windows) (sej/frame-resize-l2))' &

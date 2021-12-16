@@ -5,6 +5,7 @@
 # 2020-10-29 fix for non-darwin and clean-up
 # 2021-01-04 add eln stuff
 # 2021-11-27 mods for Emacs shell mode
+# 2021-12-16 add OSX keychain environment variables
 
 # Enable autocompletions
 autoload -Uz compinit
@@ -277,5 +278,20 @@ fi
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+
+# OSX keychain environment variables
+if [[ $(uname -s) == "Darwin" ]]
+then
+# If you use bash, this technique isn't really zsh specific. Adapt as needed.
+source ~/dotfiles/shell/keychain-environment-variables.sh
+
+# AWS configuration example, after doing:
+# $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
+#       provide: "AKIAYOURACCESSKEY"
+export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
+# $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
+#       provide: "j1/yoursupersecret/password"
+export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
+fi
 
 # end of .zshrc

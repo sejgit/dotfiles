@@ -7,6 +7,9 @@
 # 2021-11-27 mods for Emacs shell mode
 # 2021-12-16 add OSX keychain environment variables
 
+# Emacs term solution
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # Enable autocompletions
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -50,6 +53,18 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle zsh-users/zsh-completions
     antibody bundle bobthecow/git-flow-completion
     antibody bundle junegunn/fzf
+    antibody bundle ohmyzsh/plugins/sudo
+    antibody bundle ohmyzsh/plugins/web-search
+    antibody bundle ohmyzsh/plugins/copydir
+    antibody bundle ohmyzsh/plugins/copyfile
+    antibody bundle ohmyzsh/plugins/copybuffer
+    antibody bundle ohmyzsh/plugins/dirhistory
+    antibody bundle ohmyzsh/plugins/history
+    if [[ $(uname -s) == "Darwin" ]]
+    then
+      antibody bundle zsh-users/macos
+    fi
+
     if [[ $(uname -s) == "Darwin" ]]
     then
         antibody bundle marzocchi/zsh-notify

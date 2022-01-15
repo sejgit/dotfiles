@@ -53,13 +53,13 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle zsh-users/zsh-completions
     antibody bundle bobthecow/git-flow-completion
     antibody bundle junegunn/fzf
-    antibody bundle ohmyzsh/plugins/sudo
-    antibody bundle ohmyzsh/plugins/web-search
-    antibody bundle ohmyzsh/plugins/copydir
-    antibody bundle ohmyzsh/plugins/copyfile
-    antibody bundle ohmyzsh/plugins/copybuffer
-    antibody bundle ohmyzsh/plugins/dirhistory
-    antibody bundle ohmyzsh/plugins/history
+    antibody bundle ohmyzsh/ohmyzsh/plugins/sudo
+    antibody bundle ohmyzsh/ohmyzsh/plugins/web-search
+    antibody bundle ohmyzsh/ohmyzsh/plugins/copydir
+    antibody bundle ohmyzsh/ohmyzsh/plugins/copyfile
+    antibody bundle ohmyzsh/ohmyzsh/plugins/copybuffer
+    antibody bundle ohmyzsh/ohmyzsh/plugins/dirhistory
+    antibody bundle ohmyzsh/ohmyzsh/plugins/history
     if [[ $(uname -s) == "Darwin" ]]
     then
       antibody bundle zsh-users/macos

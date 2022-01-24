@@ -312,7 +312,7 @@ fi
 # needed to ensure Emacs key bindings in the CLI
 bindkey -e
 
-if [[ ! -f /usr/share/nvm/init-nvm.sh ]] && [[ $(uname -s) = "Linux" ]]; then
+if [[ -f /usr/share/nvm/init-nvm.sh ]] && [[ $(uname -s) = "Linux" ]]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 

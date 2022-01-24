@@ -6,6 +6,7 @@
 # 2021-01-04 add eln stuff
 # 2021-11-27 mods for Emacs shell mode
 # 2021-12-16 add OSX keychain environment variables
+# 2022-01-24 clean up and adds to work on other systems
 
 # Emacs term solution
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
@@ -96,7 +97,6 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle denysdovhan/spaceship-prompt
 fi
 
-
 # aliases
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
@@ -109,9 +109,7 @@ pipon() {
     export PIP_REQUIRE_VIRTUALENV=true
 }
 
-
 # Emacs aliases
-
 #set-up for darwin (not always used)
 if [[ $(uname -s) == "Darwin" ]]
 then
@@ -131,7 +129,6 @@ case ${INSIDE_EMACS/*,/} in
     test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
     ;;
 esac
-
 
 # use emacsclient for programs opening an editor
 VISUAL='e'
@@ -270,39 +267,49 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]
 then
+  if command -v screenfetch 1>/dev/null 2>&1; then
     screenfetch -D 'Mac OS x'
+  fi
 else
+  if command -v screenfetch 1>/dev/null 2>&1; then
     screenfetch
+  fi
 fi
 
 if [[ $(uname -s) == "Darwin" ]]
 then
-    PATH="/Users/stephenjenkins/.pyenv/shims:/Users/stephenjenkins/bin:/Users/stephenjenkins/.local/bin:/Users/stephenjenkins/.shell/scripts:/Users/stephenjenkins/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/llvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/stephenjenkins/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
+PATH="/Users/stephenjenkins/.pyenv/shims:/Users/stephenjenkins/bin:/Users/stephenjenkins/.local/bin:/Users/stephenjenkins/.shell/scripts:/Users/stephenjenkins/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/llvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/stephenjenkins/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
     MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:/Users/stephenjenkins/dotfiles/git-hub/man"; export MANPATH;
 else
-# path
+  # path
 fi
 
 # guile setup
-export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
-export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
-export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+if command -v guile 1>/dev/null 2>&1; then
+  export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+  export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+  export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+fi
 
 # OSX keychain environment variables
 if [[ $(uname -s) == "Darwin" ]]
 then
-# If you use bash, this technique isn't really zsh specific. Adapt as needed.
-source ~/dotfiles/shell/keychain-environment-variables.sh
+  # If you use bash, this technique isn't really zsh specific. Adapt as needed.
+  source ~/dotfiles/shell/keychain-environment-variables.sh
 
-# AWS configuration example, after doing:
-# $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
-#       provide: "AKIAYOURACCESSKEY"
-export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
-# $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
-#       provide: "j1/yoursupersecret/password"
-export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
+  # AWS configuration example, after doing:
+  # $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
+  #       provide: "AKIAYOURACCESSKEY"
+  export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
+  # $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
+  #       provide: "j1/yoursupersecret/password"
+  export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
 fi
+
+# needed to ensure Emacs key bindings in the CLI
+bindkey -e
 
 # end of .zshrc

@@ -95,28 +95,22 @@ if command -v antibody 1>/dev/null 2>&1; then
     SPACESHIP_CHAR_SUFFIX=" "
 
     antibody bundle denysdovhan/spaceship-prompt
+else
+  echo "antibody needs to be installed."
 fi
 
-# aliases
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
-
-pipoff() {
-    export PIP_REQUIRE_VIRTUALENV=false
-}
-
-pipon() {
-    export PIP_REQUIRE_VIRTUALENV=true
-}
-
-# Emacs aliases
+# OSX app aliases
 #set-up for darwin (not always used)
 if [[ $(uname -s) == "Darwin" ]]
 then
-    #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-    #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+  # used depending on how Emacs was installed
+  #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+  #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+  alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+  alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
 fi
 
+# Emacs aliases
 case ${INSIDE_EMACS/*,/} in
   (comint)
     echo 'Inside Emacs!'
@@ -267,15 +261,28 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# python aliases
+pipoff() {
+    export PIP_REQUIRE_VIRTUALENV=false
+}
+
+pipon() {
+    export PIP_REQUIRE_VIRTUALENV=true
+}
+
 # set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]
 then
   if command -v screenfetch 1>/dev/null 2>&1; then
     screenfetch -D 'Mac OS x'
+  else
+    echo "screenfetch needs to be installed"
   fi
 else
   if command -v screenfetch 1>/dev/null 2>&1; then
     screenfetch
+  else
+    echo "screenfetch needs to be installed"
   fi
 fi
 
@@ -287,7 +294,7 @@ else
   # path
 fi
 
-# guile setup
+# guile setup (GNU scripting language used by the GNU debugger GDB)
 if command -v guile 1>/dev/null 2>&1; then
   export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
   export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"

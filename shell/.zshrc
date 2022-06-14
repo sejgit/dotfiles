@@ -56,7 +56,7 @@ if command -v antibody 1>/dev/null 2>&1; then
     antibody bundle junegunn/fzf
     antibody bundle ohmyzsh/ohmyzsh path:plugins/sudo
     antibody bundle ohmyzsh/ohmyzsh path:plugins/web-search
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/copydir
+    antibody bundle ohmyzsh/ohmyzsh path:plugins/copypath
     antibody bundle ohmyzsh/ohmyzsh path:plugins/copyfile
     antibody bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
     antibody bundle ohmyzsh/ohmyzsh path:plugins/dirhistory
@@ -96,7 +96,12 @@ if command -v antibody 1>/dev/null 2>&1; then
 
     antibody bundle denysdovhan/spaceship-prompt
 else
-  echo "antibody needs to be installed."
+  if [[ $(uname -s) == "Darwin" ]]
+  then
+    echo "antibody needs to be installed: brew install antibody"
+  else
+    echo "antibody needs to be installed with appropriate package manager."
+  fi
 fi
 
 # OSX app aliases
@@ -276,13 +281,13 @@ then
   if command -v screenfetch 1>/dev/null 2>&1; then
     screenfetch -D 'Mac OS x'
   else
-    echo "screenfetch needs to be installed"
+    echo "screenfetch needs to be installed for splashscreen: brew install screenfetch"
   fi
 else
   if command -v screenfetch 1>/dev/null 2>&1; then
     screenfetch
   else
-    echo "screenfetch needs to be installed"
+    echo "screenfetch needs to be installed for splashscreen.  Use appropriate package manager."
   fi
 fi
 
@@ -307,13 +312,15 @@ then
   # If you use bash, this technique isn't really zsh specific. Adapt as needed.
   source ~/dotfiles/shell/keychain-environment-variables.sh
 
-  # AWS configuration example, after doing:
-  # $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
-  #       provide: "AKIAYOURACCESSKEY"
-  export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
-  # $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
-  #       provide: "j1/yoursupersecret/password"
-  export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
+  if command -v aws 1>/dev/null 2>&1; then
+    # AWS configuration example, after doing:
+    # $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
+    #       provide: "AKIAYOURACCESSKEY"
+    export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
+    # $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
+    #       provide: "j1/yoursupersecret/password"
+    export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
+  fi
 fi
 
 # needed to ensure Emacs key bindings in the CLI

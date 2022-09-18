@@ -7,6 +7,7 @@
 # 2021-11-27 mods for Emacs shell mode
 # 2021-12-16 add OSX keychain environment variables
 # 2022-01-24 clean up and adds to work on other systems
+# 2022-09-17 switch to antidote from antibody(depreciated)
 
 # Emacs term solution
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
@@ -43,30 +44,33 @@ zstyle ':completion:*' menu select # select completions with arrow keys
 zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
-if command -v antibody 1>/dev/null 2>&1; then
-    # Load antibody plugin manager
-    source <(antibody init)
+if [[ -f /usr/local/opt/antidote/share/antidote/antidote.zsh ]] ; then
+      # Load antidote plugin manager
+    source /usr/local/opt/antidote/share/antidote/antidote.zsh
+fi
 
+if command -v antidote 1>/dev/null 2>&1; then
+    source <(antidote init)
     # Plugins
-    antibody bundle zsh-users/zsh-syntax-highlighting
-    antibody bundle zsh-users/zsh-autosuggestions
-    antibody bundle zsh-users/zsh-history-substring-search
-    antibody bundle zsh-users/zsh-completions
-    antibody bundle bobthecow/git-flow-completion
-    antibody bundle junegunn/fzf
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/sudo
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/web-search
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/copypath
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/copyfile
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/dirhistory
-    antibody bundle ohmyzsh/ohmyzsh path:plugins/history
+    antidote bundle zsh-users/zsh-syntax-highlighting
+    antidote bundle zsh-users/zsh-autosuggestions
+    antidote bundle zsh-users/zsh-history-substring-search
+    antidote bundle zsh-users/zsh-completions
+    antidote bundle bobthecow/git-flow-completion
+    antidote bundle junegunn/fzf
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/sudo
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/web-search
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/copypath
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/copyfile
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/dirhistory
+    antidote bundle ohmyzsh/ohmyzsh path:plugins/history
     if [[ $(uname -s) == "Darwin" ]]
     then
-      antibody bundle ohmyzsh/ohmyzsh path:plugins/macos
-      antibody bundle marzocchi/zsh-notify
+      antidote bundle ohmyzsh/ohmyzsh path:plugins/macos
+      antidote bundle marzocchi/zsh-notify
     fi
-    antibody bundle buonomo/yarn-completion
+    antidote bundle buonomo/yarn-completion
 
     # Keybindings
     bindkey '^[[A' history-substring-search-up
@@ -94,13 +98,13 @@ if command -v antibody 1>/dev/null 2>&1; then
     SPACESHIP_CHAR_SYMBOL="❯"
     SPACESHIP_CHAR_SUFFIX=" "
 
-    antibody bundle denysdovhan/spaceship-prompt
+    antidote bundle denysdovhan/spaceship-prompt
 else
   if [[ $(uname -s) == "Darwin" ]]
   then
-    echo "antibody needs to be installed: brew install antibody"
+    echo "antidote needs to be installed: brew install antidote"
   else
-    echo "antibody needs to be installed with appropriate package manager."
+    echo "antidote needs to be installed with appropriate package manager."
   fi
 fi
 
@@ -293,9 +297,9 @@ fi
 
 if [[ $(uname -s) == "Darwin" ]]
 then
-PATH="/Users/stephenjenkins/.pyenv/shims:/Users/stephenjenkins/bin:/Users/stephenjenkins/.local/bin:/Users/stephenjenkins/.shell/scripts:/Users/stephenjenkins/dotfiles/git-hub/lib:/Users/stephenjenkins/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/llvm/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/stephenjenkins/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
-    MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:/Users/stephenjenkins/dotfiles/git-hub/man"; export MANPATH;
-else
+PATH="$HOME/.pyenv/shims:$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:/usr/local/opt/llvm/bin:$HOME/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
+
+MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:$HOME/dotfiles/git-hub/man"; export MANPATH;else
   # path
 fi
 

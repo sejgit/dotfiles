@@ -8,6 +8,7 @@
 # 2021-12-16 add OSX keychain environment variables
 # 2022-01-24 clean up and adds to work on other systems
 # 2022-09-17 switch to antidote from antibody(depreciated)
+# 2022-09-19 update .zshrc for m1 mac & pull zsh plugins to .zsh_plugins
 
 # Emacs term solution
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
@@ -42,82 +43,85 @@ setopt interactive_comments # allow comments in interactive shells
 # Improve autocompletion style
 zstyle ':completion:*' menu select # select completions with arrow keys
 zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate # approximate completion matches
 
-if [[ -f /usr/local/opt/antidote/share/antidote/antidote.zsh ]] ; then
-      # Load antidote plugin manager
-    source /usr/local/opt/antidote/share/antidote/antidote.zsh
-fi
 
-if command -v antidote 1>/dev/null 2>&1; then
-    source <(antidote init)
-    # Plugins
-    antidote bundle zsh-users/zsh-syntax-highlighting
-    antidote bundle zsh-users/zsh-autosuggestions
-    antidote bundle zsh-users/zsh-history-substring-search
-    antidote bundle zsh-users/zsh-completions
-    antidote bundle bobthecow/git-flow-completion
-    antidote bundle junegunn/fzf
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/sudo
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/web-search
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/copypath
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/copyfile
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/copybuffer
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/dirhistory
-    antidote bundle ohmyzsh/ohmyzsh path:plugins/history
-    if [[ $(uname -s) == "Darwin" ]]
-    then
-      antidote bundle ohmyzsh/ohmyzsh path:plugins/macos
-      antidote bundle marzocchi/zsh-notify
-    fi
-    antidote bundle buonomo/yarn-completion
+if [[ $(uname -s) == "Darwin" ]] ; then
+  # If you use bash, this technique isn't really zsh specific. Adapt as needed.
+  source ~/dotfiles/shell/keychain-environment-variables.sh
+
+  if command -v aws 1>/dev/null 2>&1; then
+    # OSX keychain environment variables
+    # AWS configuration example, after doing:
+    # $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
+    #       provide: "AKIAYOURACCESSKEY"
+    export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
+    # $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
+    #       provide: "j1/yoursupersecret/password"
+    export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
+  fi
+
+  
+PATH="$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:/usr/local/opt/llvm/bin:$HOME/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
+
+MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:$HOME/dotfiles/git-hub/man"; export MANPATH;
+
+  # OSX Brew setup for OSX & antigen path
+  if [[ $(uname -p) == 'arm' ]]; then
+    echo M1
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    antidote_dir=/opt/homebrew/opt/antidote/share/antidote
+  else
+    echo intel
+    eval "$(/usr/local/bin/brew shellenv)"
+    antidote_dir=/usr/local/opt/antidote/share/antidote
+  fi
+
+# Antidote
+  if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
+    # source antidote
+    plugins_txt=~/.zsh_plugins.txt
+    static_file=~/.zsh_plugins.zsh
+    zstyle ':antidote:bundle' use-friendly-names 'yes'
+
+    source ${antidote_dir}/antidote.zsh
+    antidote load
 
     # Keybindings
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
-    bindkey '^[[3~' delete-char
-    bindkey '^[3;5~' delete-char
-
-    # Theme
-    SPACESHIP_PROMPT_ORDER=(
-        user          # Username section
-        dir           # Current directory section
-        host          # Hostname section
-        git           # Git section (git_branch + git_status)
-        hg            # Mercurial section (hg_branch  + hg_status)
-        aws           # Amazon Web Services section
-        venv          # virtualenv section
-        pyenv         # pyenv section
-        exec_time     # Execution time
-        line_sep      # Line break
-        jobs          # Background jobs indicator
-        exit_code     # Exit code section
-        char          # Prompt character
-    )
-    SPACESHIP_PROMPT_ADD_NEWLINE=false
-    SPACESHIP_CHAR_SYMBOL="❯"
-    SPACESHIP_CHAR_SUFFIX=" "
-
-    antidote bundle denysdovhan/spaceship-prompt
-else
-  if [[ $(uname -s) == "Darwin" ]]
-  then
-    echo "antidote needs to be installed: brew install antidote"
   else
-    echo "antidote needs to be installed with appropriate package manager."
+    if [[ $(uname -s) == "Darwin" ]]
+    then
+      echo "antidote needs to be installed: brew install antidote"
+    else
+      echo "antidote needs to be installed with appropriate package manager."
+    fi
   fi
+  
+    # OSX app aliases
+    # used depending on how Emacs was installed
+    #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+    alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
 fi
 
-# OSX app aliases
-#set-up for darwin (not always used)
-if [[ $(uname -s) == "Darwin" ]]
-then
-  # used depending on how Emacs was installed
-  #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-  #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-  alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-  alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
+# set up pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
+
+# python aliases
+pipoff() {
+    export PIP_REQUIRE_VIRTUALENV=false
+}
+
+pipon() {
+    export PIP_REQUIRE_VIRTUALENV=true
+}
 
 # Emacs aliases
 case ${INSIDE_EMACS/*,/} in
@@ -136,6 +140,9 @@ esac
 # use emacsclient for programs opening an editor
 VISUAL='e'
 EDITOR="$VISUAL"
+
+# needed to ensure Emacs key bindings in the CLI
+bindkey -e
 
 alias em='emacs'
 alias en='emacs -nw'
@@ -263,22 +270,6 @@ if command -v most 1>/dev/null 2>&1; then
     alias less=most
 fi
 
-# set up pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# python aliases
-pipoff() {
-    export PIP_REQUIRE_VIRTUALENV=false
-}
-
-pipon() {
-    export PIP_REQUIRE_VIRTUALENV=true
-}
-
 # set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]
 then
@@ -295,13 +286,7 @@ else
   fi
 fi
 
-if [[ $(uname -s) == "Darwin" ]]
-then
-PATH="$HOME/.pyenv/shims:$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:/usr/local/opt/llvm/bin:$HOME/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:$HOME/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin"; export PATH;
 
-MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:$HOME/dotfiles/git-hub/man"; export MANPATH;else
-  # path
-fi
 
 # guile setup (GNU scripting language used by the GNU debugger GDB)
 if command -v guile 1>/dev/null 2>&1; then
@@ -310,28 +295,12 @@ if command -v guile 1>/dev/null 2>&1; then
   export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 fi
 
-# OSX keychain environment variables
-if [[ $(uname -s) == "Darwin" ]]
-then
-  # If you use bash, this technique isn't really zsh specific. Adapt as needed.
-  source ~/dotfiles/shell/keychain-environment-variables.sh
 
-  if command -v aws 1>/dev/null 2>&1; then
-    # AWS configuration example, after doing:
-    # $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
-    #       provide: "AKIAYOURACCESSKEY"
-    export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
-    # $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
-    #       provide: "j1/yoursupersecret/password"
-    export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
-  fi
-fi
-
-# needed to ensure Emacs key bindings in the CLI
-bindkey -e
-
+# Set-up nvm
 if [[ -f /usr/share/nvm/init-nvm.sh ]] && [[ $(uname -s) = "Linux" ]]; then
   source /usr/share/nvm/init-nvm.sh
 fi
+
+
 
 # end of .zshrc

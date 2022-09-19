@@ -1,0 +1,48 @@
+# .zsh_plugins.txt
+
+# basic Plugins
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+
+bobthecow/git-flow-completion
+buonomo/yarn-completion
+marzocchi/zsh-notify
+
+# see .conig/spaceship.zsh for setup
+denysdovhan/spaceship-prompt
+
+
+# oh-my-zsh framework
+ohmyzsh/ohmyzsh path:lib
+
+# coloured man pages (duh)
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+
+# enter causes git status or ls to be executed
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+# esc twice causes last command to have sudo added
+ohmyzsh/ohmyzsh path:plugins/sudo
+
+# web_search {google, bing, github, etc} <text>  or google <text>
+ohmyzsh/ohmyzsh path:plugins/web-search
+
+# copypath absolute path to clipboard
+ohmyzsh/ohmyzsh path:plugins/copypath
+
+# copyfile contents of file to clipboard
+ohmyzsh/ohmyzsh path:plugins/copyfile
+
+# adds alt + left, right, up, down to move around
+ohmyzsh/ohmyzsh path:plugins/dirhistory
+
+# adds commands for macos https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
+ohmyzsh/ohmyzsh path:plugins/macos
+
+
+# zsh-utils
+belak/zsh-utils path:completion
+belak/zsh-utils path:history
+

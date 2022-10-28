@@ -1,0 +1,53 @@
+### Mickey's .inputrc
+
+## 2022-11-01 sejenkins from Mastering Emacs Site
+##[[https://www.masteringemacs.org/article/keyboard-shortcuts-every-command-line-hacker-should-know-about-gnu-readline?utm_source=newsletter&utm_medium=email&utm_campaign=rss&utm_source=Mastering+Emacs+Newsletter&utm_campaign=405293aed7-MASTERING_EMACS_NEW_POSTS&utm_medium=email&utm_term=0_777fab9be9-405293aed7-358631929][Mastering Emacs]]
+
+
+# Change the timeout for key sequences as 500ms is too fast.
+set keyseq-timeout 1200
+
+# By default, completions are not highlighted in color.
+set colored-stats on
+set colored-completion-prefix on
+
+### BASH
+
+$if Bash
+# Wrap a command in $( ... )
+"\C-xq": "\C-a\$(\C-e)"
+# Wrap a command in $( .... | ezf -f 1)
+"\C-xF": "\C-e | ezf -f 1)\C-a(\C-a$\C-b\C-a"
+
+# C-M-o is dabbrev-expand
+"\e\C-o": dabbrev-expand
+
+$endif
+
+### Python
+
+$if Python
+
+# Wrap prompt in !help( ... )  (for PDB)
+"\C-xh": "\C-a!help(\C-e)"
+# Wrap prompt in dir( ... )
+"\C-xd": "\C-adir(\C-e)"
+
+$endif
+
+### Global
+
+
+# Prints the last recorded macro
+"\C-xP": print-last-kbd-macro
+
+# M-m is back-to-indentation which is what I usually use to go to the
+# beginning of a line; everywhere else, I bind it like C-a.
+"\em": beginning-of-line
+# M-p and M-n should behave like they do in M-x shell in Emacs.
+"\ep": previous-history
+"\en": next-history
+
+# C-M-f and C-M-v dump functions and variables.
+"\e\C-f": dump-functions
+"\e\C-v": dump-variables

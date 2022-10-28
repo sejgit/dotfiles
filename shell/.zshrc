@@ -12,6 +12,7 @@
 
 #echo ".zshrc"
 
+COLORTERM=truecolor
 # Test if in Emacs or not
 case ${INSIDE_EMACS/*,/} in
   (comint)

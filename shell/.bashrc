@@ -16,7 +16,7 @@
 
 # Use bash_profile, if installed
 if [ -f .bash_profile ]; then
-    . bash_profile
+    . .bash_profile
 fi
 
 # Use Bash completion, if installed
@@ -31,6 +31,7 @@ HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=5000
 HISTFILESIZE=10000
 
+shellfiles=~/dotfiles/shell/.shell
 # Load custom aliases, completion, plugins
 for file_type in "aliases" "completions" "plugins" "scripts"; do
     CUSTOM=${shellfiles}/${file_type}/*.sh

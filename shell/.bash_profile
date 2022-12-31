@@ -123,3 +123,4 @@ fi
 
 
 # end of .bash_profile
+. "$HOME/.cargo/env"

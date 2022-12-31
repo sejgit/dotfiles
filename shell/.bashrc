@@ -51,3 +51,4 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # end of .bashrc
+. "$HOME/.cargo/env"

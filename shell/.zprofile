@@ -67,6 +67,13 @@ if [[ $(uname -s) == "Darwin" ]] ; then
     export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
   fi
 
+  # OSX app aliases
+  # used depending on how Emacs was installed
+  #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+  #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+  alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+  alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
+
   # OSX Brew setup for OSX & antigen path
   if [[ $(uname -p) == 'arm' ]]; then
     echo M1
@@ -77,6 +84,12 @@ if [[ $(uname -s) == "Darwin" ]] ; then
     eval "$(/usr/local/bin/brew shellenv)"
     antidote_dir=/usr/local/opt/antidote/share/antidote
   fi
+fi
+
+if [[ $(uname -s) == "FreeBSD" ]] ; then
+    echo FreeBSD
+    antidote_dir=${ZDOTDIR:-~}/.antidote
+fi
 
 # Antidote
   if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
@@ -99,14 +112,6 @@ if [[ $(uname -s) == "Darwin" ]] ; then
       echo "antidote needs to be installed with appropriate package manager."
     fi
   fi
-  
-    # OSX app aliases
-    # used depending on how Emacs was installed
-    #     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-    #     alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-    alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
-fi
 
 
 if [[ $(uname -s) == "Darwin" ]]

@@ -38,3 +38,4 @@ then
 fi
 
 # end of .zshenv
+. "$HOME/.cargo/env"

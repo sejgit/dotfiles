@@ -37,5 +37,9 @@ then
 
 fi
 
+if command -v cargo 1>/dev/null 2>&1; then
+    . "$HOME/.cargo/env"
+fi
+
 # end of .zshenv
-. "$HOME/.cargo/env"
+

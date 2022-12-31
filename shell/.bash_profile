@@ -9,7 +9,6 @@ export LANGUAGE="en_US:en"
 
 # OSX
 if [ $(uname -s) == "Darwin" ]; then
-
     # path setup
     export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.shell/scripts:${HOME}/dotfiles/git-hub/lib:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/Library/TeX/texbin:/opt/X11/bin:$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
@@ -110,17 +109,11 @@ if [ $(uname -o) == "Msys" ]; then
     cd $HOME
 fi
 
-# proxy settings
-if [ -f ~/.ssh/myauth ] && [ -f ~/.ssh/myproxy ] && [ -f ~/.ssh/myport ]; then
-    MYAUTH=$(<~/.ssh/myauth)
-    MYPROXY=$(<~/.ssh/myproxy)
-    MYPORT=$(<~/.ssh/myport)
-    export BASH_IT_HTTP_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
-    export BASH_IT_HTTPS_PROXY=$(printf "http://%s@%s:%s" "$MYAUTH" "$MYPROXY" "$MYPORT")
-    export BASH_IT_NO_PROXY=$(<~/.ssh/noproxy)
-    export GIT_MYAUTH=~/.ssh/myauth.git
+if [[ $(uname -o) == "FreeBSD" ]]; then
+    export PATH=$PATH:.:/usr/local/etc/udx.d/static
+    export PROMPT_COMMAND='history -a'
 fi
 
 
 # end of .bash_profile
-. "$HOME/.cargo/env"
+

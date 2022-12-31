@@ -50,9 +50,5 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if [[ $(uname -o) == "FreeBSD" ]]; then
-    export PATH=$PATH:.:/usr/local/etc/udx.d/static
-    export PROMPT_COMMAND='history -a'
-fi
 # end of .bashrc
 

@@ -14,11 +14,6 @@
 # 2019 10 04 reformat with all-format
 # 2020 04 04 updates between .bashrc & .bash_profile
 
-# Use bash_profile, if installed
-if [ -f .bash_profile ]; then
-    . .bash_profile
-fi
-
 # Use Bash completion, if installed
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion

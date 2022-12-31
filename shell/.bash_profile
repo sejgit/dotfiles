@@ -7,6 +7,11 @@
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
 
+# Use bash_profile, if installed
+if [ -f .bashrc ]; then
+    . .bashrc 
+fi
+
 # OSX
 if [ $(uname -s) == "Darwin" ]; then
     # path setup
@@ -113,7 +118,6 @@ if [[ $(uname -o) == "FreeBSD" ]]; then
     export PATH=$PATH:.:/usr/local/etc/udx.d/static
     export PROMPT_COMMAND='history -a'
 fi
-
 
 # end of .bash_profile
 

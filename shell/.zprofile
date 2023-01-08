@@ -86,7 +86,7 @@ if [[ $(uname -s) == "Darwin" ]] ; then
   fi
 fi
 
-if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux"]] ; then
+if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then
     echo FreeBSD/Linux
     antidote_dir=${ZDOTDIR:-~}/.antidote
 fi
@@ -97,7 +97,7 @@ if [[ -d ${ZDOTDIR:=~}/.antidote ]]; then
     antidote_dir=${ZDOTDIR:-~}/.antidote
 fi
 
-if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
+if [[ -f ${antidote_dir}/antidote.zsh ]]; then
     # source antidote
     plugins_txt=~/.zsh_plugins.txt
     static_file=~/.zsh_plugins.zsh
@@ -112,9 +112,9 @@ if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
 else
     if [[ $(uname -s) == "Darwin" ]]
     then
-        echo "antidote needs to be installed: brew install Antidote"
+        echo "antidote needs to be installed: brew install antidote"
     else
-        echo "antidote needs to be installed: clone Antidote"
+        echo "antidote needs to be installed: git clone mattmc3/antidote"
     fi
 fi
 
@@ -130,7 +130,7 @@ export MICROPYTHON=${HOME}/Projects/micropython/ctng-volume
 export ESPIDF=${MICROPYTHON}/esp-idf
 
 # guile setup (GNU scripting language used by the GNU debugger GDB)
-if command -v guile 1>/dev/null 2>&1; then
+if [[ command -v guile 1>/dev/null 2>&1 ]]; then
   export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
   export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
   export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
@@ -142,27 +142,24 @@ PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
-
 # Set-up nvm for Linux
 if [[ -f /usr/share/nvm/init-nvm.sh ]] && [[ $(uname -s) = "Linux" ]]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 
-
 # set up screenfetch
-if [[ $(uname -s) == "Darwin" ]]
-then
-  if [[ command -v screenfetch 1>/dev/null 2>&1]]; then
-    screenfetch -D 'Mac OS x'
-  else
-    echo "screenfetch needs to be installed for splashscreen: brew install screenfetch"
-  fi
+if [[ $(uname -s) == "Darwin" ]]; then
+    if [[ command -v screenfetch 1>/dev/null 2>&1]]; then
+        screenfetch -D 'Mac OS x'
+    else
+        echo "screenfetch needs to be installed for splashscreen: brew install screenfetch"
+    fi
 else
-  if [[ command -v screenfetch 1>/dev/null 2>&1 ]]; then
-    screenfetch
-  else
-    echo "screenfetch needs to be installed for splashscreen.  Use appropriate package manager."
-  fi
+    if [[ command -v screenfetch 1>/dev/null 2>&1 ]]; then
+        screenfetch
+    else
+        echo "screenfetch needs to be installed for splashscreen.  Use appropriate package manager."
+    fi
 fi
 
 

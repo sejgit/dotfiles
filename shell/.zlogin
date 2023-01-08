@@ -4,5 +4,10 @@
 
 #echo ".zlogin"
 
-keychain id_rsa
-[[ -f ~/.keychain/sejmbp.local-sh ]] && source ~/.keychain/sejmbp.local-sh
+if [[ command -v keychain 1>/dev/null 2>&1 ]]; then
+    keychain id_rsa
+    [[ -f ~/.keychain/sejmbp.local-sh ]] && source ~/.keychain/sejmbp.local-sh
+else
+    echo "keychain not installed"
+fi
+

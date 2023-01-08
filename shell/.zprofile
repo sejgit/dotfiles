@@ -92,7 +92,12 @@ if [[ $(uname -s) == "FreeBSD" ]] ; then
 fi
 
 # Antidote
-  if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
+if [[ -f ~/.antidote/antidote.sh ]] ; then
+    echo "Using cloned version of antidote"
+    antidote_dir=${ZDOTDIR:-~}/.antidote
+fi
+
+if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
     # source antidote
     plugins_txt=~/.zsh_plugins.txt
     static_file=~/.zsh_plugins.zsh
@@ -104,14 +109,14 @@ fi
     # Keybindings
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
-  else
+else
     if [[ $(uname -s) == "Darwin" ]]
     then
-      echo "antidote needs to be installed: brew install antidote"
+        echo "antidote needs to be installed: brew install antidote"
     else
-      echo "antidote needs to be installed with appropriate package manager."
+        echo "antidote needs to be installed with appropriate package manager."
     fi
-  fi
+fi
 
 
 if [[ $(uname -s) == "Darwin" ]]

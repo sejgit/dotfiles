@@ -86,13 +86,13 @@ if [[ $(uname -s) == "Darwin" ]] ; then
   fi
 fi
 
-if [[ $(uname -s) == "FreeBSD" ]] ; then
-    echo FreeBSD
+if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux"]] ; then
+    echo FreeBSD/Linux
     antidote_dir=${ZDOTDIR:-~}/.antidote
 fi
 
 # Antidote
-if [[ -f ~/.antidote/antidote.sh ]] ; then
+if [[ -d ${ZDOTDIR:=~}/.antidote ]]; then
     echo "Using cloned version of antidote"
     antidote_dir=${ZDOTDIR:-~}/.antidote
 fi
@@ -112,38 +112,24 @@ if [[ -f ${antidote_dir}/antidote.zsh ]] ; then
 else
     if [[ $(uname -s) == "Darwin" ]]
     then
-        echo "antidote needs to be installed: brew install antidote"
+        echo "antidote needs to be installed: brew install Antidote"
     else
-        echo "antidote needs to be installed with appropriate package manager."
+        echo "antidote needs to be installed: clone Antidote"
     fi
 fi
 
+# Go development
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"  # see below
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
-if [[ $(uname -s) == "Darwin" ]]
-then
-    # Arduino setup
-    export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
-    export ARDMK_DIR=/usr/local/opt/arduino-mk
-    #export AVR_TOOLS_DIR=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr
-    export MONITOR_PORT=/dev/tty.usbmodem1441
-    export BOARD_TAG=mega
-    export BOARD_SUB=atmega2560
-    export ESPLIBS=$HOME/Library/Arduino15/packages/esp8266/hardware/esp8266/2.4.1/Libraries
-    export ARLIBS=$HOME/Projects/sej/Arduino/libraries
+# micropython development
+export MICROPYTHON=${HOME}/Projects/micropython/ctng-volume
+export ESPIDF=${MICROPYTHON}/esp-idf
 
-    # Go development
-    export GOPATH="${HOME}/.go"
-    export GOROOT="$(brew --prefix golang)/libexec"
-    # export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"  # see below
-    test -d "${GOPATH}" || mkdir "${GOPATH}"
-    test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-
-    # micropython development
-    export MICROPYTHON=${HOME}/Projects/micropython/ctng-volume
-    export ESPIDF=${MICROPYTHON}/esp-idf
-fi
-
-    # guile setup (GNU scripting language used by the GNU debugger GDB)
+# guile setup (GNU scripting language used by the GNU debugger GDB)
 if command -v guile 1>/dev/null 2>&1; then
   export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
   export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
@@ -156,6 +142,7 @@ PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
+
 # Set-up nvm for Linux
 if [[ -f /usr/share/nvm/init-nvm.sh ]] && [[ $(uname -s) = "Linux" ]]; then
   source /usr/share/nvm/init-nvm.sh
@@ -165,13 +152,13 @@ fi
 # set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]
 then
-  if command -v screenfetch 1>/dev/null 2>&1; then
+  if [[ command -v screenfetch 1>/dev/null 2>&1]]; then
     screenfetch -D 'Mac OS x'
   else
     echo "screenfetch needs to be installed for splashscreen: brew install screenfetch"
   fi
 else
-  if command -v screenfetch 1>/dev/null 2>&1; then
+  if [[ command -v screenfetch 1>/dev/null 2>&1 ]]; then
     screenfetch
   else
     echo "screenfetch needs to be installed for splashscreen.  Use appropriate package manager."

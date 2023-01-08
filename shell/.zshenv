@@ -37,7 +37,7 @@ then
 
 fi
 
-if command -v cargo 1>/dev/null 2>&1; then
+if [[ -d ~/.cargo ]]; then
     . "$HOME/.cargo/env"
 fi
 

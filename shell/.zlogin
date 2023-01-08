@@ -4,7 +4,7 @@
 
 #echo ".zlogin"
 
-if [[ command -v keychain 1>/dev/null 2>&1 ]]; then
+if command -v keychain 1>/dev/null 2>&1; then
     keychain id_rsa
     [[ -f ~/.keychain/sejmbp.local-sh ]] && source ~/.keychain/sejmbp.local-sh
 else

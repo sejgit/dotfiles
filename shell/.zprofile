@@ -120,7 +120,9 @@ fi
 
 # Go development
 export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
+if [[ $(uname -s) == "Darwin" ]]; then
+    export GOROOT="$(brew --prefix golang)/libexec"
+fi
 # export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"  # see below
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
@@ -130,7 +132,7 @@ export MICROPYTHON=${HOME}/Projects/micropython/ctng-volume
 export ESPIDF=${MICROPYTHON}/esp-idf
 
 # guile setup (GNU scripting language used by the GNU debugger GDB)
-if [[ command -v guile 1>/dev/null 2>&1 ]]; then
+if command -v guile 1>/dev/null 2>&1; then
   export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
   export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
   export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
@@ -149,13 +151,13 @@ fi
 
 # set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]; then
-    if [[ command -v screenfetch 1>/dev/null 2>&1]]; then
+    if command -v screenfetch 1>/dev/null 2>&1; then
         screenfetch -D 'Mac OS x'
     else
         echo "screenfetch needs to be installed for splashscreen: brew install screenfetch"
     fi
 else
-    if [[ command -v screenfetch 1>/dev/null 2>&1 ]]; then
+    if command -v screenfetch 1>/dev/null 2>&1; then
         screenfetch
     else
         echo "screenfetch needs to be installed for splashscreen.  Use appropriate package manager."

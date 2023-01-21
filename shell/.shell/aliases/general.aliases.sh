@@ -20,9 +20,12 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 #alias -- -="cd -"
 
-alias _="sudo -EH "
-alias sudo='sudo -EH ' # enable alias expansion for sudo
-alias root='sudo -EH su'
+if [[ $(uname -s) != "FreeBSD" ]]; then
+    alias _="sudo -EH "
+    alias sudo='sudo -EH ' # enable alias expansion for sudo
+    alias root='sudo -EH su'
+fi
+
 alias g='git'
 alias make='make --debug=b'
 alias ping='_ ping -c 8'

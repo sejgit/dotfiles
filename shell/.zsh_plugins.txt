@@ -8,6 +8,8 @@ zsh-users/zsh-history-substring-search
 
 bobthecow/git-flow-completion
 buonomo/yarn-completion
+
+# desktop notification for longrunning commands
 marzocchi/zsh-notify
 
 # see .conig/spaceship.zsh for setup

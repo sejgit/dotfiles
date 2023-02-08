@@ -1,6 +1,6 @@
 # dotfiles
 ---
-my current **dotfiles** for both `bash` and `zsh`  
+my current **dotfiles** for both `bash` and `zsh`
 the `zsh` version is more developed while the `bash` is more for fallback
 
 

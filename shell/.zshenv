@@ -5,40 +5,35 @@
 # 2020-04-22 add PERL5 to path
 # 2020-12-13 fixing clang stuff
 # 2022-09-19 update .zshrc for m1 mac & pull zsh plugins to .zsh_plugins
+# 2023-02-15 fix for Darwin m1 & Intel
 
 #echo ".zshenv"
 
-PATH="$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:/usr/local/opt/llvm/bin:$HOME/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin:$HOME/node_modules"; export PATH;
+if [[ $(uname -s) == "Darwin" ]]; then
+  # OSX Brew setup
+  if [[ $(uname -p) == 'arm' ]]; then
+    echo M1
+    export HOMEBREW_PREFIX="/opt/homebrew";
+  else
+    echo Intel
+    export HOMEBREW_PREFIX="/usr/local";
+  fi
+  export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+  export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
+else
+  export HOMEBREW_PREFIX="/usr/local/" # make the path work for non-Darwin
+fi
 
-# store path in file to use in .emacs.d/init.el for quick add
-echo -n $PATH > $HOME/.config/path.log
+export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
+export HOMEBREW_REPOSITORY=$HOMEBREW_PREFIX;
 
-MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:$HOME/dotfiles/git-hub/man"; export MANPATH;
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:$HOME/.go/bin:$HOME/perl5/bin:$HOME/node_modules:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/llvm/bin:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$HOMEBREW_PREFIX/opt/go/libexec/bin:$HOMEBREW_PREFIX/opt/fzf/bin:/Library/TeX/texbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"; export PATH;
+
+export MANPATH="/usr/share/man:$HOMEBREW_PREFIX/share/man:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:$HOME/dotfiles/git-hub/man"; export MANPATH;
+
+export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
 
 fpath=(~/.zsh $fpath)
-
-
-if [[ $(uname -s) == "Darwin" ]]
-then
-# set vars for llvm compilation, lets see if we can live without for now
-# if [ "$(brew info llvm 2>&1 | grep -c 'Built from source on')" = 1 ]; then
-#     #we are using a homebrew clang, need new flags
-#     export CC="/usr/local/opt/llvm/bin/clang"
-#     export CXX="/usr/local/opt/llvm/bin/clang++"
-#     export AR="/usr/local/opt/llvm/bin/llvm-ar"
-#     export LD="/usr/local/opt/llvm/bin/llvm-ld"
-#     export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L$(brew --prefix openssl)/lib -L$(xcrun --show-sdk-path)/usr/lib"
-#     export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v1/ -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
-    export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"
-#     export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
-# else
-#     export LDFLAGS="-L/usr/local/opt/zlib/lib -L$(brew --prefix openssl)/lib -L$(xcrun --show-sdk-path)/usr/lib"
-#     export CPPFLAGS="-I/usr/local/opt/zlib/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
-#     export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
-# fi
-
-fi
 
 if [[ -d ~/.cargo ]]; then
     . "$HOME/.cargo/env"

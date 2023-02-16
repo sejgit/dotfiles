@@ -8,7 +8,7 @@
 # 2021-12-16 add OSX keychain environment variables
 # 2022-01-24 clean up and adds to work on other systems
 # 2022-09-17 switch to antidote from antibody(depreciated)
-# 2022-09-19 update .zshrc for m1 mac & pull zsh plugins to .zsh_plugins
+# 2023-02-15 fix for Darwin m1 & Intel
 
 #echo ".zshrc"
 

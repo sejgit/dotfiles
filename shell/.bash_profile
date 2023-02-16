@@ -7,21 +7,38 @@
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
 
-# Use bash_profile, if installed
+# Use bashrc, if installed
 if [ -f .bashrc ]; then
     . .bashrc 
 fi
 
+
+if [[ $(uname -s) == "Darwin" ]]; then
+  # OSX Brew setup
+  if [[ $(uname -p) == 'arm' ]]; then
+    echo M1
+    export HOMEBREW_PREFIX="/opt/homebrew";
+  else
+    echo Intel
+    export HOMEBREW_PREFIX="/usr/local";
+  fi
+  export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+  export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
+else
+  export $HOMEBREW_PREFIX="/usr/local/" # make the path work for non-Darwin
+fi
+
+export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
+export HOMEBREW_REPOSITORY=$HOMEBREW_PREFIX;
+
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:$HOME/.go/bin:$HOME/perl5/bin:$HOME/node_modules:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/llvm/bin:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$HOMEBREW_PREFIX/opt/go/libexec/bin:$HOMEBREW_PREFIX/opt/fzf/bin:/Library/TeX/texbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"; export PATH;
+
+export MANPATH="/usr/share/man:$HOMEBREW_PREFIX/share/man:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:$HOME/dotfiles/git-hub/man"; export MANPATH;
+
+export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
+
 # OSX
 if [ $(uname -s) == "Darwin" ]; then
-    # path setup
-PATH="$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:/usr/local/opt/llvm/bin:$HOME/perl5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.go/bin:/usr/local/opt/go/libexec/bin:/usr/local/opt/fzf/bin:$HOME/node_modules"; export PATH;
-
-# store path in file to use in .emacs.d/init.el for quick add
-echo -n $PATH > $HOME/.config/path.log
-
-MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:/usr/local/opt/coreutils/libexec/gnuman:$HOME/dotfiles/git-hub/man"; export MANPATH;
-
     if ! [ $INSIDE_EMACS ]; then
         # Add tab completion for bash completion 2
         if [ -x "$(command -v brew)" ] &&
@@ -76,6 +93,9 @@ MANPATH="/usr/share/man:/usr/local/share/man:/Library/TeX/Distributions/.Default
     test -d "${GOPATH}" || mkdir "${GOPATH}"
     test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
+    if [[ -d ~/.cargo ]]; then
+      . "$HOME/.cargo/env"
+    fi
 fi
 
 

@@ -3,6 +3,7 @@
 # 2020-03-01 init sej
 # 2020-04-04 updates between .zshrc & .zshenv & .zprofile
 # 2022-09-21 updates between .zshrc & .zshenv & .zprofile
+# 2023-02-15 fix for Darwin m1 & intel
 
 #echo ".zprofile"
 
@@ -74,16 +75,8 @@ if [[ $(uname -s) == "Darwin" ]] ; then
   alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
   alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
 
-  # OSX Brew setup for OSX & antigen path
-  if [[ $(uname -p) == 'arm' ]]; then
-    echo M1
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    antidote_dir=/opt/homebrew/opt/antidote/share/antidote
-  else
-    echo intel
-    eval "$(/usr/local/bin/brew shellenv)"
-    antidote_dir=/usr/local/opt/antidote/share/antidote
-  fi
+#  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+  antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
 fi
 
 if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then
@@ -133,9 +126,9 @@ export ESPIDF=${MICROPYTHON}/esp-idf
 
 # guile setup (GNU scripting language used by the GNU debugger GDB)
 if command -v guile 1>/dev/null 2>&1; then
-  export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
-  export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
-  export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+  export GUILE_LOAD_PATH="$HOMEBREW_PREFIX/share/guile/site/3.0"
+  export GUILE_LOAD_COMPILED_PATH="$HOMEBREW_PREFIX/lib/guile/3.0/site-ccache"
+  export GUILE_SYSTEM_EXTENSIONS_PATH="$HOMEBREW_PREFIX/lib/guile/3.0/extensions"
 fi
 
 # perl setup

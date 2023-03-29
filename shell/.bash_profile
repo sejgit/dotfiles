@@ -25,7 +25,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
   export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
   export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
 else
-  export $HOMEBREW_PREFIX="/usr/local/" # make the path work for non-Darwin
+  export HOMEBREW_PREFIX="/usr/local" # make the path work for non-Darwin
 fi
 
 export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";

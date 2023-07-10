@@ -37,8 +37,9 @@ SetTitleMatchMode "RegEx"
  Global Includes / Run
  */
  
- ; #h hide window #u unhide last, list of hidden in ahk menu
-#Include "MinimizeToTrayMenu.ahk"
+; #h hide window #u unhide last, list of hidden in ahk menu
+; Run to force extra instance & menu for hidden programs
+Run "MinimizeToTrayMenu.ahk"
   
  /* 
  Global Hotkeys
@@ -53,12 +54,9 @@ SetCapsLockState "AlwaysOff"
 CapsLock::LControl
 
 ; Tab modifier set-up
-Tab::Send "{Tab}"
-+Tab::Send "{Shift}{Tab}"
+Tab::Tab
++Tab::+Tab
 <!Tab::AltTab
-
-;Space modifier set-up
-Space::Send("{Space}")
 
 ; activate or run Outlook Calendar
 Tab & c:: {

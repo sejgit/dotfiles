@@ -179,3 +179,4 @@ ENV/
 /shell/.config/proselint/
 /shell/.config/iterm2/
 /shell/bin/ccls
+/shell/.config/MusicBrainz/

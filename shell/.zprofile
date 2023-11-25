@@ -5,10 +5,5 @@
 # 2022-09-21 updates between .zshrc & .zshenv & .zprofile
 # 2023-02-15 fix for Darwin m1 & intel
 
-#echo ".zprofile"
-
-
-
-
-
+echo ".zprofile"
 # end of .zprofile

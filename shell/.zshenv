@@ -8,7 +8,7 @@
 # 2023-02-15 fix for Darwin m1 & Intel
 
 
-#echo ".zshenv"
+echo ".zshenv"
 
 # set vars
 export LANG="en_US.UTF-8"

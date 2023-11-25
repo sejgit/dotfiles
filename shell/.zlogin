@@ -2,7 +2,7 @@
 # .zlogin for use on osx and linux
 # 2022-09-21 init sej
 
-#echo ".zlogin"
+echo ".zlogin"
 
 # Enable autocompletions
 autoload -Uz compinit

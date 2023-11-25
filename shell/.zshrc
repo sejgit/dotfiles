@@ -10,7 +10,7 @@
 # 2022-09-17 switch to antidote from antibody(depreciated)
 # 2023-02-15 fix for Darwin m1 & Intel
 
-#echo ".zshrc"
+echo ".zshrc"
 
 if [[ $(uname -s) == "Darwin" ]]; then
   # OSX Brew setup
@@ -40,6 +40,10 @@ fpath=(~/.zsh $fpath)
 
 # Test if in Emacs or not
 case ${INSIDE_EMACS/*,/} in
+  (eat)
+    echo 'Inside Emacs/Eat'
+    source ~/.zlogin
+    ;;
   (comint)
     echo 'Inside Emacs!'
     export TERM='xterm-256color'
@@ -54,4 +58,10 @@ case ${INSIDE_EMACS/*,/} in
     ;;
 esac
 
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+
 # end of .zshrc
+
+
+

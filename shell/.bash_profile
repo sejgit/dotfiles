@@ -140,6 +140,7 @@ fi
 if [[ $(uname -o) == "FreeBSD" ]]; then
     export PATH=$PATH:.:/usr/local/etc/udx.d/static
     export PROMPT_COMMAND='history -a'
+    setxkbmap -layout us -variant emacs -option ctrl:nocaps
 fi
 
 # end of .bash_profile

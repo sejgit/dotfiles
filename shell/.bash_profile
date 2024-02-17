@@ -101,7 +101,7 @@ fi
 
 if [ $(uname -s) == "Linux" ]; then
     #swap caps lock -> control
-    setxkbmap -layout us -option ctrl:nocaps
+    # setxkbmap -layout us -option ctrl:nocaps
     shellfiles="$HOME/.shell"
 fi
 
@@ -140,7 +140,6 @@ fi
 if [[ $(uname -o) == "FreeBSD" ]]; then
     export PATH=$PATH:.:/usr/local/etc/udx.d/static
     export PROMPT_COMMAND='history -a'
-    setxkbmap -layout us -variant emacs -option ctrl:nocaps
 fi
 
 # end of .bash_profile

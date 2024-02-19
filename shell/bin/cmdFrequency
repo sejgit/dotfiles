@@ -2,6 +2,6 @@
 #
 # quick command to see what commands you use most
 #
-shopt -s lastpipe
-cat ~/.zsh_history | awk '{print $1}' | sort | uniq -c | sort -nr | head -n 5
+# shopt -s lastpipe
+cat ~/.zsh_history ~/.bash_history | awk '{print $1}' | sort | uniq -c | sort -nr | head -n 5
 

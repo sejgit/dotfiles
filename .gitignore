@@ -180,3 +180,4 @@ ENV/
 /shell/.config/iterm2/
 /shell/bin/ccls
 /shell/.config/MusicBrainz/
+/Mounts.scpt

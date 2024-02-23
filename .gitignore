@@ -181,3 +181,4 @@ ENV/
 /shell/bin/ccls
 /shell/.config/MusicBrainz/
 /Mounts.scpt
+/.DS_Store

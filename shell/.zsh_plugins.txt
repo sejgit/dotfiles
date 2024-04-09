@@ -13,7 +13,7 @@ buonomo/yarn-completion
 marzocchi/zsh-notify
 
 # see .conig/spaceship.zsh for setup
-denysdovhan/spaceship-prompt
+# denysdovhan/spaceship-prompt
 
 
 # oh-my-zsh framework
@@ -43,8 +43,10 @@ ohmyzsh/ohmyzsh path:plugins/dirhistory
 # adds commands for macos https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
 ohmyzsh/ohmyzsh path:plugins/macos
 
-
 # zsh-utils
 belak/zsh-utils path:completion
 belak/zsh-utils path:history
+
+# powerlevel10k theme
+romkatv/powerlevel10k
 

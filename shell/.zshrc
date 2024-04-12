@@ -322,7 +322,14 @@ esac
 
 # keychain
 if command -v keychain 1>/dev/null 2>&1; then
-    keychain id_rsa
+  if [[ $(uname -s) == "Darwin" ]]
+  then
+    export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+    eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`
+  else
+    export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+    eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`
+  fi
 else
     echo "keychain not installed"
 fi

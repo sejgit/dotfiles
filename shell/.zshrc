@@ -116,6 +116,7 @@ if [[ -f ${antidote_dir}/antidote.zsh ]]; then
     plugins_txt=~/dotfiles/shell/.zsh_plugins.txt
     static_file=~/dotfiles/shell/.zsh_plugins.zsh
     zstyle ':antidote:bundle' use-friendly-names 'yes'
+    zstyle ':antidote:bundle' file ~/dotfiles/shell/.zsh_plugins.txt
 
     source ${antidote_dir}/antidote.zsh
     antidote load

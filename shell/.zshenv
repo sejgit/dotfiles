@@ -8,7 +8,7 @@
 # 2023-02-15 fix for Darwin m1 & Intel
 # <2024-04-11 Thu> simplify
 
-echo ".zshenv"
+#echo ".zshenv"
 if [[ $(uname -s) == "Darwin" ]]; then
   # OSX Brew setup
   if [[ $(uname -p) == 'arm' ]]; then

@@ -10,7 +10,7 @@
 # 2022-09-17 switch to antidote from antibody(depreciated)
 # 2023-02-15 fix for Darwin m1 & Intel
 
-echo ".zshrc"
+#echo ".zshrc"
 
 # set vars
 export LANG="en_US.UTF-8"

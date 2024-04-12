@@ -113,8 +113,8 @@ fi
 
 if [[ -f ${antidote_dir}/antidote.zsh ]]; then
     # source antidote
-    plugins_txt=~/.zsh_plugins.txt
-    static_file=~/.zsh_plugins.zsh
+    plugins_txt=~/dotfiles/shell/.zsh_plugins.txt
+    static_file=~/dotfiles/shell/.zsh_plugins.zsh
     zstyle ':antidote:bundle' use-friendly-names 'yes'
 
     source ${antidote_dir}/antidote.zsh
@@ -292,6 +292,9 @@ alias my='cd My\ Documents'
 alias shutdown='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'
 alias halt='sudo halt -p'
+
+# nocorrect
+alias ssh='nocorrect ssh'
 
 # Test if in Emacs or not
 case ${INSIDE_EMACS/*,/} in

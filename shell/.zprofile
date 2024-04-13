@@ -10,10 +10,10 @@
 if [[ $(uname -s) == "Darwin" ]]; then
   # OSX Brew setup
   if [[ $(uname -p) == 'arm' ]]; then
-    echo M1
+    #echo M1
     export HOMEBREW_PREFIX="/opt/homebrew";
   else
-    echo Intel
+    #echo Intel
     export HOMEBREW_PREFIX="/usr/local";
   fi
   export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"

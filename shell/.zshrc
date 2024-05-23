@@ -312,8 +312,12 @@ case ${INSIDE_EMACS/*,/} in
     echo "We somehow have a dumb Emacs terminal." >&2
     ;;
   ("")
-    # not in Emacs, test for iterm2
-    test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
+    if [[ $TERM == "dumb" ]]; then
+      export PS1="$ "
+    else
+      # not in Emacs, test for iterm2
+      test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
+    fi
     ;;
 esac
 

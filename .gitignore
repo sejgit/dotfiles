@@ -185,3 +185,4 @@ ENV/
 .DS_Store
 
 /shell/.zsh_plugins.zsh
+/shell/.config/enchant/

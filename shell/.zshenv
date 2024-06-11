@@ -24,5 +24,11 @@ else
   export HOMEBREW_PREFIX="/usr/local/" # make the path work for non-Darwin
 fi
 
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.shell/scripts:$HOME/dotfiles/git-hub/lib:$HOME/.go/bin:$HOME/perl5/bin:$HOME/node_modules:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/llvm/bin:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$HOMEBREW_PREFIX/opt/go/libexec/bin:$HOMEBREW_PREFIX/opt/fzf/bin:/Library/TeX/texbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$HOME/node_modules/.bin:$HOME/.cargo/bin"; export PATH;
+
+export MANPATH="/usr/share/man:$HOMEBREW_PREFIX/share/man:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:$HOME/dotfiles/git-hub/man"; export MANPATH;
+
+export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
+
 # end of .zshenv
 

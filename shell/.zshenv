@@ -32,3 +32,7 @@ export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
 
 # end of .zshenv
 
+
+# Begin added by argcomplete
+fpath=( /Users/stephenjenkins/.local/pipx/venvs/argcomplete/lib/python3.12/site-packages/argcomplete/bash_completion.d "${fpath[@]}" )
+# End added by argcomplete

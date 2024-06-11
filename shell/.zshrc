@@ -39,15 +39,8 @@ zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # approximate completion matches
 
 # Enable autocompletions
-autoload -Uz compinit
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
-  compinit -i
-else
-  compinit -C -i
-fi
+autoload -U compinit && compinit
 zmodload -i zsh/complist
-
 
 if [[ $(uname -s) == "Darwin" ]] ; then
   # below are for GPG support & use
@@ -98,6 +91,11 @@ if [[ $(uname -s) == "Darwin" ]] ; then
 
   #  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
   antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
+
+  if command -v register-python-argcomplete 1>/dev/null 2>&1; then
+     eval "$(register-python-argcomplete pipx)"
+  fi
+     
 fi
 
 if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then

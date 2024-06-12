@@ -15,12 +15,21 @@ marzocchi/zsh-notify
 # see .conig/spaceship.zsh for setup
 # denysdovhan/spaceship-prompt
 
-
 # oh-my-zsh framework
 ohmyzsh/ohmyzsh path:lib
 
+# Automatically load your project ENV variables from .env
+# add to .zshrc export ZSH_DOTENV_PROMPT=false
+ohmyzsh/ohmyzsh path:plugins/dotenv
+
 # coloured man pages (duh)
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+
+# syntax-highlight file contents
+ohmyzsh/ohmyzsh path:plugins/colorize
+
+# jsontools  pp_json, is_json
+ohmyzsh/ohmyzsh path:plugins/jsontools
 
 # enter causes git status or ls to be executed
 ohmyzsh/ohmyzsh path:plugins/magic-enter
@@ -36,6 +45,9 @@ ohmyzsh/ohmyzsh path:plugins/copypath
 
 # copyfile contents of file to clipboard
 ohmyzsh/ohmyzsh path:plugins/copyfile
+
+# copybuffer binds C-o to copy text on command line
+ohmyzsh/ohmyzsh path:plugins/copybuffer
 
 # adds alt + left, right, up, down to move around
 ohmyzsh/ohmyzsh path:plugins/dirhistory

@@ -39,7 +39,8 @@ zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # approximate completion matches
 
 # Enable autocompletions
-autoload -U compinit && compinit
+fpath+=~/zfunc
+autoload -Uz compinit && compinit
 zmodload -i zsh/complist
 
 if [[ $(uname -s) == "Darwin" ]] ; then
@@ -119,9 +120,24 @@ if [[ -f ${antidote_dir}/antidote.zsh ]]; then
     source ${antidote_dir}/antidote.zsh
     antidote load
 
+    # reverse-bindkey-lookup  ;man terminfo after to find
+    r-b-l() {
+      print ${(k)terminfo[(Re)$(print -b - $1)]}
+      }
+
     # Keybindings
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
+    bindkey '\e[A' history-beginning-search-backward
+    bindkey '\eOA' history-beginning-search-backward
+    bindkey '\e[B' history-beginning-search-forward
+    bindkey '\eOB' history-beginning-search-forward
+    zle -A {.,}history-incremental-search-forward
+    zle -A {.,}history-incremental-search-backward
+    bindkey '^[[5D' emacs-backward-word
+    bindkey '^[[5C' emacs-forward-word
+    bindkey '^J' self-insert
+
+
+    
 else
     if [[ $(uname -s) == "Darwin" ]]
     then

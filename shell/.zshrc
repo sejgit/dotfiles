@@ -36,12 +36,66 @@ setopt interactive_comments # allow comments in interactive shells
 # Improve autocompletion style
 zstyle ':completion:*' menu select # select completions with arrow keys
 zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:::::' completer _expand _complete _ignored _approximate # approximate completion matches
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate # approx completion
 
 # Enable autocompletions
-fpath+=~/zfunc
-autoload -Uz compinit && compinit
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
+# ruff completion needs ruff generate-shell-completion zsh > ~/.zfunc/_ruff
+fpath+=~/.zfunc
 zmodload -i zsh/complist
+autoload -Uz compinit && compinit
+
+# Antidote
+if [[ -d ${ZDOTDIR:=~}/.antidote ]]; then
+    echo "Using cloned version of antidote"
+    antidote_dir=${ZDOTDIR:-~}/.antidote
+fi
+if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then
+  antidote_dir=${ZDOTDIR:-~}/.antidote
+else
+  #  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+  antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
+fi
+if [[ -f ${antidote_dir}/antidote.zsh ]]; then
+    # source antidote
+    plugins_txt=~/dotfiles/shell/.zsh_plugins.txt
+    static_file=~/dotfiles/shell/.zsh_plugins.zsh
+    zstyle ':antidote:bundle' use-friendly-names 'yes'
+    zstyle ':antidote:bundle' file ~/dotfiles/shell/.zsh_plugins.txt
+
+    source ${antidote_dir}/antidote.zsh
+    antidote load
+
+    # reverse-bindkey-lookup  ;man terminfo after to find
+    r-b-l() {
+      print ${(k)terminfo[(Re)$(print -b - $1)]}
+    }
+    
+    if command -v register-python-argcomplete 1>/dev/null 2>&1; then
+      eval "$(register-python-argcomplete pipx)"
+    fi
+    autoload -Uz compinit && compinit
+else
+    if [[ $(uname -s) == "Darwin" ]]
+    then
+        echo "antidote needs to be installed: brew install antidote"
+    else
+        echo "antidote needs to be installed: git clone mattmc3/antidote"
+    fi
+fi
+
+# Keybindings
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\eOA' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+bindkey '\eOB' history-beginning-search-forward
+zle -A {.,}history-incremental-search-forward
+zle -A {.,}history-incremental-search-backward
+bindkey '^[[5D' emacs-backward-word
+bindkey '^[[5C' emacs-forward-word
+bindkey '^J' self-insert
 
 if [[ $(uname -s) == "Darwin" ]] ; then
   # below are for GPG support & use
@@ -90,63 +144,18 @@ if [[ $(uname -s) == "Darwin" ]] ; then
   alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
   alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
 
-  #  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-  antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
-
-  if command -v register-python-argcomplete 1>/dev/null 2>&1; then
-     eval "$(register-python-argcomplete pipx)"
-  fi
-     
 fi
 
 if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then
-    echo FreeBSD/Linux
-    antidote_dir=${ZDOTDIR:-~}/.antidote
+  echo FreeBSD
 fi
 
-# Antidote
-if [[ -d ${ZDOTDIR:=~}/.antidote ]]; then
-    echo "Using cloned version of antidote"
-    antidote_dir=${ZDOTDIR:-~}/.antidote
-fi
-
-if [[ -f ${antidote_dir}/antidote.zsh ]]; then
-    # source antidote
-    plugins_txt=~/dotfiles/shell/.zsh_plugins.txt
-    static_file=~/dotfiles/shell/.zsh_plugins.zsh
-    zstyle ':antidote:bundle' use-friendly-names 'yes'
-    zstyle ':antidote:bundle' file ~/dotfiles/shell/.zsh_plugins.txt
-
-    source ${antidote_dir}/antidote.zsh
-    antidote load
-
-    # reverse-bindkey-lookup  ;man terminfo after to find
-    r-b-l() {
-      print ${(k)terminfo[(Re)$(print -b - $1)]}
-      }
-
-    # Keybindings
-    bindkey '\e[A' history-beginning-search-backward
-    bindkey '\eOA' history-beginning-search-backward
-    bindkey '\e[B' history-beginning-search-forward
-    bindkey '\eOB' history-beginning-search-forward
-    zle -A {.,}history-incremental-search-forward
-    zle -A {.,}history-incremental-search-backward
-    bindkey '^[[5D' emacs-backward-word
-    bindkey '^[[5C' emacs-forward-word
-    bindkey '^J' self-insert
-
-
-    
-else
-    if [[ $(uname -s) == "Darwin" ]]
-    then
-        echo "antidote needs to be installed: brew install antidote"
-    else
-        echo "antidote needs to be installed: git clone mattmc3/antidote"
+if [[ $(uname -s) == "Linux" ]]; then
+    echo Linux
+    if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
+      source /usr/share/nvm/init-nvm.sh
     fi
 fi
-
 
 if [[ -d ~/.cargo ]]; then
     . "$HOME/.cargo/env"
@@ -167,11 +176,6 @@ pipoff() {
 pipon() {
     export PIP_REQUIRE_VIRTUALENV=true
 }
-
-# Set-up nvm for Linux
-if [[ -f /usr/share/nvm/init-nvm.sh ]] && [[ $(uname -s) = "Linux" ]]; then
-  source /usr/share/nvm/init-nvm.sh
-fi
 
 # gnu shuf for random permutations
 which gshuf &>/dev/null

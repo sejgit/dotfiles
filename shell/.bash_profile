@@ -12,18 +12,9 @@ if [ -f .bashrc ]; then
     . .bashrc 
 fi
 
-
-if [[ $(uname -s) == "Darwin" ]]; then
-  # OSX Brew setup
-  if [[ $(uname -p) == 'arm' ]]; then
-    echo M1
-    export HOMEBREW_PREFIX="/opt/homebrew";
-  else
-    echo Intel
-    export HOMEBREW_PREFIX="/usr/local";
-  fi
-  export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
-  export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
+HOMEBREW_PREFIX="$(brew --prefix)"
+export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
 else
   export HOMEBREW_PREFIX="/usr/local" # make the path work for non-Darwin
 fi
@@ -41,29 +32,34 @@ export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
 if [ $(uname -s) == "Darwin" ]; then
     if ! [ $INSIDE_EMACS ]; then
         # Add tab completion for bash completion 2
-        if [ -x "$(command -v brew)" ] &&
-               [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-            source "$(brew --prefix)/share/bash-completion/bash_completion"
-            alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-        elif [ -f /etc/bash_completion ]; then
-            source /etc/bash_completion
+      if type brew &>/dev/null
+      then
+        if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+        then
+          source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+        else
+          for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+          do
+            [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+          done
         fi
+      fi
+      alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+      # for autojump
+      # https://github.com/wting/autojump
+      if [ -f "/usr/local/etc/profile.d/autojump.sh" ]; then
+        source "/usr/local/etc/profile.d/autojump.sh"
+      fi
 
-        # for autojump
-        # https://github.com/wting/autojump
-        if [ -f "/usr/local/etc/profile.d/autojump.sh" ]; then
-            source "/usr/local/etc/profile.d/autojump.sh"
-        fi
-
-        # below are for GPG support & use
-        export GPG_TTY=$(tty)
-        if [ -n "$SSH_CONNECTION" ]; then
+      # below are for GPG support & use
+      export GPG_TTY=$(tty)
+      if [ -n "$SSH_CONNECTION" ]; then
             export PINENTRY_USER_DATA="USE_CURSES=1"
-        fi
+      fi
 
-        if [ -f "~/.iterm2_shell_integration.bash" ]; then
+      if [ -f "~/.iterm2_shell_integration.bash" ]; then
             source ~/.iterm2_shell_integration.bash
-        fi
+      fi
 
     else
         export PS1="\w> "

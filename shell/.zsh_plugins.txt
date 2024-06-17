@@ -1,22 +1,32 @@
 # .zsh_plugins.txt
 
 # basic Plugins
-zsh-users/zsh-completions
+# .zsh_plugins.txt
+# pick only the plugins you want and remove the rest
+# oh-my-zsh framework
+ohmyzsh/ohmyzsh path:lib
+
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/homebrew
+mattmc3/zephyr path:plugins/macos
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/zfunctions
+
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-history-substring-search
 
-bobthecow/git-flow-completion
-buonomo/yarn-completion
+https://github.com/peterhurford/up.zsh
+rummik/zsh-tailf
+mattmc3/zman
+agkozak/zsh-z
 
 # desktop notification for longrunning commands
 marzocchi/zsh-notify
-
-# see .conig/spaceship.zsh for setup
-# denysdovhan/spaceship-prompt
-
-# oh-my-zsh framework
-ohmyzsh/ohmyzsh path:lib
 
 # Automatically load your project ENV variables from .env
 # add to .zshrc export ZSH_DOTENV_PROMPT=false
@@ -30,9 +40,6 @@ ohmyzsh/ohmyzsh path:plugins/colorize
 
 # jsontools  pp_json, is_json
 ohmyzsh/ohmyzsh path:plugins/jsontools
-
-# enter causes git status or ls to be executed
-ohmyzsh/ohmyzsh path:plugins/magic-enter
 
 # esc twice causes last command to have sudo added
 ohmyzsh/ohmyzsh path:plugins/sudo
@@ -52,13 +59,18 @@ ohmyzsh/ohmyzsh path:plugins/copybuffer
 # adds alt + left, right, up, down to move around
 ohmyzsh/ohmyzsh path:plugins/dirhistory
 
-# adds commands for macos https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
-ohmyzsh/ohmyzsh path:plugins/macos
+# other completions
+bobthecow/git-flow-completion
+buonomo/yarn-completion
 
 # zsh-utils
 belak/zsh-utils path:completion
-belak/zsh-utils path:history
 
 # powerlevel10k theme
 romkatv/powerlevel10k
+
+# recommended last
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
+
 

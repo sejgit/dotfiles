@@ -186,3 +186,5 @@ ENV/
 
 /shell/.zsh_plugins.zsh
 /shell/.config/enchant/
+/shell/.zsh_history
+/shell/.zcompdump

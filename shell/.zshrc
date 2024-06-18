@@ -47,7 +47,7 @@ setopt +o extended_glob
 # ruff completion needs ruff generate-shell-completion zsh > ~/.zfunc/_ruff
 # Enable autocompletions
 if type brew &>/dev/null; then
-  fpath+=$(brew --prefix)/share/zsh/site-functions
+  fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 fi
 fpath+=~/.zfunc
 # Autoload functions you might want to use with antidote.

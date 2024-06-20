@@ -5,7 +5,7 @@
 # 2022-09-21 updates between .zshrc & .zshenv & .zprofile
 # 2023-02-15 fix for Darwin m1 & intel
 # 2024-06-15 better brew prefix fix
-#echo ".zprofile"
+# echo ".zprofile"
 
 ###########
 # browser #

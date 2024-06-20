@@ -7,7 +7,7 @@
 # 2022-09-19 update .zshrc for m1 mac & pull zsh plugins to .zsh_plugins
 # 2023-02-15 fix for Darwin m1 & Intel
 # <2024-06-15 Thu> simplify
-#echo ".zshenv"
+# echo ".zshenv"
 
 
 ###############
@@ -43,7 +43,8 @@ fi
 # .zprofile #
 #############
 # .zprofile to set environment vars for non-login, non-interactive shells.
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+# if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+if [[ ( ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 

@@ -10,7 +10,7 @@
 # 2022-09-17 switch to antidote from antibody(depreciated)
 # 2023-02-15 fix for Darwin m1 & Intel
 
-#echo ".zshrc"
+# echo ".zshrc"
 
 #########
 # vars  #
@@ -172,6 +172,9 @@ if [[ $(uname -s) == "Linux" ]]; then
     fi
 fi
 
+#########
+# cargo #
+#########
 if [[ -d ~/.cargo ]]; then
     . "$HOME/.cargo/env"
 fi
@@ -183,11 +186,20 @@ if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+else
+  echo "pyenv not installed"
 fi
 
+##########
+# direnv #
+##########
+if command -v direnv 1>/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+else
+  echo "direnv not installed"
+fi
 
 COLORTERM=truecolor
-
 
 #########
 # Emacs #

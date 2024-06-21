@@ -28,6 +28,7 @@ SAVEHIST=$HISTSIZE
 ###########
 # Options #
 ###########
+setopt append_create
 setopt auto_cd # cd by typing directory name if it's not a command
 setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion

@@ -186,6 +186,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+    eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
   echo "pyenv not installed"
 fi
@@ -260,6 +261,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
 
 # end of .zshrc

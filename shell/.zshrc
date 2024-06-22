@@ -45,11 +45,11 @@ setopt +o extended_glob
 ###############
 # Completions #
 ###############
-# ruff completion needs ruff generate-shell-completion zsh > ~/.zfunc/_ruff
 # Enable autocompletions
 if type brew &>/dev/null; then
   fpath+=$HOMEBREW_PREFIX/share/zsh/site-functions
 fi
+# ruff completion needs ruff generate-shell-completion zsh > ~/.zfunc/_ruff
 fpath+=~/.zfunc
 # Autoload functions you might want to use with antidote.
 ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
@@ -170,6 +170,8 @@ if [[ $(uname -s) == "Linux" ]]; then
     echo Linux
     if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
       source /usr/share/nvm/init-nvm.sh
+    else
+      echo "nvm not installed"
     fi
 fi
 
@@ -177,7 +179,9 @@ fi
 # cargo #
 #########
 if [[ -d ~/.cargo ]]; then
-    . "$HOME/.cargo/env"
+  . "$HOME/.cargo/env"
+else
+  echo "cargo not installed"
 fi
 
 #########
@@ -262,6 +266,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
+if [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]]
+then
+  "echo p10k not installed or set-up"
+else
+  source ${ZDOTDIR:-~}/.p10k.zsh
+fi
 
 # end of .zshrc

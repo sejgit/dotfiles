@@ -20,6 +20,7 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 ##################
 # OSX Brew setup #
 ##################
+if [[ $(uname -s) == "Darwin" ]]; then
   if [[ $(uname -p) == 'arm' ]]; then
     #echo M1
     export HOMEBREW_PREFIX="/opt/homebrew";
@@ -27,7 +28,8 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
     #echo Intel
     export HOMEBREW_PREFIX="/usr/local";
   fi
-  
+fi
+
 #####################
 # Set C environment #
 #####################
@@ -35,8 +37,12 @@ if [[ $(uname -s) == "Darwin" ]]; then
   if [ -x /usr/libexec/path_helper ]; then
 	eval `/usr/libexec/path_helper -s`
   fi
-  export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
-  export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
+  if type brew &>/dev/null; then
+    export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+    export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
+  else
+    echo "HomeBrew is required for this dotfile on macOS!!!"
+  fi
 fi
 
 #############

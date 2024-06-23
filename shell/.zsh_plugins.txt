@@ -62,6 +62,7 @@ ohmyzsh/ohmyzsh path:plugins/dirhistory
 # other completions
 bobthecow/git-flow-completion
 buonomo/yarn-completion
+MenkeTechnologies/zsh-cargo-completion kind:zsh
 
 # zsh-utils
 belak/zsh-utils path:completion

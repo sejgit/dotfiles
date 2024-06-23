@@ -69,6 +69,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # ap
 ############
 if [[ -d ~/.antidote ]]; then
     echo "Using cloned version of antidote"
+    # git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
     antidote_dir=~/.antidote
 else
   if [[ $(uname -s) == "Darwin" ]]
@@ -194,6 +195,21 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
   echo "pyenv not installed"
+  echo "macos: brew install pyenv"
+  echo "linux: apt install pyenv"
+  echo "freebsd: pkg install pyenv"
+fi
+
+########
+# pipx #
+########
+if command -v pipx 1>/dev/null 2>&1; then
+  # maybe add more checks later
+else
+  echo "pipx not installed"
+  echo "macos: brew install pipx"
+  echo "linux: apt install pipx"
+  echo "freebsd: pkg install pipx"
 fi
 
 ##########
@@ -203,6 +219,9 @@ if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 else
   echo "direnv not installed"
+  echo "macos: brew install direnv"
+  echo "linux: apt install direnv"
+  echo "freebsd: pkg install direnv"
 fi
 
 COLORTERM=truecolor

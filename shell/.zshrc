@@ -182,7 +182,7 @@ fi
 if command -v cargo 1>/dev/null 2>&1; then
   . "$HOME/.cargo/env"
 else
-  echo "cargo not installed"
+  echo "cargo not installed, see readme"
 fi
 
 #########
@@ -195,9 +195,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
   echo "pyenv not installed"
-  echo "macos: brew install pyenv"
-  echo "linux: apt install pyenv"
-  echo "freebsd: pkg install pyenv"
+  echo "  macos: brew install pyenv"
+  echo "  linux: apt install pyenv"
+  echo "  freebsd: pkg install pyenv"
 fi
 
 ########
@@ -207,9 +207,9 @@ if command -v pipx 1>/dev/null 2>&1; then
   # maybe add more checks later
 else
   echo "pipx not installed"
-  echo "macos: brew install pipx"
-  echo "linux: apt install pipx"
-  echo "freebsd: pkg install pipx"
+  echo "  macos: brew install pipx"
+  echo "  linux: apt install pipx"
+  echo "  freebsd: pkg install pipx"
 fi
 
 ##########
@@ -219,9 +219,9 @@ if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 else
   echo "direnv not installed"
-  echo "macos: brew install direnv"
-  echo "linux: apt install direnv"
-  echo "freebsd: pkg install direnv"
+  echo "  macos: brew install direnv"
+  echo "  linux: apt install direnv"
+  echo "  freebsd: pkg install direnv"
 fi
 
 COLORTERM=truecolor

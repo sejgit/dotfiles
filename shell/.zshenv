@@ -22,10 +22,10 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 ##################
 if [[ "$OSTYPE" == darwin* ]]; then
   if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
-    #echo M1
+    echo M1
     export HOMEBREW_PREFIX="/opt/homebrew";
   else
-    #echo Intel
+    echo Intel
     export HOMEBREW_PREFIX="/usr/local";
   fi
 fi
@@ -37,10 +37,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
   if [ -x /usr/libexec/path_helper ]; then
 	eval `/usr/libexec/path_helper -s`
   fi
-  if type brew &>/dev/null; then
+  if type $HOMEBREW_PREFIX/bin/brew &>/dev/null; then
     export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
     export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
   else
+    echo $(type brew)
     echo "HomeBrew is required for this dotfile on macOS!!!"
   fi
 fi

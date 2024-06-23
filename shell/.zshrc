@@ -67,9 +67,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # ap
 ############
 # Antidote #
 ############
-if [[ -d ${ZDOTDIR:-~}/.antidote ]]; then
+if [[ -d ~/.antidote ]]; then
     echo "Using cloned version of antidote"
-    antidote_dir=${ZDOTDIR:-~}/.antidote
+    antidote_dir=~/.antidote
 else
   if [[ $(uname -s) == "Darwin" ]]
      #  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"

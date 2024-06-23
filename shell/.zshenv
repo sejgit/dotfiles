@@ -20,8 +20,8 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 ##################
 # OSX Brew setup #
 ##################
-if [[ $(uname -s) == "Darwin" ]]; then
-  if [[ $(uname -p) == 'arm' ]]; then
+if [[ "$OSTYPE" == darwin* ]]; then
+  if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
     #echo M1
     export HOMEBREW_PREFIX="/opt/homebrew";
   else
@@ -33,7 +33,7 @@ fi
 #####################
 # Set C environment #
 #####################
-if [[ $(uname -s) == "Darwin" ]]; then
+if [[ "$OSTYPE" == darwin* ]]; then
   if [ -x /usr/libexec/path_helper ]; then
 	eval `/usr/libexec/path_helper -s`
   fi

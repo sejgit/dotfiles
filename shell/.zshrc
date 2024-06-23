@@ -204,7 +204,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     if eval "$(pyenv virtualenv-init -)" ; then
-       echo yay
+       # echo yay
     else
       echo "pyenv-virtualenv not installed"
       echo "  macos: brew install pyenv-virtualenv"

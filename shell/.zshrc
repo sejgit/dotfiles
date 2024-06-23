@@ -178,7 +178,7 @@ fi
 #########
 # cargo #
 #########
-if [[ -d ~/.cargo ]]; then
+if command -v cargo 1>/dev/null 2>&1; then
   . "$HOME/.cargo/env"
 else
   echo "cargo not installed"

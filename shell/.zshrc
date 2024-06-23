@@ -203,6 +203,14 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
+    if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
+      eval "$(pyenv virtualenv-init -)"
+    else
+      echo "pyenv-virtualenv not installed"
+      echo "  macos: brew install pyenv-virtualenv"
+      echo "  linux: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
+      echo "  freebsd: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
+    fi
 else
   echo "pyenv not installed"
   echo "  macos: brew install pyenv"
@@ -214,11 +222,11 @@ fi
 # pipenv #
 ##########
 if command -v pipenv 1>/dev/null 2>&1; then
-    eval "$(pyenv virtualenv-init -)"
     eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
   echo "pipenv not installed"
-  echo "  pipx install pipenv --user"
+  echo "macos  brew install pipenv"
+  echo "freebsd  pip install pipenv --user"
 fi
 
 ##########

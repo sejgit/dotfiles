@@ -213,6 +213,16 @@ else
 fi
 
 ##########
+# pipenv #
+##########
+if command -v pipx 1>/dev/null 2>&1; then
+  # maybe add more checks later
+else
+  echo "pipenv not installed"
+  echo "  pipx install pipenv --user"
+fi
+
+##########
 # direnv #
 ##########
 if command -v direnv 1>/dev/null 2>&1; then

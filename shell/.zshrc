@@ -185,21 +185,6 @@ else
   echo "cargo not installed, see readme"
 fi
 
-#########
-# pyenv #
-#########
-if command -v pyenv 1>/dev/null 2>&1; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-    eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
-else
-  echo "pyenv not installed"
-  echo "  macos: brew install pyenv"
-  echo "  linux: apt install pyenv"
-  echo "  freebsd: pkg install pyenv"
-fi
-
 ########
 # pipx #
 ########
@@ -209,14 +194,28 @@ else
   echo "pipx not installed"
   echo "  macos: brew install pipx"
   echo "  linux: apt install pipx"
-  echo "  freebsd: pkg install pipx"
+  echo "  freebsd: python3 -m pip install --user pipx"
+fi
+
+#########
+# pyenv #
+#########
+if command -v pyenv 1>/dev/null 2>&1; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    eval "$(pyenv init -)"
+else
+  echo "pyenv not installed"
+  echo "  macos: brew install pyenv"
+  echo "  linux: apt install pyenv"
+  echo "  freebsd: pkg install pyenv"
 fi
 
 ##########
 # pipenv #
 ##########
 if command -v pipenv 1>/dev/null 2>&1; then
-  # maybe add more checks later
+    eval "$(pyenv virtualenv-init -)"
+    eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
   echo "pipenv not installed"
   echo "  pipx install pipenv --user"

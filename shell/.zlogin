@@ -4,6 +4,7 @@
 
 #echo ".zlogin"
 
+# for Emacs tramp
 [[ $TERM == "dumb" || $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 
 # set up screenfetch

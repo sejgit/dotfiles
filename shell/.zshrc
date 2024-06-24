@@ -12,9 +12,6 @@
 
 # echo ".zshrc"
 
-# for Emacs Tramp
-[[ $TERM == "dumb" || $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
-
 #########
 # vars  #
 #########

@@ -22,10 +22,10 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 ##################
 if [[ "$OSTYPE" == darwin* ]]; then
   if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
-    echo M1
+    # echo M1
     export HOMEBREW_PREFIX="/opt/homebrew";
   else
-    echo Intel
+    # echo Intel
     export HOMEBREW_PREFIX="/usr/local";
   fi
 fi

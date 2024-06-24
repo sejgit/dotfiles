@@ -265,14 +265,16 @@ case ${INSIDE_EMACS/*,/} in
     ;;
   ("")
     if [[ $TERM == "dumb" ]]; then
+      unsetopt zle
       export PS1="$ "
+      return
     else
       # not in Emacs, test for iterm2
       test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
     fi
     ;;
 esac
-
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
 ############

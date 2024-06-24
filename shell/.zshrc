@@ -262,6 +262,9 @@ case ${INSIDE_EMACS/*,/} in
     ;;
   (tramp)
     echo "We somehow have a dumb Emacs terminal." >&2
+      unsetopt zle
+      export PS1="$ "
+      return
     ;;
   ("")
     if [[ $TERM == "dumb" ]]; then

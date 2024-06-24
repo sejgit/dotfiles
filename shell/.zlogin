@@ -4,6 +4,8 @@
 
 #echo ".zlogin"
 
+[[ $TERM == "dumb" || $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
+
 # set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]; then
     if command -v screenfetch 1>/dev/null 2>&1; then

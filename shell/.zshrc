@@ -12,6 +12,8 @@
 
 # echo ".zshrc"
 
+[[ $TERM == "dumb" || $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
+
 #########
 # vars  #
 #########
@@ -277,7 +279,6 @@ case ${INSIDE_EMACS/*,/} in
     fi
     ;;
 esac
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
 ############

@@ -14,19 +14,19 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER="${BROWSER:-open}"
 fi
 
-####################
-# setting defaults #
-####################
-export EDITOR="${EDITOR:-e}"
-export VISUAL="${VISUAL:-e}"
-export PAGER="${PAGER:-less}"
-
 ##################
 # homebrew paths #
 ##################
 export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
 export HOMEBREW_REPOSITORY=$HOMEBREW_PREFIX;
 export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
+
+####################
+# setting defaults #
+####################
+export EDITOR="${EDITOR:-e}"
+export VISUAL="${VISUAL:-e}"
+export PAGER="${PAGER:-less}"
 
 ################
 # paths for zsh #

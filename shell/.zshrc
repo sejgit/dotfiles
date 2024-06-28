@@ -179,7 +179,7 @@ fi
 #########
 # cargo #
 #########
-if command -v $HOME/.cargo/bin/cargo 1>/dev/null 2>&1; then
+if test -e $HOME/.cargo/bin/cargo; then
   . "$HOME/.cargo/env"
 else
   echo "cargo not installed, see readme"

@@ -9,8 +9,9 @@
 # 2022-01-24 clean up and adds to work on other systems
 # 2022-09-17 switch to antidote from antibody(depreciated)
 # 2023-02-15 fix for Darwin m1 & Intel
+# <2024-06-30 Sun> set for tramp
 
-# echo ".zshrc"
+# printf ".zshrc"
 
 #########
 # Emacs #
@@ -21,23 +22,23 @@ bindkey -e
 # Test if in Emacs or not
 case ${INSIDE_EMACS/*,/} in
   (eat)
-    echo 'Inside Emacs/Eat'
+    printf 'Inside Emacs/Eat'
     source ${ZDOTDIR:-~}/.zlogin
     [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
     ;;
   (comint)
-    echo 'Inside Emacs!'
+    printf 'Inside Emacs!'
     export TERM='xterm-256color'
     source ${ZDOTDIR:-~}/.zlogin
     ;;
   (tramp)
-    echo "We somehow have a dumb Emacs terminal." >&2
+    printf "We somehow have a dumb Emacs terminal." >&2
       unsetopt zle
       export PS1="$ "
       return
     ;;
   (dumb)
-    echo "We somehow have a dumb Emacs terminal." >&2
+    printf "We somehow have a dumb Emacs terminal." >&2
       unsetopt zle
       export PS1="$ "
       return
@@ -112,7 +113,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # ap
 # Antidote #
 ############
 if [[ -d ~/.antidote ]]; then
-    echo "Using cloned version of antidote"
+    printf "Using cloned version of antidote"
     # git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
     antidote_dir=~/.antidote
 else
@@ -135,9 +136,9 @@ if [[ -f ${antidote_dir}/antidote.zsh ]]; then
 else
     if [[ $(uname -s) == "Darwin" ]]
     then
-        echo "antidote needs to be installed: brew install antidote"
+        printf "antidote needs to be installed: brew install antidote"
     else
-        echo "antidote needs to be installed: git clone mattmc3/antidote"
+        printf "antidote needs to be installed: git clone mattmc3/antidote"
     fi
 fi
 
@@ -206,18 +207,18 @@ fi
 # freeBSD specific #
 ####################
 if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then
-  echo FreeBSD
+  printf FreeBSD
 fi
 
 ##################
 # Linux specific #
 ##################
 if [[ $(uname -s) == "Linux" ]]; then
-    echo Linux
+    printf Linux
     if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
       source /usr/share/nvm/init-nvm.sh
     else
-      echo "nvm not installed"
+      printf "nvm not installed"
     fi
 fi
 
@@ -227,7 +228,7 @@ fi
 if test -e $HOME/.cargo/bin/cargo; then
   . "$HOME/.cargo/env"
 else
-  echo "cargo not installed, see readme"
+  printf "cargo not installed, see readme"
 fi
 
 ########
@@ -236,10 +237,10 @@ fi
 if command -v pipx 1>/dev/null 2>&1; then
   # maybe add more checks later
 else
-  echo "pipx not installed"
-  echo "  macos: brew install pipx"
-  echo "  linux: apt install pipx"
-  echo "  freebsd: python3 -m pip install --user pipx"
+  printf "pipx not installed"
+  printf "  macos: brew install pipx"
+  printf "  linux: apt install pipx"
+  printf "  freebsd: python3 -m pip install --user pipx"
 fi
 
 #########
@@ -249,18 +250,18 @@ if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     if eval "$(pyenv virtualenv-init -)" ; then
-       # echo yay
+       # printf yay
     else
-      echo "pyenv-virtualenv not installed"
-      echo "  macos: brew install pyenv-virtualenv"
-      echo "  linux: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
-      echo "  freebsd: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
+      printf "pyenv-virtualenv not installed"
+      printf "  macos: brew install pyenv-virtualenv"
+      printf "  linux: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
+      printf "  freebsd: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
     fi
 else
-  echo "pyenv not installed"
-  echo "  macos: brew install pyenv"
-  echo "  linux: apt install pyenv"
-  echo "  freebsd: pkg install pyenv"
+  printf "pyenv not installed"
+  printf "  macos: brew install pyenv"
+  printf "  linux: apt install pyenv"
+  printf "  freebsd: pkg install pyenv"
 fi
 
 ##########
@@ -269,9 +270,9 @@ fi
 if command -v pipenv 1>/dev/null 2>&1; then
     eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
-  echo "pipenv not installed"
-  echo "macos  brew install pipenv"
-  echo "freebsd  pip install pipenv --user"
+  printf "pipenv not installed"
+  printf "macos  brew install pipenv"
+  printf "freebsd  pip install pipenv --user"
 fi
 
 ##########
@@ -280,10 +281,10 @@ fi
 if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 else
-  echo "direnv not installed"
-  echo "  macos: brew install direnv"
-  echo "  linux: apt install direnv"
-  echo "  freebsd: pkg install direnv"
+  printf "direnv not installed"
+  printf "  macos: brew install direnv"
+  printf "  linux: apt install direnv"
+  printf "  freebsd: pkg install direnv"
 fi
 
 ############
@@ -299,7 +300,7 @@ if command -v keychain 1>/dev/null 2>&1; then
     eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`
   fi
 else
-    echo "keychain not installed"
+    printf "keychain not installed"
 fi
 
 ########################
@@ -315,7 +316,7 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 if [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]]
 then
-  "echo p10k not installed or set-up"
+  "printf p10k not installed or set-up"
 else
   source ${ZDOTDIR:-~}/.p10k.zsh
 fi

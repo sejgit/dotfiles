@@ -7,7 +7,8 @@
 # 2022-09-19 update .zshrc for m1 mac & pull zsh plugins to .zsh_plugins
 # 2023-02-15 fix for Darwin m1 & Intel
 # <2024-06-15 Thu> simplify
-# echo ".zshenv"
+# <2024-06-30 Sun> set for tramp
+# printf ".zshenv"
 
 
 ###############
@@ -22,10 +23,10 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 ##################
 if [[ "$OSTYPE" == darwin* ]]; then
   if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
-    # echo M1
+    printf M1
     export HOMEBREW_PREFIX="/opt/homebrew";
   else
-    # echo Intel
+    printf Intel
     export HOMEBREW_PREFIX="/usr/local";
   fi
 fi
@@ -41,8 +42,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
     export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
   else
-    echo $(type brew)
-    echo "HomeBrew is required for this dotfile on macOS!!!"
+    printf $(type brew)
+    printf "HomeBrew is required for this dotfile on macOS!!!"
   fi
 fi
 

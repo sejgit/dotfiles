@@ -8,7 +8,7 @@
 # 2023-02-15 fix for Darwin m1 & Intel
 # <2024-06-15 Thu> simplify
 # <2024-06-30 Sun> set for tramp
-# printf ".zshenv"
+# printf ".zshenv\n"
 
 
 ###############
@@ -43,7 +43,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
   else
     printf $(type brew)
-    printf "HomeBrew is required for this dotfile on macOS!!!"
+    printf "HomeBrew is required for this dotfile on macOS!!!\n"
   fi
 fi
 

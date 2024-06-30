@@ -6,7 +6,7 @@
 # 2023-02-15 fix for Darwin m1 & intel
 # 2024-06-15 better brew prefix fix
 # <2024-06-30 Sun> set for tramp
-# printf ".zprofile"
+# printf ".zprofile\n"
 
 ###########
 # browser #

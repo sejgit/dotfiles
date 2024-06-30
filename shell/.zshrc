@@ -13,6 +13,48 @@
 # echo ".zshrc"
 
 #########
+# Emacs #
+#########
+# needed to ensure Emacs key bindings in the CLI
+bindkey -e
+
+# Test if in Emacs or not
+case ${INSIDE_EMACS/*,/} in
+  (eat)
+    echo 'Inside Emacs/Eat'
+    source ${ZDOTDIR:-~}/.zlogin
+    [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+    ;;
+  (comint)
+    echo 'Inside Emacs!'
+    export TERM='xterm-256color'
+    source ${ZDOTDIR:-~}/.zlogin
+    ;;
+  (tramp)
+    echo "We somehow have a dumb Emacs terminal." >&2
+      unsetopt zle
+      export PS1="$ "
+      return
+    ;;
+  (dumb)
+    echo "We somehow have a dumb Emacs terminal." >&2
+      unsetopt zle
+      export PS1="$ "
+      return
+    ;;
+  ("")
+    if [[ $TERM == "dumb" || $TERM == "tramp" ]]; then
+      unsetopt zle
+      export PS1="$ "
+      return
+    else
+      # not in Emacs, test for iterm2
+      test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
+    fi
+    ;;
+esac
+
+#########
 # vars  #
 #########
 export LANG="en_US.UTF-8"
@@ -41,6 +83,8 @@ setopt share_history # share history between different instances
 setopt interactive_comments # allow comments in interactive shells
 setopt +o extended_glob
 # setopt +o nullglob
+COLORTERM=truecolor
+
 
 ###############
 # Completions #
@@ -72,10 +116,11 @@ if [[ -d ~/.antidote ]]; then
     # git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
     antidote_dir=~/.antidote
 else
-  if [[ $(uname -s) == "Darwin" ]]
+  if [[ $(uname -s) == "Darwin" ]]; then
      #  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
      antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
   fi
+fi
 if [[ -f ${antidote_dir}/antidote.zsh ]]; then
     plugins_txt=${ZDOTDIR:-~}/.zsh_plugins.txt
     static_file=${ZDOTDIR:-~}/.zsh_plugins.zsh
@@ -240,44 +285,6 @@ else
   echo "  linux: apt install direnv"
   echo "  freebsd: pkg install direnv"
 fi
-
-COLORTERM=truecolor
-
-#########
-# Emacs #
-#########
-# needed to ensure Emacs key bindings in the CLI
-bindkey -e
-
-# Test if in Emacs or not
-case ${INSIDE_EMACS/*,/} in
-  (eat)
-    echo 'Inside Emacs/Eat'
-    source ${ZDOTDIR:-~}/.zlogin
-    ;;
-  (comint)
-    echo 'Inside Emacs!'
-    export TERM='xterm-256color'
-    source ${ZDOTDIR:-~}/.zlogin
-    ;;
-  (tramp)
-    echo "We somehow have a dumb Emacs terminal." >&2
-      unsetopt zle
-      export PS1="$ "
-      return
-    ;;
-  ("")
-    if [[ $TERM == "dumb" ]]; then
-      unsetopt zle
-      export PS1="$ "
-      return
-    else
-      # not in Emacs, test for iterm2
-      test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
-    fi
-    ;;
-esac
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
 ############
 # Keychain #

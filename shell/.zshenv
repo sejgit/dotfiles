@@ -36,17 +36,19 @@ fi
 #####################
 # Set C environment #
 #####################
-if [[ "$OSTYPE" == darwin* ]]; then
-  if [ -x /usr/libexec/path_helper ]; then
-	eval `/usr/libexec/path_helper -s`
-  fi
-  if type $HOMEBREW_PREFIX/bin/brew &>/dev/null; then
-    export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
-    export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
-  else
-    printf $(type brew)
-    printf "HomeBrew is required for this dotfile on macOS!!!\n"
-  fi
+if [[ -o login ]]; then
+   if [[ "$OSTYPE" == darwin* ]]; then
+     if [ -x /usr/libexec/path_helper ]; then
+	   eval `/usr/libexec/path_helper -s`
+     fi
+     if type $HOMEBREW_PREFIX/bin/brew &>/dev/null; then
+       export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+       export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
+     else
+       printf $(type brew)
+       printf "HomeBrew is required for this dotfile on macOS!!!\n"
+     fi
+   fi
 fi
 
 #############

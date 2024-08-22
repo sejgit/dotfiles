@@ -21,13 +21,15 @@ export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 ##################
 # OSX Brew setup #
 ##################
-if [[ "$OSTYPE" == darwin* ]]; then
-  if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
-    printf M1
-    export HOMEBREW_PREFIX="/opt/homebrew";
-  else
-    printf Intel
-    export HOMEBREW_PREFIX="/usr/local";
+if [[ -o login ]]; then
+  if [[ "$OSTYPE" == darwin* ]]; then
+    if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
+      printf M1
+      export HOMEBREW_PREFIX="/opt/homebrew";
+    else
+      printf Intel
+      export HOMEBREW_PREFIX="/usr/local";
+    fi
   fi
 fi
 

@@ -164,6 +164,11 @@ source ${ZDOTDIR:-~}/.aliases.zsh
 # macos specific #
 ##################
 if [[ $(uname -s) == "Darwin" ]] ; then
+  # brew-wrap wraps the original brew command for an automatic update of Brewfile
+  #   when you execute such a brew install or brew uninstall.
+  if [ -f $(brew --prefix)/etc/brew-wrap ];then
+	source $(brew --prefix)/etc/brew-wrap
+  fi
   # below are for GPG support & use
   export GPG_TTY=$(tty)
   if [[ -n "$SSH_CONNECTION" ]]

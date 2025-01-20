@@ -188,3 +188,7 @@ ENV/
 /shell/.config/enchant/
 /shell/.zsh_history
 /shell/.zcompdump
+*.session
+/shell/.config/github-copilot/
+/shell/.config/brewfile/
+Brewfile

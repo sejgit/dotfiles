@@ -192,3 +192,4 @@ ENV/
 /shell/.config/github-copilot/
 /shell/.config/brewfile/
 Brewfile
+/shell/.zcompcache/

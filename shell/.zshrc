@@ -304,7 +304,7 @@ if command -v keychain 1>/dev/null 2>&1; then
   if [[ $(uname -s) == "Darwin" ]]
   then
     export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
-    eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`
+    eval `keychain --eval --ssh-spawn-gpg --ssh-allow-forwarded`
   else
     export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
     eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`

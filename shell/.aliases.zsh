@@ -10,7 +10,7 @@ alias gus='git reset HEAD'
 alias gm="git merge"
 alias g='git'
 alias get='git'
-alias gst='git status'
+
 alias gs='git status'
 alias gss='git status -s'
 alias gsu='git submodule update --init --recursive'
@@ -111,18 +111,23 @@ alias crawl='crawl -dir ~/.config/.crawl -rc ~/.config/.crawl/init.txt'
 alias q='exit'
 alias cls='clear'
 
+# use bat for cat if exists
+if command -v bat 1>/dev/null 2>&1; then
+  alias cat='bat'
+fi
+
 # fix common typos
 alias quit='exit'
 alias cd..='cd ..'
-
-# find
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
 
 # misc
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias zdot='cd ${ZDOTDIR:-~}'
 
+# networking
+alias ip='ipconfig getifaddr en0'
+alias ipw='ipconfig getifaddr en0'
+alias ipe='ipconfig getifaddr en1'
 
 

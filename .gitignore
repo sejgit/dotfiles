@@ -193,3 +193,7 @@ ENV/
 /shell/.config/brewfile/
 Brewfile
 /shell/.zcompcache/
+/shell/.config/.copilot/
+/shell/.config/cursor/
+/shell/.config/gh/
+/shell/.config/wireshark/

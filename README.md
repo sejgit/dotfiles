@@ -7,24 +7,24 @@ the `zsh` version is more developed while the `bash` is more for fallback
 ## install:
 
 **requires** `stow` and `antibody` if you are using the `zsh` version  
-**optional** `screenfetch`, `keychain` to be installed:
+**optional** `screenfetch` replaced with `fastfetch`, `onefetch` for git-repos, `keychain`
 
    
 MacOS
 ````bash
-brew install stow antibody screenfetch keychain
+brew install stow antibody fastfetch onefetch keychain
 
 ````
    
 Linux - apt based
 ````bash
-sudo apt install stow antibody screenfetch keychain
+sudo apt install stow antibody fastfetch onefetch keychain
 
 ````
    
 FreeBSD / Linux pkg based
 ````bash
-sudo pkg install stow antibody screenfetch keychain
+sudo pkg install stow antibody fastfetch onefetch keychain
 
 ````
    

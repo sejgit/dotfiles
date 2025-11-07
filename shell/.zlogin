@@ -10,16 +10,16 @@
 
 # set up screenfetch
 if [[ $(uname -s) == "Darwin" ]]; then
-    if command -v screenfetch 1>/dev/null 2>&1; then
-        screenfetch -D 'Mac OS x'
+    if command -v fastfetch 1>/dev/null 2>&1; then
+        fastfetch
     else
-        printf "screenfetch needs to be installed for splashscreen: brew install screenfetch\n"
+        printf "fastfetch needs to be installed for splashscreen: brew install fastfetch\n"
     fi
 else
-    if command -v screenfetch 1>/dev/null 2>&1; then
-        screenfetch
+    if command -v fastfetch 1>/dev/null 2>&1; then
+        fastfetch
     else
-        printf "screenfetch needs to be installed for splashscreen.  Use appropriate package manager\n"
+        printf "fastfetch needs to be installed for splashscreen.  Use appropriate package manager\n"
     fi
 fi
 

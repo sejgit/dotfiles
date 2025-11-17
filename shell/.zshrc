@@ -145,12 +145,12 @@ fi
 ###############
 # Keybindings #
 ###############
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\eOA' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-bindkey '\eOB' history-beginning-search-forward
-zle -A {.,}history-incremental-search-forward
-zle -A {.,}history-incremental-search-backward
+# bindkey '\e[A' history-beginning-search-backward
+# bindkey '\eOA' history-beginning-search-backward
+# bindkey '\e[B' history-beginning-search-forward
+# bindkey '\eOB' history-beginning-search-forward
+# zle -A {.,}history-incremental-search-forward
+# zle -A {.,}history-incremental-search-backward
 bindkey '^[[5D' emacs-backward-word
 bindkey '^[[5C' emacs-forward-word
 bindkey '^J' self-insert

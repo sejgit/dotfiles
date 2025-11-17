@@ -70,7 +70,7 @@ rustup-init
 sbcl
 scons
 screen
-screenfetch
+fastfetch
 smartmontools
 stow
 subversion

@@ -18,7 +18,7 @@
 # install stow from apt or brew
 stow -t ~/ -v shell
 
-# install screenfetch from apt or brew
+# install fastfetch and onefetch from apt or brew
 # install antibody from brew or
 # sudo curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
 

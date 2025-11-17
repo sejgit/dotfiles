@@ -69,9 +69,8 @@ belak/zsh-utils path:completion
 # powerlevel10k theme
 romkatv/powerlevel10k
 
-# recommended last
+# recommended last - history search
 zsh-users/zsh-history-substring-search
-zsh-users/zsh-autosuggestions
 
 # zsh-fzf-history-search
 joshskidmore/zsh-fzf-history-search

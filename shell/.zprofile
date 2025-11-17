@@ -45,8 +45,6 @@ path=(
 
 export MANPATH="/usr/share/man:$HOMEBREW_PREFIX/share/man:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/opt/X11/share/man:$HOME/dotfiles/git-hub/man"; export MANPATH;
 
-export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
-
 fpath=(~/.zsh $fpath)
 
 # end of .zprofile

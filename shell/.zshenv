@@ -18,16 +18,20 @@
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export ZDOTDIR=${ZDOTDIR:-$HOME/dotfiles/shell}
 
+##########
+# direnv #
+##########
+# Set early to silence direnv output for p10k instant prompt compatibility
+export DIRENV_LOG_FORMAT=""
+
 ##################
 # OSX Brew setup #
 ##################
 if [[ -o login ]]; then
   if [[ "$OSTYPE" == darwin* ]]; then
     if [[ $(/usr/bin/uname -p) == 'arm' ]]; then
-      printf M1
       export HOMEBREW_PREFIX="/opt/homebrew";
     else
-      printf Intel
       export HOMEBREW_PREFIX="/usr/local";
     fi
   fi
@@ -38,15 +42,14 @@ fi
 #####################
 if [[ -o login ]]; then
    if [[ "$OSTYPE" == darwin* ]]; then
-     if [ -x /usr/libexec/path_helper ]; then
-	   eval `/usr/libexec/path_helper -s`
+     if [[ -x /usr/libexec/path_helper ]]; then
+	   eval $(/usr/libexec/path_helper -s)
      fi
-     if type $HOMEBREW_PREFIX/bin/brew &>/dev/null; then
-       export  LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+     if type "$HOMEBREW_PREFIX/bin/brew" &>/dev/null; then
+       export LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
        export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/llvm/include"
      else
-       printf $(type brew)
-       printf "HomeBrew is required for this dotfile on macOS!!!\n"
+       printf "HomeBrew is required for this dotfile on macOS!!!\n" >&2
      fi
    fi
 fi

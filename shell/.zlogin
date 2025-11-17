@@ -2,24 +2,10 @@
 # .zlogin for use on osx and linux
 # 2022-09-21 init sej
 # <2024-06-30 Sun> set for tramp
-
-#printf ".zlogin\n"
+# 2024-11-17 moved fastfetch to .zshrc to work with p10k instant prompt
 
 # for Emacs tramp
 [[ $TERM == "dumb" || $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 
-# set up screenfetch
-if [[ $(uname -s) == "Darwin" ]]; then
-    if command -v fastfetch 1>/dev/null 2>&1; then
-        fastfetch
-    else
-        printf "fastfetch needs to be installed for splashscreen: brew install fastfetch\n"
-    fi
-else
-    if command -v fastfetch 1>/dev/null 2>&1; then
-        fastfetch
-    else
-        printf "fastfetch needs to be installed for splashscreen.  Use appropriate package manager\n"
-    fi
-fi
+# fastfetch moved to .zshrc to run before PowerLevel10k instant prompt
 

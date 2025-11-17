@@ -11,8 +11,6 @@
 # 2023-02-15 fix for Darwin m1 & Intel
 # <2024-06-30 Sun> set for tramp
 
-# printf ".zshrc"
-
 #########
 # Emacs #
 #########
@@ -22,23 +20,19 @@ bindkey -e
 # Test if in Emacs or not
 case ${INSIDE_EMACS/*,/} in
   (eat)
-    printf 'Inside Emacs/Eat\n'
     source ${ZDOTDIR:-~}/.zlogin
     [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
     ;;
   (comint)
-    printf 'Inside Emacs!\n'
     export TERM='xterm-256color'
     source ${ZDOTDIR:-~}/.zlogin
     ;;
   (tramp)
-    printf "We have a dumb Emacs terminal.\n" >&2
       unsetopt zle
       export PS1="$ "
       return
     ;;
   (dumb)
-    printf "We have a dumb Emacs terminal.\n" >&2
       unsetopt zle
       export PS1="$ "
       return
@@ -50,10 +44,42 @@ case ${INSIDE_EMACS/*,/} in
       return
     else
       # not in Emacs, test for iterm2
-      test -e ~/.iterm2_shell_integration.zsh && source ~/.iterm2_shell_integration.zsh || true
+      [[ -e ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
     fi
     ;;
 esac
+
+##########
+# direnv #
+##########
+# Silence direnv output for p10k instant prompt compatibility
+export DIRENV_LOG_FORMAT=""
+
+#############
+# Fastfetch #
+#############
+# Display system info on login shells (must be before p10k instant prompt)
+if [[ -o login ]]; then
+  if [[ $(uname -s) == "Darwin" ]]; then
+    if command -v fastfetch 1>/dev/null 2>&1; then
+      fastfetch
+    fi
+  else
+    if command -v fastfetch 1>/dev/null 2>&1; then
+      fastfetch
+    fi
+  fi
+fi
+
+########################
+# PowerLevel10k prompt #
+########################
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 #########
 # vars  #
@@ -113,44 +139,34 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # ap
 # Antidote #
 ############
 if [[ -d ~/.antidote ]]; then
-    printf "Using cloned version of antidote\n"
-    # git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
     antidote_dir=~/.antidote
 else
   if [[ $(uname -s) == "Darwin" ]]; then
-     #  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
      antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
   fi
 fi
-if [[ -f ${antidote_dir}/antidote.zsh ]]; then
+if [[ -f "${antidote_dir}/antidote.zsh" ]]; then
     plugins_txt=${ZDOTDIR:-~}/.zsh_plugins.txt
     static_file=${ZDOTDIR:-~}/.zsh_plugins.zsh
     zstyle ':antidote:bundle' use-friendly-names 'yes'
     zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zsh_plugins.txt
-    source ${antidote_dir:-~}/antidote.zsh
+    source "${antidote_dir}/antidote.zsh"
     antidote load
 
     if command -v register-python-argcomplete 1>/dev/null 2>&1; then
       eval "$(register-python-argcomplete pipx)"
     fi
 else
-    if [[ $(uname -s) == "Darwin" ]]
-    then
-        printf "antidote needs to be installed: brew install antidote\n"
+    if [[ $(uname -s) == "Darwin" ]]; then
+        printf "antidote needs to be installed: brew install antidote\n" >&2
     else
-        printf "antidote needs to be installed: git clone mattmc3/antidote\n"
+        printf "antidote needs to be installed: git clone mattmc3/antidote\n" >&2
     fi
 fi
 
 ###############
 # Keybindings #
 ###############
-# bindkey '\e[A' history-beginning-search-backward
-# bindkey '\eOA' history-beginning-search-backward
-# bindkey '\e[B' history-beginning-search-forward
-# bindkey '\eOB' history-beginning-search-forward
-# zle -A {.,}history-incremental-search-forward
-# zle -A {.,}history-incremental-search-backward
 bindkey '^[[5D' emacs-backward-word
 bindkey '^[[5C' emacs-forward-word
 bindkey '^J' self-insert
@@ -180,10 +196,12 @@ if [[ $(uname -s) == "Darwin" ]] ; then
     # AWS configuration example, after doing:
     # $  set-keychain-environment-variable AWS_ACCESS_KEY_ID
     #       provide: "AKIAYOURACCESSKEY"
-    export AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID);
+    AWS_ACCESS_KEY_ID=$(keychain-environment-variable AWS_ACCESS_KEY_ID 2>/dev/null)
+    [[ -n "$AWS_ACCESS_KEY_ID" ]] && export AWS_ACCESS_KEY_ID
     # $  set-keychain-environment-variable AWS_SECRET_ACCESS_KEY
     #       provide: "j1/yoursupersecret/password"
-    export AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY);
+    AWS_SECRET_ACCESS_KEY=$(keychain-environment-variable AWS_SECRET_ACCESS_KEY 2>/dev/null)
+    [[ -n "$AWS_SECRET_ACCESS_KEY" ]] && export AWS_SECRET_ACCESS_KEY
   fi
 
   # micropython development
@@ -215,34 +233,30 @@ fi
 # Linux specific #
 ##################
 if [[ $(uname -s) == "Linux" ]]; then
-    printf Linux
     if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
       source /usr/share/nvm/init-nvm.sh
     else
-      printf "nvm not installed\n"
+      printf "nvm not installed\n" >&2
     fi
 fi
 
 #########
 # cargo #
 #########
-if test -e $HOME/.cargo/bin/cargo; then
+if [[ -f "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"
 else
-  printf "cargo not installed, see readme\n"
+  printf "cargo not installed, see readme\n" >&2
 fi
 
 ########
 # pipx #
 ########
-if command -v pipx 1>/dev/null 2>&1; then
-  # maybe add more checks later
-else
-  printf "pipx not installed"
-  printf "  macos: brew install pipx"
-  printf "  linux: apt install pipx"
-  printf "  freebsd: python3 -m pip install --user pipx"
-  printf
+if ! command -v pipx 1>/dev/null 2>&1; then
+  printf "pipx not installed\n" >&2
+  printf "  macos: brew install pipx\n" >&2
+  printf "  linux: apt install pipx\n" >&2
+  printf "  freebsd: python3 -m pip install --user pipx\n" >&2
 fi
 
 #########
@@ -251,21 +265,17 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
-    if eval "$(pyenv virtualenv-init -)" ; then
-       # printf yay
-    else
-      printf "pyenv-virtualenv not installed"
-      printf "  macos: brew install pyenv-virtualenv"
-      printf "  linux: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
-      printf "  freebsd: git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv"
-      printf
+    if ! eval "$(pyenv virtualenv-init -)" 2>/dev/null; then
+      printf "pyenv-virtualenv not installed\n" >&2
+      printf "  macos: brew install pyenv-virtualenv\n" >&2
+      printf "  linux: git clone https://github.com/pyenv/pyenv-virtualenv.git \$(pyenv root)/plugins/pyenv-virtualenv\n" >&2
+      printf "  freebsd: git clone https://github.com/pyenv/pyenv-virtualenv.git \$(pyenv root)/plugins/pyenv-virtualenv\n" >&2
     fi
 else
-  printf "pyenv not installed"
-  printf "  macos: brew install pyenv"
-  printf "  linux: apt install pyenv"
-  printf "  freebsd: pkg install pyenv"
-  printf
+  printf "pyenv not installed\n" >&2
+  printf "  macos: brew install pyenv\n" >&2
+  printf "  linux: apt install pyenv\n" >&2
+  printf "  freebsd: pkg install pyenv\n" >&2
 fi
 
 ##########
@@ -274,59 +284,48 @@ fi
 if command -v pipenv 1>/dev/null 2>&1; then
     eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 else
-  printf "pipenv not installed"
-  printf "macos  brew install pipenv"
-  printf "freebsd  pip install pipenv --user"
-  printf
+  printf "pipenv not installed\n" >&2
+  printf "  macos: brew install pipenv\n" >&2
+  printf "  freebsd: pip install pipenv --user\n" >&2
 fi
 
 ##########
 # direnv #
 ##########
+# Hook for direnv (DIRENV_LOG_FORMAT set earlier before instant prompt)
 if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 else
-  printf "direnv not installed"
-  printf "  macos: brew install direnv"
-  printf "  linux: apt install direnv"
-  printf "  freebsd: pkg install direnv"
-  printf
+  printf "direnv not installed\n" >&2
+  printf "  macos: brew install direnv\n" >&2
+  printf "  linux: apt install direnv\n" >&2
+  printf "  freebsd: pkg install direnv\n" >&2
 fi
 
 ############
 # Keychain #
 ############
 if command -v keychain 1>/dev/null 2>&1; then
-  if [[ $(uname -s) == "Darwin" ]]
-  then
-    eval $(keychain --eval --quiet id_rsa)
-	# below are for GPG support & use
-	export GPG_TTY=$(tty)
-	gpgconf -- launch gpg-agent
+  if [[ $(uname -s) == "Darwin" ]]; then
+    eval $(keychain --eval --quiet id_rsa 2>/dev/null)
+    export GPG_TTY=$(tty)
+    gpgconf --launch gpg-agent 2>/dev/null
   else
     export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
-    eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`
+    eval $(keychain --eval --agents gpg,ssh --inherit any id_rsa 2>/dev/null)
   fi
 else
-    printf "keychain not installed\n"
+    printf "keychain not installed\n" >&2
 fi
 
 ########################
 # PowerLevel10k prompt #
 ########################
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]]
-then
-  "printf p10k not installed or set-up\n"
+if [[ -f "${ZDOTDIR:-~}/.p10k.zsh" ]]; then
+  source "${ZDOTDIR:-~}/.p10k.zsh"
 else
-  source ${ZDOTDIR:-~}/.p10k.zsh
+  printf "p10k not installed or set-up\n" >&2
 fi
 
 # end of .zshrc

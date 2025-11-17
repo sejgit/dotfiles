@@ -54,6 +54,10 @@ esac
 ##########
 # Silence direnv output for p10k instant prompt compatibility
 export DIRENV_LOG_FORMAT=""
+# Hook for direnv - must be before instant prompt
+if command -v direnv 1>/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
 
 #############
 # Fastfetch #
@@ -292,10 +296,9 @@ fi
 ##########
 # direnv #
 ##########
-# Hook for direnv (DIRENV_LOG_FORMAT set earlier before instant prompt)
-if command -v direnv 1>/dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-else
+# direnv hook moved earlier to before instant prompt
+# Error messages for missing direnv only if not found
+if ! command -v direnv 1>/dev/null 2>&1; then
   printf "direnv not installed\n" >&2
   printf "  macos: brew install direnv\n" >&2
   printf "  linux: apt install direnv\n" >&2

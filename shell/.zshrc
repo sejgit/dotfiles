@@ -169,14 +169,10 @@ if [[ $(uname -s) == "Darwin" ]] ; then
   if [ -f $(brew --prefix)/etc/brew-wrap ];then
 	source $(brew --prefix)/etc/brew-wrap
   fi
-  # below are for GPG support & use
-  export GPG_TTY=$(tty)
   if [[ -n "$SSH_CONNECTION" ]]
   then
     export PINENTRY_USER_DATA="USE_CURSES=1"
   fi
-  export GPG_TTY=$(tty)
-
   source ${ZDOTDIR:-~}/keychain-environment-variables.sh
 
   if command -v aws 1>/dev/null 2>&1; then
@@ -303,8 +299,10 @@ fi
 if command -v keychain 1>/dev/null 2>&1; then
   if [[ $(uname -s) == "Darwin" ]]
   then
-    export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
-    eval `keychain --eval --ssh-spawn-gpg --ssh-allow-forwarded`
+    eval $(keychain --eval --quiet id_rsa)
+	# below are for GPG support & use
+	export GPG_TTY=$(tty)
+	gpgconf -- launch gpg-agent
   else
     export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
     eval `keychain --eval --agents gpg,ssh --inherit any id_rsa`

@@ -1,9 +1,16 @@
 # Homebrew Taps (Third-party repositories)
 tap "buo/cask-upgrade"  # Tools for upgrading casks
 tap "d12frosted/emacs-plus"  # Emacs Plus - enhanced Emacs builds
+tap "daviderestivo/emacs-head"  # Emacs HEAD - development builds
+tap "gcenx/wine"  # Wine compatibility layer for macOS
+tap "homebrew/aliases"  # Create shorter aliases for brew commands
 tap "homebrew/autoupdate"  # Automatic Homebrew updates
 tap "homebrew/bundle"  # Bundler for Homebrew (Brewfile support)
+tap "homebrew/cask"  # macOS applications and large binaries
+tap "homebrew/command-not-found"  # Suggests packages for missing commands
+tap "homebrew/core"  # Default Homebrew formulae
 tap "homebrew/services"  # Manage background services with launchctl
+tap "homebrew/test-bot"  # Homebrew CI testing tools
 tap "jakehilborn/jakehilborn"  # Display management tools
 tap "kegworks-app/kegworks"  # Kegworks application repository
 tap "microsoft/git"  # Microsoft Git with VFS for Git support
@@ -42,7 +49,6 @@ brew "cmake"  # Cross-platform make
 brew "cmake-docs"  # Documentation for CMake
 brew "eask-cli"  # CLI for building, running, testing, and managing Emacs packages
 brew "pyright"  # Static type checker for Python
-brew "python-lsp-server"  # Python Language Server for the Language Server Protocol
 brew "typescript-language-server"  # Language server for TypeScript
 brew "bash-language-server"  # Language server for Bash
 brew "ruff"  # Extremely fast Python linter and formatter
@@ -61,7 +67,6 @@ brew "diffutils"  # File comparison utilities
 brew "fd"  # Simple, fast and user-friendly alternative to find
 brew "fzf"  # Command-line fuzzy finder
 brew "gawk"  # GNU awk utility
-brew "gnu-sed"  # GNU version of sed (more powerful than macOS sed)
 brew "grep"  # GNU grep, egrep and fgrep
 brew "htop"  # Improved top (interactive process viewer)
 brew "keychain"  # User-friendly front-end to ssh-agent
@@ -94,7 +99,6 @@ brew "pipenv"  # Python dependency management tool
 brew "pipx"  # Execute binaries from Python packages in isolated environments
 brew "pyenv"  # Python version management
 brew "pyenv-virtualenv"  # Pyenv plugin to manage virtualenv
-brew "pygments"  # Generic syntax highlighter
 brew "virtualenv"  # Virtual Python environment builder
 
 # System Utilities
@@ -154,11 +158,9 @@ brew "platformio"  # Professional collaborative platform for embedded developmen
 
 # Special/Niche Tools
 brew "gemini-cli"  # CLI client for Gemini Protocol
-
-# Custom Emacs Builds
-brew "d12frosted/emacs-plus/emacs-plus@31", args: ["with-dbus", "with-debug", "with-imagemagick", "with-no-frame-refocus", "with-xwidgets"]  # Emacs 31 with enhanced features (dbus, debug symbols, ImageMagick, xwidgets)
-
 # Custom Taps
+GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@31", args: ["with-dbus", "with-debug", "with-imagemagick", "with-no-frame-refocus", "with-xwidgets"]  # Emacs 31 with enhanced features (dbus, debug symbols, ImageMagick, xwidgets)
 brew "jakehilborn/jakehilborn/displayplacer"  # macOS command-line utility to configure multi-display resolutions and arrangements
 brew "rcmdnk/file/brew-file"  # Brewfile manager for Homebrew
 brew "xenodium/macosrec/macosrec"  # Screencasting tool for macOS
@@ -177,6 +179,7 @@ cask "font-iosevka"  # Versatile typeface for code
 cask "font-meslo-for-powerlevel10k"  # Font for Powerlevel10k prompt
 cask "git-credential-manager"  # Secure Git credential storage for macOS and Windows
 cask "google-chrome"  # Web browser
+cask "gstreamer-framework"  # Multimedia framework
 cask "iina"  # Modern media player for macOS
 cask "iterm2"  # Terminal emulator for macOS
 cask "itsycal"  # Tiny menu bar calendar
@@ -184,6 +187,7 @@ cask "karabiner-elements"  # Keyboard customizer for macOS
 cask "knockknock"  # See what's persistently installed on your Mac
 cask "lulu"  # Open-source firewall to block unknown outgoing connections
 cask "maccy"  # Lightweight clipboard manager for macOS
+cask "macs-fan-control"  # Control fans on Apple computers
 cask "mactex-no-gui"  # TeX distribution for macOS without GUI applications
 cask "monitorcontrol"  # Control external monitor brightness and volume
 cask "mqtt-explorer"  # MQTT client and MQTT browser

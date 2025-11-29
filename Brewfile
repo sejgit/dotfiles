@@ -48,6 +48,7 @@ brew "bash-language-server"  # Language server for Bash
 brew "ruff"  # Extremely fast Python linter and formatter
 brew "prettier"  # Code formatter for JavaScript, CSS, JSON, etc
 brew "proselint"  # Linter for prose
+brew "pre-commit" # add git pre-commit links
 
 # Shell & Terminal Tools
 brew "antidote"  # Plugin manager for zsh

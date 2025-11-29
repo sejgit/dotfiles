@@ -175,6 +175,7 @@ cask "flycut"  # Clipboard manager for developers
 cask "font-hack"  # Typeface designed for source code
 cask "font-hack-nerd-font"  # Hack font with extra glyphs (Nerd Fonts)
 cask "font-iosevka"  # Versatile typeface for code
+cask "font-iosevka-nerd-font" # Iosevka font with extra glyphs (Nerd Fonts)
 cask "font-meslo-for-powerlevel10k"  # Font for Powerlevel10k prompt
 cask "git-credential-manager"  # Secure Git credential storage for macOS and Windows
 cask "google-chrome"  # Web browser

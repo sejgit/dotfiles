@@ -1,0 +1,35 @@
+# Global Git attributes - applies to all repositories
+# Mark binary files to prevent Git from attempting to diff them
+# This improves performance in Magit and other Git tools
+
+# Microbit hex files
+*.hex -text diff=bin
+
+# Other common binary file types
+*.bin -text diff=bin
+*.exe -text diff=bin
+*.dll -text diff=bin
+*.so -text diff=bin
+*.dylib -text diff=bin
+*.jpg -text diff=bin
+*.jpeg -text diff=bin
+*.png -text diff=bin
+*.gif -text diff=bin
+*.ico -text diff=bin
+*.pdf -text diff=bin
+*.zip -text diff=bin
+*.tar -text diff=bin
+*.gz -text diff=bin
+*.bz2 -text diff=bin
+*.xz -text diff=bin
+*.7z -text diff=bin
+*.rar -text diff=bin
+*.mp3 -text diff=bin
+*.mp4 -text diff=bin
+*.avi -text diff=bin
+*.mov -text diff=bin
+*.woff -text diff=bin
+*.woff2 -text diff=bin
+*.ttf -text diff=bin
+*.otf -text diff=bin
+*.eot -text diff=bin

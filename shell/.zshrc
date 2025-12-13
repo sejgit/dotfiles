@@ -311,6 +311,7 @@ fi
 if command -v keychain 1>/dev/null 2>&1; then
   if [[ $(uname -s) == "Darwin" ]]; then
     eval $(keychain --eval --quiet id_rsa 2>/dev/null)
+    eval $(qkeychain --eval --quiet id_ed25519 2>/dev/null)
     export GPG_TTY=$(tty)
     gpgconf --launch gpg-agent 2>/dev/null
   else

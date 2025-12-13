@@ -324,14 +324,11 @@ fi
 ########################
 # PowerLevel10k prompt #
 ########################
-# Load p10k only if NOT in eat (eat loads .p10k-eat.zsh instead)
-if [[ "$INSIDE_EMACS" != *"eat"* ]]; then
-  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  if [[ -f "${ZDOTDIR:-~}/.p10k.zsh" ]]; then
-    source "${ZDOTDIR:-~}/.p10k.zsh"
-  else
-    printf "p10k not installed or set-up\n" >&2
-  fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if [[ -f "${ZDOTDIR:-~}/.p10k.zsh" ]]; then
+  source "${ZDOTDIR:-~}/.p10k.zsh"
+else
+  printf "p10k not installed or set-up\n" >&2
 fi
 
 # end of .zshrc
@@ -341,6 +338,9 @@ fi
 ###########################
 # Use simplified prompt in eat, p10k in iTerm2
 if [[ "$INSIDE_EMACS" == *"eat"* ]]; then
+  # Disable p10k instant prompt in eat
+  unset P9K_INSTANT_PROMPT
+  
   # Load simplified prompt instead of p10k
   if [[ -f "${ZDOTDIR:-~}/.p10k-eat.zsh" ]]; then
     source "${ZDOTDIR:-~}/.p10k-eat.zsh"
@@ -350,4 +350,12 @@ if [[ "$INSIDE_EMACS" == *"eat"* ]]; then
 %F{magenta}❯%f '
     RPROMPT='%F{240}%*%f'
   fi
+else
+  # Normal iTerm2: use p10k instant prompt and full config
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+  
+  # Load full p10k config at the end (as before)
+  # This will be loaded later in the file
 fi

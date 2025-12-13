@@ -131,3 +131,30 @@ alias ipw='ipconfig getifaddr en0'
 alias ipe='ipconfig getifaddr en1'
 
 
+
+# Force colors in Emacs eat terminal
+if [[ "$INSIDE_EMACS" == *"eat"* ]]; then
+  # Force color output for ls/gls
+  if command -v gls >/dev/null 2>&1; then
+    alias ls='gls -F --color=always'
+    alias la='gls -AF --color=always'
+    alias ll='gls -lAF --color=always'
+    alias l='gls -l --color=always'
+  else
+    alias ls='ls -FG'
+    alias la='ls -AFG'
+    alias ll='ls -lAFG'
+    alias l='ls -lG'
+  fi
+  
+  # Force color output for bat
+  if command -v bat >/dev/null 2>&1; then
+    alias bat='bat --color=always'
+    alias cat='bat --color=always'
+  fi
+  
+  # Force color for other common tools
+  alias grep='grep --color=always'
+  alias egrep='egrep --color=always'
+  alias fgrep='fgrep --color=always'
+fi

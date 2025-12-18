@@ -1,0 +1,25 @@
+{
+    "description": "Jenkins mods",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "left_control",
+                "modifiers": {
+                    "mandatory": ["shift"],
+                    "optional": ["caps_lock"]
+                }
+            },
+            "to": [{ "key_code": "caps_lock" }],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "caps_lock",
+                "modifiers": { "optional": ["any"] }
+            },
+            "to": [{ "key_code": "left_control" }],
+            "to_if_alone": [{ "key_code": "escape" }],
+            "type": "basic"
+        }
+    ]
+}

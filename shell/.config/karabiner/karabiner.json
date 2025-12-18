@@ -4,6 +4,138 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Maps F5 to ⌘⇧M in MS Teams or ⌘⇧A to ZOOM. F5 has an MIC symbol on recent MacOS keyboards.",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f5" },
+                                "to": [{ "shell_command": "if [ $(ps aux | grep -v grep | grep -ci \"Microsoft Teams.app/Contents/Frameworks/Microsoft Teams Helper.app\") -gt 0 ]; then osascript -e 'activate application id \"com.microsoft.teams\"' -e 'tell application \"System Events\" to keystroke \"m\" using {command down, shift down}'; fi & if [ $(ps aux | grep -v grep | grep -ci \"zoom.us.app/Contents/Frameworks/cpthost.app/Contents/MacOS/CptHost\") -gt 0 ]; then osascript -e 'activate application id \"us.zoom.xos\"' -e 'tell application \"System Events\" to keystroke \"a\" using {command down, shift down}'; fi" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Jenkins mods",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_control",
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "After command+tab, use h/l to choose applications, rather than the annoying arrow keys",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "during mission control",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "during mission control",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "during mission control",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "left_command" },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "key_up_value": 0,
+                                            "name": "during mission control",
+                                            "value": 1
+                                        }
+                                    },
+                                    { "key_code": "left_command" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "'Hyper Key' (Fn) on hold of Tab.",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "fn",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Emacs key bindings [control+keys] (rev 10)",
                         "manipulators": [
                             {
@@ -539,9 +671,7 @@
                                 ],
                                 "from": {
                                     "key_code": "v",
-                                    "modifiers": {
-                                        "mandatory": ["control"]
-                                    }
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [{ "key_code": "page_down" }],
                                 "type": "basic"
@@ -600,9 +730,7 @@
                                 ],
                                 "from": {
                                     "key_code": "v",
-                                    "modifiers": {
-                                        "mandatory": ["control", "shift"]
-                                    }
+                                    "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [{ "key_code": "page_up" }],
                                 "type": "basic"
@@ -614,7 +742,7 @@
                                             "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Word$",
-											"^com\\.microsoft\\.Outlook$"
+                                            "^com\\.microsoft\\.Outlook$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -636,7 +764,7 @@
                                             "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Word$",
-											"^com\\.microsoft\\.Outlook$"
+                                            "^com\\.microsoft\\.Outlook$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -703,6 +831,7 @@
                     },
                     {
                         "description": "shift+caps_lock->caps_lock; caps_lock+[...keys] -> control+[..keys]; caps_lock -> escape",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -736,25 +865,6 @@
                                 },
                                 "to": [{ "key_code": "right_control" }],
                                 "to_if_alone": [{ "key_code": "return_or_enter" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "'Hyper Key' (Fn) on hold of Tab.",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "fn",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "tab" }],
                                 "type": "basic"
                             }
                         ]

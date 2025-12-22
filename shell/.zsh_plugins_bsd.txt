@@ -1,0 +1,75 @@
+# .zsh_plugins.txt
+
+# basic Plugins
+# .zsh_plugins.txt
+# pick only the plugins you want and remove the rest
+# oh-my-zsh framework
+ohmyzsh/ohmyzsh path:lib
+
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/homebrew
+mattmc3/zephyr path:plugins/macos
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/zfunctions
+
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+
+https://github.com/peterhurford/up.zsh
+rummik/zsh-tailf
+mattmc3/zman
+agkozak/zsh-z
+
+# Automatically load your project ENV variables from .env
+# add to .zshrc export ZSH_DOTENV_PROMPT=false
+ohmyzsh/ohmyzsh path:plugins/dotenv
+
+# coloured man pages (duh)
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+
+# syntax-highlight file contents
+ohmyzsh/ohmyzsh path:plugins/colorize
+
+# jsontools  pp_json, is_json
+ohmyzsh/ohmyzsh path:plugins/jsontools
+
+# esc twice causes last command to have sudo added
+ohmyzsh/ohmyzsh path:plugins/sudo
+
+# web_search {google, bing, github, etc} <text>  or google <text>
+ohmyzsh/ohmyzsh path:plugins/web-search
+
+# copypath absolute path to clipboard
+ohmyzsh/ohmyzsh path:plugins/copypath
+
+# copyfile contents of file to clipboard
+ohmyzsh/ohmyzsh path:plugins/copyfile
+
+# copybuffer binds C-o to copy text on command line
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+
+# adds alt + left, right, up, down to move around
+ohmyzsh/ohmyzsh path:plugins/dirhistory
+
+# other completions
+bobthecow/git-flow-completion
+buonomo/yarn-completion
+MenkeTechnologies/zsh-cargo-completion kind:zsh
+
+# zsh-utils
+belak/zsh-utils path:completion
+
+# powerlevel10k theme
+romkatv/powerlevel10k
+
+# recommended last - history search
+zsh-users/zsh-history-substring-search
+
+# zsh-fzf-history-search
+joshskidmore/zsh-fzf-history-search
+
+

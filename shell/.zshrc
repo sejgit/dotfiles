@@ -142,14 +142,9 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # ap
 ############
 # Antidote #
 ############
-if [[ -d ~/.antidote ]]; then
-    antidote_dir=~/.antidote
-else
-  if [[ $(uname -s) == "Darwin" ]]; then
-     antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
-  fi
-fi
-if [[ -f "${antidote_dir}/antidote.zsh" ]]; then
+if [[ $(uname -s) == "Darwin" ]]; then
+  antidote_dir=$HOMEBREW_PREFIX/opt/antidote/share/antidote
+  if [[ -f "${antidote_dir}/antidote.zsh" ]]; then
     plugins_txt=${ZDOTDIR:-~}/.zsh_plugins.txt
     static_file=${ZDOTDIR:-~}/.zsh_plugins.zsh
     zstyle ':antidote:bundle' use-friendly-names 'yes'
@@ -160,13 +155,29 @@ if [[ -f "${antidote_dir}/antidote.zsh" ]]; then
     if command -v register-python-argcomplete 1>/dev/null 2>&1; then
       eval "$(register-python-argcomplete pipx)"
     fi
-else
-    if [[ $(uname -s) == "Darwin" ]]; then
+  else
         printf "antidote needs to be installed: brew install antidote\n" >&2
-    else
-        printf "antidote needs to be installed: git clone mattmc3/antidote\n" >&2
-    fi
+  fi
 fi
+
+if [[ $(uname -s) == "FreeBSD" || $(uname -s) == "Linux" ]]; then
+  antidote_dir=~/.antidote
+  if [[ -f "${antidote_dir}/antidote.zsh" ]]; then
+    plugins_txt=${ZDOTDIR:-~}/.zsh_plugins_bsd.txt
+    static_file=${ZDOTDIR:-~}/.zsh_plugins_bsd.zsh
+    zstyle ':antidote:bundle' use-friendly-names 'yes'
+    zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zsh_plugins_bsd.txt
+    source "${antidote_dir}/antidote.zsh"
+    antidote load
+
+    if command -v register-python-argcomplete 1>/dev/null 2>&1; then
+      eval "$(register-python-argcomplete pipx)"
+    fi
+  else
+        printf "antidote needs to be installed: git clone mattmc3/antidote\n" >&2
+  fi
+fi
+
 
 ###############
 # Keybindings #

@@ -48,7 +48,6 @@ fi
 if [[ "$(uname -s)" == *"BSD"* ]]; then
     export PATH=$PATH:.:/usr/local/etc/udx.d/static
     export PROMPT_COMMAND='history -a'
-    set -o nano
     trap 'echo -ne "\033]2;$PWD : $(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
 fi
 
